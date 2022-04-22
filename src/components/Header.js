@@ -21,9 +21,9 @@ const Header = ()=>{
                             <li className="nav-item">
                                 <a className="nav-link">Updatetrip</a>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className="nav-link" to="/endTrip">EndRide</Link>
-                            </li>
+                            </li> */}
                             
                             <li className="nav-item">
                                 <Link className="nav-link" to="/view">My Trips</Link>

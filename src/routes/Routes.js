@@ -46,7 +46,9 @@ const Routes = () =>{
                     <div>
                         <Switch>
                             <Route path="/book" ><Booktrip/></Route>
+                        
                             <Route path="/view" ><ViewTrips/></Route>
+                            
                             <Route path="/endTrip"><EndTrip/></Route>
                         </Switch>
                     </div>

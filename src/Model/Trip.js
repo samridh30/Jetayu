@@ -1,8 +1,9 @@
 import driver from './driver'
+import Customer from './Customer'
 class Trip {
 
     tripBookingId;
-    customer ={};
+    customer = new Customer;
     driver= new driver();
     FromLocation;
     ToLocation;
