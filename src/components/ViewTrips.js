@@ -8,44 +8,66 @@ import ReactPaginate from 'react-paginate';
 
 const ViewTrips = () =>{
     const TripsListStore = useSelector((state) => state.Trip.TripsList);
-    const[trip, setTrip]=useState([]);
-    const[id,setId]=useState('');
-    const[perpage, setperpage]=useState(TripsListStore.slice(0,5));
-    const[pageNumber,setPageNumber]=useState(0);
-
-    const tripsperpage=5;
-
-    const pagesVisited= pageNumber* tripsperpage
-    const dispalytrips= perpage.slice(pagesVisited,pagesVisited+tripsperpage).map(()=><h1>Drikav</h1>)
-
+    const TripListStore = useSelector((state) => state.Trip.TripList);
     const dispatch = useDispatch();
 
-    // {setperpage(TripsListStore.data.slice(0,5));}
+ 
+// fetching trips history for a customer
     const submitGetTripById = (evt) => {
-        // console.log(evt.data);
         evt.preventDefault();
         viewTripService()
             .then((response) => {
-                // console.log(response.data);
                 dispatch(getTripsList(response.data));
-                // setTrip(response.data);
             })
             .catch((error) => {
                 alert(error);
             })
     }
 
-    const handleChange = (evt) => {
-        console.log(evt.target.value);
-        setId(evt.target.value);
+
+  
+// to end ride for a customer
+    const endCab= (e) =>{
+        e.preventDefault();
+        endTripService().then((response)=>{
+            // console.log(booktrip.fromLocation+"  ended");
+            console.log(response);
+            console.log(response.data.customer.userName);
+            alert(response.data.customer.userName+" Your Trip Ended ");
+
+        })
+        .catch(()=>{
+            alert("cab could not be ended")
+        })
     }
+
 
     return(
         <div className='container' >
-            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-5">
-            <div className="form form-group" >
-            <input type="submit" className="form-control mb-3 mt-3 btn btn-primary" value="Get Trips" onClick={submitGetTripById} />
-            </div>
+            <div className="row">
+                <div className="bg-white shadow shadow-regular mb-3 mt-3 ml-0 px-3 py-3 pb-3 pt-3  col-lg-2">
+                    <div className="form form-group " >
+                        <input 
+                            type="submit" 
+                            className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
+                            data-toggle="collapse"
+                            data-target="#gettrips" 
+                            value="Get Trips" 
+                            onClick={submitGetTripById} />
+                        <input
+                            type="submit"
+                            className='form-control mb-3 mt-3 btn btn-primary"'
+                            value="Update Trip"
+                            />
+
+                        <input
+                            type="submit"
+                            className='form-control mb-3 mt-3 btn btn-primary'
+                            value="End Trip"
+                            onClick={endCab}
+
+                            />
+                    </div>
             {/* <div >
                 <div className='row'>
                     <table className='table table-bordered table-striped'>
@@ -87,25 +109,26 @@ const ViewTrips = () =>{
                 </div>
             
             </div> */}
+            </div>
 
-            <div className="row">
+            <div className="col-lg-6 " id="gettrips">
                 {  
                      TripsListStore.map((e,index)=>
-                     <div class="card mt-3 ">
-                        <div class="card-body text-left roundered">
+                     <div className="card mt-3 ">
+                        <div className="card-body text-left roundered">
                             <div>
                             <p className=" card-header text-center ">Trip Count- {index}</p>
                             <p>TripBookingId- {e.tripBookingId}</p>
                             <p>FromLocation- {e.fromLocation}</p>
                             <p>toLocation- {e.toLocation}</p>
-                            <input
+                            {/* <input
                             type="submit"
                             className="btn btn-success form-control  href=tripdata  "
                             data-toggle="collapse"
                             data-target="#tripdata"
-                            value="view"/>
+                            value="view"/> */}
 
-                            <div className="collapse" id="tripdata">
+                            <div >
                             <p>Bill- {e.bill}</p>
                             <p>driverId- {e.driver.driverId}</p>
                             <p>DriverRating- {e.driver.rating}</p>
@@ -123,10 +146,32 @@ const ViewTrips = () =>{
                 }
             </div>
 
-           
-            </div>
-            
+            <div className="col-lg-6 " id="bookingdetails">
+                <div className="card mt-3">
+                    <div class="card-body text-left roundered">
+                        <div>
+                        <h4 className="card-header text-center">Booking Details</h4>
+                            {/* <p>TripBookingId- {TripListStore.tripBookingId}</p> */}
+                            <p>FromLocation- {TripListStore.fromLocation}</p>
+                            <p>toLocation- {TripListStore.toLocation}</p>
+                            <p>Bill- {TripListStore.bill}</p>
+                            <p>driverId- {TripsListStore.driverId}</p>
+                            <p>DriverRating- {TripsListStore.rating}</p>
+                            <p>CabType- {TripsListStore.cartype}</p>
+                        {/* <ul class="list-group list-group-flush">
+                            <li class="list-group-item">FromLocation :{TripsListStore.fromLocation}</li>
+                            <li class="list-group-item">ToLocation :{TripsListStore.toLocation}</li>
+                            <li class="list-group-item">Bill: {TripsListStore.bill}</li>
+                            <li class="list-group-item">BookedTime :{TripsListStore.fromDateTime}</li>
+                        </ul> */}
 
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
         
     )

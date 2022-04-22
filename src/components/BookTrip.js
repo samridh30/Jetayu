@@ -43,7 +43,7 @@ const Booktrip = () =>{
                 dispatch( setTripList(response.data));
                 // setTripdata(response.data);
                 alert("Cab Booked Succesfully")
-                history.push('/endTrip')
+                history.push('/view')
             })
             .catch(()=>{
                 alert("Cab could not be booked")
