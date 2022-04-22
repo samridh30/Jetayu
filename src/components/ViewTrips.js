@@ -1,23 +1,29 @@
-import { useState } from "react";
-import Trip from '../Model/Trip';
-import driver from '../Model/driver';
 import {bookCabService, updateTripService,viewTripService,endTripService} from '../services/TripService'
-import  { setTripList, getTripsList } from '../redux/TripSlice'
+import  {setAllTripsList } from '../redux/TripSlice'
 import { useDispatch, useSelector } from "react-redux";
-import ReactPaginate from 'react-paginate';
+import { useState } from 'react';
+
 
 const ViewTrips = () =>{
-    const TripsListStore = useSelector((state) => state.Trip.TripsList);
+    const AllTripsListStore = useSelector((state) => state.Trip.AllTripsList);
     const TripListStore = useSelector((state) => state.Trip.TripList);
+    const [show, setshow]=useState({
+        getTrip:false,
+        update:false,
+        bookingdetails:true,
+        endTrip:true
+    })
+
     const dispatch = useDispatch();
 
  
 // fetching trips history for a customer
     const submitGetTripById = (evt) => {
+        setshow({getTrip:true,update:false,endTrip:false ,bookingdetails:false})
         evt.preventDefault();
         viewTripService()
             .then((response) => {
-                dispatch(getTripsList(response.data));
+                dispatch(setAllTripsList(response.data));
             })
             .catch((error) => {
                 alert(error);
@@ -28,7 +34,10 @@ const ViewTrips = () =>{
   
 // to end ride for a customer
     const endCab= (e) =>{
+        setshow({getTrip:false,update:false,endTrip:true,bookingdetails:false})
         e.preventDefault();
+        console.log("Trip booked data")
+        console.log(TripListStore);
         endTripService().then((response)=>{
             // console.log(booktrip.fromLocation+"  ended");
             console.log(response);
@@ -37,9 +46,22 @@ const ViewTrips = () =>{
 
         })
         .catch(()=>{
-            alert("cab could not be ended")
+            alert("No Trips to End")
         })
     }
+
+    const update=(e)=>{
+        setshow({getTrip:false, update:true })
+        e.preventDefault()
+        console.log(TripListStore.tripBookingId);
+
+
+    }
+
+    const bookingdetails =()=>{
+        setshow({getTrip:false,update:false , endTrip:false, bookingdetails:true})
+    }
+
 
 
     return(
@@ -47,6 +69,22 @@ const ViewTrips = () =>{
             <div className="row">
                 <div className="bg-white shadow shadow-regular mb-3 mt-3 ml-0 px-3 py-3 pb-3 pt-3  col-lg-2">
                     <div className="form form-group " >
+
+                    <input
+                            type="submit"
+                            className='form-control mb-3 mt-3 btn btn-primary'
+                            value="Booking details"
+                            onClick={bookingdetails}
+
+                            />
+                    <input 
+                            type="submit" 
+                            className="form-control mb-3 mt-3 btn btn-primary"
+                            value="update Trip"
+
+                            onClick={update} />
+
+                        
                         <input 
                             type="submit" 
                             className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
@@ -54,11 +92,9 @@ const ViewTrips = () =>{
                             data-target="#gettrips" 
                             value="Get Trips" 
                             onClick={submitGetTripById} />
-                        <input
-                            type="submit"
-                            className='form-control mb-3 mt-3 btn btn-primary"'
-                            value="Update Trip"
-                            />
+
+                        
+                        
 
                         <input
                             type="submit"
@@ -109,11 +145,41 @@ const ViewTrips = () =>{
                 </div>
             
             </div> */}
-            </div>
+            </div >
+            {(show.update)&&
+            <div className='card mt-3 ml-3 col-lg-6'>
+                <div className='card-body text-left roundered'>
+                    <div>
+                        <h4 className='card-header'><center>Update trip </center></h4>
+                        <label>FromLocation</label>
+                        <input
+                        type="text"
+                        className='form-control'
+                        value={TripListStore.fromLocation}
+                        />
+                        <label>To Location</label>
+                        <input
+                        type="text"
+                        className='form-control'
+                        value={TripListStore.toLocation}
+                        />
+                        <input
+                        type="submit"
+                        className='btn btn-success form-control mt-3'
+                        value="Update"
+                        onClick={update}
 
-            <div className="col-lg-6 " id="gettrips">
+                        />
+
+                    </div>
+                </div>
+                
+            </div>
+            }
+            {(show.getTrip)&&
+            <div className="col-lg-6" id="gettrips">
                 {  
-                     TripsListStore.map((e,index)=>
+                     AllTripsListStore.map((e,index)=>
                      <div className="card mt-3 ">
                         <div className="card-body text-left roundered">
                             <div>
@@ -121,6 +187,7 @@ const ViewTrips = () =>{
                             <p>TripBookingId- {e.tripBookingId}</p>
                             <p>FromLocation- {e.fromLocation}</p>
                             <p>toLocation- {e.toLocation}</p>
+                            
                             {/* <input
                             type="submit"
                             className="btn btn-success form-control  href=tripdata  "
@@ -140,13 +207,17 @@ const ViewTrips = () =>{
                     </div>
 
                      )
+                        }
+                
 
                      
 
-                }
+                
             </div>
-
+            }
+            {(show.bookingdetails)&&
             <div className="col-lg-6 " id="bookingdetails">
+                
                 <div className="card mt-3">
                     <div class="card-body text-left roundered">
                         <div>
@@ -155,9 +226,9 @@ const ViewTrips = () =>{
                             <p>FromLocation- {TripListStore.fromLocation}</p>
                             <p>toLocation- {TripListStore.toLocation}</p>
                             <p>Bill- {TripListStore.bill}</p>
-                            <p>driverId- {TripsListStore.driverId}</p>
-                            <p>DriverRating- {TripsListStore.rating}</p>
-                            <p>CabType- {TripsListStore.cartype}</p>
+                            <p>driverId- {TripListStore.driver.driverId}</p>
+                            <p>DriverRating- {TripListStore.rating}</p>
+                            <p>CabType- {TripListStore.cabtype}</p>
                         {/* <ul class="list-group list-group-flush">
                             <li class="list-group-item">FromLocation :{TripsListStore.fromLocation}</li>
                             <li class="list-group-item">ToLocation :{TripsListStore.toLocation}</li>
@@ -169,7 +240,11 @@ const ViewTrips = () =>{
 
                     </div>
                 </div>
+                
             </div>
+            }
+                  
+            
 
         </div>
     </div>

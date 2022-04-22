@@ -3,7 +3,7 @@ import Customer from './Customer'
 class Trip {
 
     tripBookingId;
-    customer = new Customer;
+    customer = new Customer();
     driver= new driver();
     FromLocation;
     ToLocation;
