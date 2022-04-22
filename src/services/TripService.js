@@ -5,8 +5,8 @@ const bookCabService = (trip) => {
     return axios.post(`${springBootAppUrl}/bookCab`,trip);
 }
 
-const updateTripService = () => {
-    return axios.put(`${springBootAppUrl}/update`);
+const updateTripService = (trip) => {
+    return axios.put(`${springBootAppUrl}/update`, trip);
 }
 
 const viewTripService = () => {
