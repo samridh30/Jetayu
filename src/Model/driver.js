@@ -1,6 +1,7 @@
 class driver{
 
     driverId;
+    driverName;
     licenseNo;
     rating;
     cab;
