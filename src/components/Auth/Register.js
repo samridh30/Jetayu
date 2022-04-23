@@ -1,19 +1,14 @@
-
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
-import AppUser from '../models/AppUser';
-import { registerService } from '../services/AppUserService';
+// import AppUser from '../models/AppUser';
+import { registerService } from '../../services/AuthService';
 
 const Register = () => {
 
     const history = useHistory();
 
-    const [appUser, setAppUser] = useState({
-        email: '',
-        password: '',
-        reole: ''
-    });
+    const [appUser, setAppUser] = useState({});
     const [credentials, setCredentials] = useState('');
 
     const handleAppUser = (event) => {
@@ -56,6 +51,14 @@ const Register = () => {
                             autoFocus
                         />
                         <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            className="form-control mb-3"
+                            placeholder="Enter Email"
+                            value={appUser.email}
+                            onChange={handleAppUser} />
+                        <input
                             type="password"
                             name="password"
                             id="password"
@@ -63,8 +66,28 @@ const Register = () => {
                             placeholder="Enter password"
                             value={appUser.password}
                             onChange={handleAppUser} />
-                        <div class="form-group">
-                            <select class="form-control mb-3" name="role" id="role" onChange={handleAppUser}>
+
+                        <input
+                            type='number'
+                            name="phone"
+                            id="phone"
+                            className="form-control mb-3"
+                            placeholder="Enter Phone number"
+                            value={appUser.mobileNumber}
+                            onChange={handleAppUser} />
+                        <input
+                            type='text'
+                            name="Address"
+                            id="address"
+                            className="form-control mb-3"
+                            placeholder="Enter Address"
+                            value={appUser.address}
+                            onChange={handleAppUser} />
+
+
+
+                        <div className="form-group">
+                            <select className="form-control mb-3" name="role" id="role" onChange={handleAppUser}>
                                 <option value="Role">Select a role</option>
                                 <option value="ADMIN">ADMIN</option>
                                 <option value="EMPLOYEE">EMPLOYEE</option>

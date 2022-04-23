@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import TripReducer from './TripSlice';
-import parentReducer from './TripSlice';
 import appUserReducer from './AppUserSlice'
 
 
