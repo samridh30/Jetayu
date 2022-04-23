@@ -15,18 +15,22 @@ const Header = ()=>{
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
+                        <li className="nav-item">
+                                <Link className="nav-link" to="/">Home</Link>
+                            </li>
+                            
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/login">login</Link>
+                            </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/book">Ride</Link>
                             </li>
-                            {/* <li className="nav-item">
-                                <a className="nav-link">Updatetrip</a>
-                            </li> */}
                             {/* <li className="nav-item">
                                 <Link className="nav-link" to="/endTrip">EndRide</Link>
                             </li> */}
                             
                             <li className="nav-item">
-                                <Link className="nav-link" to="/view">My Trips</Link>
+                                <Link className="nav-link" to="/view">MyTrips</Link>
                             </li>
                         </ul>
                     </div>
