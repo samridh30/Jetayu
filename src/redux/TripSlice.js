@@ -22,6 +22,7 @@ const TripSlice = createSlice({
             console.log(state);
             console.log(action.payload);
             state.TripList = action.payload;
+            
         },
         setAllTripsList: (state, action) => {
             console.log(state);

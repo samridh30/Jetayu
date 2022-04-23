@@ -5,6 +5,7 @@ import Footer from '../components/TripBooking/Footer';
 import Login from '../components/Auth/Login';
 import ViewTrips from '../components/TripBooking/ViewTrips';
 import Booktrip from '../components/TripBooking/BookTrip';
+import Register from '../components/Auth/Register';
 
 
 const Routes = () =>{
@@ -16,6 +17,8 @@ const Routes = () =>{
                     <div>
                         <Switch>
                             <Route exact path="/"><Home /></Route>
+
+                            {/* <Route path="/register"><Register/></Route> */}
 
                             <Route exact path="/login"><Login /></Route>
 

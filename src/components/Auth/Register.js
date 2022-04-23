@@ -2,8 +2,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
-import AppUser from '../models/AppUser';
-import { registerService } from '../services/AppUserService';
+// import AppUser from '../models/AppUser';
+import { registerService } from '../../services/AuthService';
 
 const Register = () => {
 
