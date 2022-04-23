@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Trip from '../Model/Trip';
+import Cabservicedto from "../Model/Cabservicedto";
+import Customer from "../Model/Customer";
+import driver from "../Model/driver";
 
 const TripSlice = createSlice({
 
@@ -8,7 +11,8 @@ const TripSlice = createSlice({
 
     initialState: {
         TripList: new Trip(),
-        TripsList:[]
+        AllTripsList:[],
+  
         // , other objects in state 
     },
 
@@ -19,15 +23,15 @@ const TripSlice = createSlice({
             console.log(action.payload);
             state.TripList = action.payload;
         },
-        getTripsList: (state, action) => {
+        setAllTripsList: (state, action) => {
             console.log(state);
             console.log(action.payload);
-            state.TripsList = action.payload;
+            state.AllTripsList = action.payload;
         }
         // , more methods in reducers   
     }
 });
 
-export const { setTripList, getTripsList } = TripSlice.actions;
+export const { setTripList, setAllTripsList } = TripSlice.actions;
 
 export default TripSlice.reducer;

@@ -1,4 +1,4 @@
-import {bookCabService, updateTripService,viewTripService,endTripService} from '../services/TripService'
+import {bookCabService, updateTripService,viewTripService,endTripService} from '../../services/TripService'
 import { useDispatch, useSelector } from "react-redux";
 
 const EndTrip = () =>{

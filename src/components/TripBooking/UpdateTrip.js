@@ -1,3 +1,4 @@
+import React from 'react';
 const updateTrip = () =>{
     
     return(
@@ -50,3 +51,4 @@ const updateTrip = () =>{
     )
 
 }
+ export default updateTrip;

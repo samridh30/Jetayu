@@ -13,20 +13,29 @@ const Header = ()=>{
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                         <span className="navbar-toggler-icon"></span>
                     </button>
+<<<<<<< HEAD:src/components/Header.js
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
+=======
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                        <li className="nav-item">
+                                <Link className="nav-link" to="/">Home</Link>
+                            </li>
+                            
+>>>>>>> 2edaeaf1474f0b24d8f18753ae19b4233eda6d6e:src/components/TripBooking/Header.js
                             <li className="nav-item">
-                                <Link className="nav-link" to="/book">Ride</Link>
+                                <Link className="nav-link" to="/login">login</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link">Updatetrip</a>
+                                <Link className="nav-link" to="/book">Ride</Link>
                             </li>
                             {/* <li className="nav-item">
                                 <Link className="nav-link" to="/endTrip">EndRide</Link>
                             </li> */}
                             
                             <li className="nav-item">
-                                <Link className="nav-link" to="/view">My Trips</Link>
+                                <Link className="nav-link" to="/view">MyTrips</Link>
                             </li>
                         </ul>
                     </div>

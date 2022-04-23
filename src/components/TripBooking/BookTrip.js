@@ -1,12 +1,8 @@
-import {bookCabService, updateTripService,viewTripService,endTripService} from '../services/TripService'
+import {bookCabService} from '../../services/TripService'
 import { useHistory } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import Dropdown from 'react-bootstrap/Dropdown'
 import { useState } from "react";
-import Trip from '../Model/Trip';
-import  { setTripList, getTripsList } from '../redux/TripSlice'
+import  { setTripList} from '../../redux/TripSlice'
 import { useDispatch, useSelector } from "react-redux";
 import "./BookTrip.css"
 
@@ -16,8 +12,6 @@ const Booktrip = () =>{
         toLocation:'',
         cabType:''
     });
-    // const [tripdata, setTripdata]= useState(new Trip() );
-    const TripListStore = useSelector((state) => state.Trip.TripList);
     const dispatch = useDispatch();
     const history = useHistory();
     const addTrip=(e)=>{
@@ -26,11 +20,6 @@ const Booktrip = () =>{
             ...booktrip,[e.target.name]:e.target.value
         })
         
-    }
-
-    const addType=(e)=>{
-        console.log(e.target.value);
-        setBookTrip({...booktrip,[booktrip.cabType]:e.target.value});
     }
 
     const addCab = (e) =>{
@@ -46,25 +35,10 @@ const Booktrip = () =>{
                 history.push('/view')
             })
             .catch(()=>{
-                alert("Cab could not be booked")
+                alert("Multiple Trips Not Allowled")
 
             })
 
-    }
-
-    const endCab= (e) =>{
-        e.preventDefault();
-        endTripService().then((response)=>{
-            console.log(booktrip.fromLocation+"  ended");
-            console.log(response);
-            console.log(response.data.customer.userName);
-            alert(response.data.customer.userName+" Your Trip Ended ");
-
-        })
-        .catch(()=>{
-            alert("cab could not be ended")
-        })
-        
     }
     return(
         
