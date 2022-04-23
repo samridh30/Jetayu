@@ -1,7 +1,8 @@
-import {bookCabService, updateTripService,viewTripService,endTripService} from '../services/TripService'
-import  {setAllTripsList } from '../redux/TripSlice'
+import {bookCabService, updateTripService,viewTripService,endTripService} from '../../services/TripService'
+import  {setAllTripsList } from '../../redux/TripSlice'
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
+import  { setTripList} from '../../redux/TripSlice'
 
 
 const ViewTrips = () =>{
@@ -13,6 +14,8 @@ const ViewTrips = () =>{
         bookingdetails:true,
         endTrip:true
     })
+
+    const[currenttripupdate,setcurrentupdate]=useState(TripListStore);
 
     const dispatch = useDispatch();
 
@@ -46,14 +49,35 @@ const ViewTrips = () =>{
 
         })
         .catch(()=>{
-            alert("No Trips to End")
+            alert("No Trips to End");
         })
     }
+    //Handling Update Chnages
+    const handleUpdate=(e)=>{
+        e.preventDefault();
+        // console.log(e.value)
+        setcurrentupdate({
+            ...currenttripupdate,[e.target.name]:e.target.value
+        })
+        console.log(currenttripupdate.fromLocation);
+        console.log(currenttripupdate.toLocation);
 
+
+    }
+    //Updateing data in Backend 
     const update=(e)=>{
-        setshow({getTrip:false, update:true })
-        e.preventDefault()
-        console.log(TripListStore.tripBookingId);
+        e.preventDefault();
+        setshow({getTrip:false, update:true });
+        updateTripService(currenttripupdate).then((response)=>{
+            dispatch( setTripList(response.data));
+
+
+        })
+        .catch(()=>{
+            alert("Not Updated")
+
+        })
+       
 
 
     }
@@ -136,7 +160,6 @@ const ViewTrips = () =>{
                                   
                                   
                               </tr>
-
                               )
                           }
                       </tbody>
@@ -154,14 +177,18 @@ const ViewTrips = () =>{
                         <label>FromLocation</label>
                         <input
                         type="text"
+                        name="fromLocation"
                         className='form-control'
-                        value={TripListStore.fromLocation}
+                        onChange={handleUpdate}
+                        value={currenttripupdate.fromLocation}
                         />
                         <label>To Location</label>
                         <input
                         type="text"
+                        name="toLocation"
                         className='form-control'
-                        value={TripListStore.toLocation}
+                        onChange={handleUpdate}
+                        value={currenttripupdate.toLocation}
                         />
                         <input
                         type="submit"
@@ -227,8 +254,8 @@ const ViewTrips = () =>{
                             <p>toLocation- {TripListStore.toLocation}</p>
                             <p>Bill- {TripListStore.bill}</p>
                             <p>driverId- {TripListStore.driver.driverId}</p>
-                            <p>DriverRating- {TripListStore.rating}</p>
-                            <p>CabType- {TripListStore.cabtype}</p>
+                            <p>DriverRating- {TripListStore.driver.rating}</p>
+                            <p>CabType- {TripListStore.driver.cab.carType}</p>
                         {/* <ul class="list-group list-group-flush">
                             <li class="list-group-item">FromLocation :{TripsListStore.fromLocation}</li>
                             <li class="list-group-item">ToLocation :{TripsListStore.toLocation}</li>

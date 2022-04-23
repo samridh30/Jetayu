@@ -1,8 +1,8 @@
-import {bookCabService} from '../services/TripService'
+import {bookCabService} from '../../services/TripService'
 import { useHistory } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
-import  { setTripList} from '../redux/TripSlice'
+import  { setTripList} from '../../redux/TripSlice'
 import { useDispatch, useSelector } from "react-redux";
 import "./BookTrip.css"
 
