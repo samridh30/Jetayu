@@ -1,10 +1,11 @@
 import {bookCabService, updateTripService,viewTripService,endTripService} from '../../services/TripService'
 import  {setAllTripsList } from '../../redux/TripSlice'
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import  { setTripList} from '../../redux/TripSlice'
+import loaddash from 'lodash';
 
-
+const pagesize=5;
 const ViewTrips = () =>{
     const AllTripsListStore = useSelector((state) => state.Trip.AllTripsList);
     const TripListStore = useSelector((state) => state.Trip.TripList);
@@ -14,10 +15,23 @@ const ViewTrips = () =>{
         bookingdetails:true,
         endTrip:true
     })
-
-    const[currenttripupdate,setcurrentupdate]=useState(TripListStore);
-
+    const[paginatedPosts, setpaginatedPosts]=useState([]);
+    const[currentpage, setcurrentpage]=useState(1);
+    useEffect(()=>{
+        setpaginatedPosts(loaddash(AllTripsListStore).slice(0).take(pagesize).value())
+        
+    },[])
+    
     const dispatch = useDispatch();
+    const pageCount= AllTripsListStore?Math.ceil(AllTripsListStore.length/pagesize):0;
+    const[currenttripupdate,setcurrenttripupdate]=useState(TripListStore);
+    
+
+    
+    if(pageCount===1){return null;}
+    const pages= loaddash.range(1,pageCount+1);
+
+    
 
  
 // fetching trips history for a customer
@@ -26,12 +40,17 @@ const ViewTrips = () =>{
         evt.preventDefault();
         viewTripService()
             .then((response) => {
+                console.log('Page')
+                console.log((response.data).slice(0));
+                
                 dispatch(setAllTripsList(response.data));
             })
             .catch((error) => {
                 alert(error);
             })
     }
+
+ 
 
 
   
@@ -56,7 +75,7 @@ const ViewTrips = () =>{
     const handleUpdate=(e)=>{
         e.preventDefault();
         // console.log(e.value)
-        setcurrentupdate({
+        setcurrenttripupdate({
             ...currenttripupdate,[e.target.name]:e.target.value
         })
         console.log(currenttripupdate.fromLocation);
@@ -70,6 +89,7 @@ const ViewTrips = () =>{
         setshow({getTrip:false, update:true });
         updateTripService(currenttripupdate).then((response)=>{
             dispatch( setTripList(response.data));
+            alert("Updated")
 
 
         })
@@ -84,6 +104,13 @@ const ViewTrips = () =>{
 
     const bookingdetails =()=>{
         setshow({getTrip:false,update:false , endTrip:false, bookingdetails:true})
+    }
+
+    const pagination=(pageNo)=>{
+        setcurrentpage(pageNo);
+        const startIndex=(pageNo-1)*pagesize;
+        const paginatedPost=loaddash(AllTripsListStore).slice(startIndex).take(pagesize).value();
+        setpaginatedPosts(paginatedPost)
     }
 
 
@@ -203,17 +230,17 @@ const ViewTrips = () =>{
                 
             </div>
             }
-            {(show.getTrip)&&
+            {(paginatedPosts && show.getTrip)&&
             <div className="col-lg-6" id="gettrips">
                 {  
-                     AllTripsListStore.map((e,index)=>
-                     <div className="card mt-3 ">
+                     paginatedPosts.map((e,index)=>
+                     <div key={index} className="card mt-3 ">
                         <div className="card-body text-left roundered">
                             <div>
-                            <p className=" card-header text-center ">Trip Count- {index}</p>
+                            <p className=" card-header text-center ">Trip details</p>
                             <p>TripBookingId- {e.tripBookingId}</p>
                             <p>FromLocation- {e.fromLocation}</p>
-                            <p>toLocation- {e.toLocation}</p>
+                            <p>ToLocation- {e.toLocation}</p>
                             
                             {/* <input
                             type="submit"
@@ -224,7 +251,7 @@ const ViewTrips = () =>{
 
                             <div >
                             <p>Bill- {e.bill}</p>
-                            <p>driverId- {e.driver.driverId}</p>
+                            <p>DriverName- {e.driver.driverName}</p>
                             <p>DriverRating- {e.driver.rating}</p>
                             <p>CabType- {e.driver.cab.carType}</p>
                             </div>
@@ -235,6 +262,25 @@ const ViewTrips = () =>{
 
                      )
                         }
+                    {(show.getTrip)&&
+                    <nav className='d-flex justify-content-center mt-3'>
+         
+                        <ul className='pagination'>
+                        {
+                            pages.map((page)=>(
+                                <li className={
+                                    page===currentpage? "page-item active": "page-item"
+                                }>
+                                <p className='page-link'
+                                onClick={()=>pagination(page)}
+                                >{page}</p></li>
+
+                            ))
+                        }
+
+                        </ul>
+                    </nav>
+                    }
                 
 
                      
@@ -251,9 +297,9 @@ const ViewTrips = () =>{
                         <h4 className="card-header text-center">Booking Details</h4>
                             {/* <p>TripBookingId- {TripListStore.tripBookingId}</p> */}
                             <p>FromLocation- {TripListStore.fromLocation}</p>
-                            <p>toLocation- {TripListStore.toLocation}</p>
+                            <p>ToLocation- {TripListStore.toLocation}</p>
                             <p>Bill- {TripListStore.bill}</p>
-                            <p>driverId- {TripListStore.driver.driverId}</p>
+                            <p>DriverName- {TripListStore.driver.driverName}</p>
                             <p>DriverRating- {TripListStore.driver.rating}</p>
                             <p>CabType- {TripListStore.driver.cab.carType}</p>
                         {/* <ul class="list-group list-group-flush">

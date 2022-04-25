@@ -1,10 +1,12 @@
+import Cabservicedto from "./Cabservicedto";
+import Cab from './Cab'
 class driver{
 
     driverId;
     driverName;
     licenseNo;
     rating;
-    cab;
+    cab=new Cab();
     status;
 
 }
