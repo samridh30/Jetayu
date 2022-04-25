@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useState } from "react";
 import AppUser from '../Model/AuthUser';
 
 const AppUserSlice = createSlice({
@@ -9,13 +10,14 @@ const AppUserSlice = createSlice({
                 loggedInUser: new AppUser(),
         },
 
+
         reducers: {
 
                 getAppUser: (state, action) => {
                         console.log(action.payload);
                         state.loggedInUser = action.payload;
-                        localStorage.setItem('loggedInUser', action.payload);
-                        console.log(action.payload);
+                        // localStorage.setItem('loggedInUser', JSON.stringify(action.payload));
+                        // console.log(localStorage.getItem("loggedInUser"));
                 }
         }
 });

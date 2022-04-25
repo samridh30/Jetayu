@@ -14,4 +14,15 @@ const loginService = (appUser) => {
         return temp;
 }
 
-export { registerService, loginService };
+const logoutService = () => {
+        return axios.get(`${springBootAppUrl}Customer/logout`);
+}
+
+const viewCustomer = () => {
+        // console.log(appUser);
+        let temp = axios.get(`${springBootAppUrl}Customer/viewCustomer`);
+        console.log(temp)
+        return temp;
+}
+
+export { registerService, loginService, logoutService, viewCustomer };

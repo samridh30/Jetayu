@@ -1,3 +1,5 @@
+import Logout from "../Auth/Logout";
+
 const Home = () => {
         return (
                 <div>

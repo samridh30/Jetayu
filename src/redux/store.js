@@ -13,7 +13,7 @@ const store = configureStore(
                         // parent: parentReducer
                         // , more reducers 
                 },
-                middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+                // middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
         });
 
 export default store;

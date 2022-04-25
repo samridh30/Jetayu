@@ -1,6 +1,6 @@
 import { bookCabService, updateTripService, viewTripService, endTripService } from '../../services/TripService'
 import { setAllTripsList } from '../../redux/TripSlice'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from 'react';
 import { setTripList } from '../../redux/TripSlice'
 import loaddash from 'lodash';

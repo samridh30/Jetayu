@@ -2,10 +2,16 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { loginService } from '../../services/AuthService';
+import { useDispatch, useSelector } from "react-redux";
+import { getAppUser } from '../../redux/AppUserSlice';
+
 // import AuthUser from '../../models/AuthUser';
 
 const Login = () => {
 
+
+
+        // const temp = useSelector((state) => state.appUser.loggedInUser);
 
         const [appUser, setAppUser] = useState({
                 email: '',
@@ -16,10 +22,11 @@ const Login = () => {
         const history = useHistory();
 
         useEffect(() => {
-                console.log(localStorage.getItem('loggedInUser'))
+                // console.log(JSON.parse(localStorage.getItem('loggedInUser')).role)
                 if (localStorage.getItem('loggedInUser')) {
                         history.push("/")
                 }
+                // console.log(temp);
         }, [])
 
         const handleAppUser = (event) => {
@@ -34,11 +41,10 @@ const Login = () => {
         const submitAppUser = (event) => {
                 loginService(appUser)
                         .then((response) => {
-                                localStorage.setItem('loggedInUser', response.data);
-                                console.log(localStorage.getItem('loggedInUser'));
+                                console.log(response.data)
+                                localStorage.setItem('loggedInUser', JSON.stringify(response.data));
                                 alert('Success');
                                 history.push('/home');
-                                // window.location.assign('/home');
                                 window.location.reload();
                         }).catch((error) => {
                                 localStorage.removeItem('loggedInUser');
