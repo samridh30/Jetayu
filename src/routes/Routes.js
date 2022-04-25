@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from '../components/TripBooking/Home';
-import Header from '../components/TripBooking/Header';
-import Footer from '../components/TripBooking/Footer';
+import Home from '../components/Home/Home';
+import Header from '../components/Home/Header';
+import Footer from '../components/Home/Footer';
 import Login from '../components/Auth/Login';
 import ViewTrips from '../components/TripBooking/ViewTrips';
 import Booktrip from '../components/TripBooking/BookTrip';
-
+import EndTrip from '../components/TripBooking/EndTrip';
 import Register from '../components/Auth/Register';
 
 
@@ -32,7 +32,7 @@ const Routes = () => {
 
                         </Switch >
                     </div >
-                    {/* <Footer/> */}
+                    <Footer />
                 </div >
             </Router >
         </div >

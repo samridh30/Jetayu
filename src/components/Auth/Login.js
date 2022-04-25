@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { loginService } from '../../services/AuthService';
@@ -14,6 +14,13 @@ const Login = () => {
 
         const [credentials, setCredentials] = useState('');
         const history = useHistory();
+
+        useEffect(() => {
+                console.log(localStorage.getItem('loggedInUser'))
+                if (localStorage.getItem('loggedInUser')) {
+                        history.push("/")
+                }
+        }, [])
 
         const handleAppUser = (event) => {
                 console.log(event.target.name);

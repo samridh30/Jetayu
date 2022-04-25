@@ -12,7 +12,8 @@ const store = configureStore(
                         appUser: appUserReducer
                         // parent: parentReducer
                         // , more reducers 
-                }
+                },
+                middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
         });
 
 export default store;

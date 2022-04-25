@@ -1,47 +1,47 @@
-import {bookCabService} from '../../services/TripService'
+import { bookCabService } from '../../services/TripService'
 import { useHistory } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
-import  { setTripList} from '../../redux/TripSlice'
+import { setTripList } from '../../redux/TripSlice'
 import { useDispatch, useSelector } from "react-redux";
 import "./BookTrip.css"
 
-const Booktrip = () =>{
-    const[booktrip, setBookTrip]= useState({
-        fromLocation:'',
-        toLocation:'',
-        cabType:''
+const Booktrip = () => {
+    const [booktrip, setBookTrip] = useState({
+        fromLocation: '',
+        toLocation: '',
+        cabType: ''
     });
     const dispatch = useDispatch();
     const history = useHistory();
-    const addTrip=(e)=>{
+    const addTrip = (e) => {
         console.log(e.target.value);
         setBookTrip({
-            ...booktrip,[e.target.name]:e.target.value
+            ...booktrip, [e.target.name]: e.target.value
         })
-        
+
     }
 
-    const addCab = (e) =>{
+    const addCab = (e) => {
         console.log(booktrip.cabType)
         e.preventDefault();
         // console.log(booktrip);
-        let tripDetails = { ...booktrip}
-        bookCabService(tripDetails).then((response)=>{
-                // console.loge(response.data.value);
-                dispatch( setTripList(response.data));
-                // setTripdata(response.data);
-                alert("Cab Booked Succesfully")
-                history.push('/view')
-            })
-            .catch(()=>{
+        let tripDetails = { ...booktrip }
+        bookCabService(tripDetails).then((response) => {
+            // console.loge(response.data.value);
+            dispatch(setTripList(response.data));
+            // setTripdata(response.data);
+            alert("Cab Booked Succesfully")
+            history.push('/view')
+        })
+            .catch(() => {
                 alert("Multiple Trips Not Allowled")
 
             })
 
     }
-    return(
-        
+    return (
+
 
         // <div>
         //     <div className="container">
@@ -85,7 +85,7 @@ const Booktrip = () =>{
         //                                 value="Book Cab"
         //                                 onClick={addCab}
         //                             />
-                                    
+
 
         //                         </div>
         //                     </form>
@@ -109,15 +109,15 @@ const Booktrip = () =>{
 
         <div>
             <div className="container">
-                <div id="block"  className="row">
-                    <div id="BookTripBlock"className="card col-md-10 mt-5 mb-5 ">
-                    
-                            <div  className='card-body '>
-                                <form>
-                                    <div className="form-inline bg-gray ">
-                                        <div class="col col-lg-3">
+                <div id="block" className="row">
+                    <div id="BookTripBlock" className="card col-md-10 mt-5 mb-5 ">
+
+                        <div className='card-body '>
+                            <form>
+                                <div className="form-inline bg-gray ">
+                                    <div class="col col-lg-3">
                                         {/* <label className='card-title'>Pickup</label> */}
-                                         <input
+                                        <input
                                             type="text"
                                             placeholder="pickup Location"
                                             name="fromLocation"
@@ -126,8 +126,8 @@ const Booktrip = () =>{
                                             onChange={addTrip}
                                         />
 
-                                        </div>
-                                        <div class=" col col-lg-3">
+                                    </div>
+                                    <div class=" col col-lg-3">
                                         {/* <label className='card-title'>Enter Drop Location</label> */}
                                         <input
                                             type="text"
@@ -138,20 +138,20 @@ const Booktrip = () =>{
                                             onChange={addTrip}
                                         />
 
-                                        </div>
-                                        <div className="col-lg-3">
-                                            <div>
+                                    </div>
+                                    <div className="col-lg-3">
+                                        <div>
                                             {/* <label className='card-title'>Select Cab Type</label> */}
-                                            <select className="form-select "  value={booktrip.cabType} onChange={addTrip} name="cabType">
-                                                <option selected>CabType</option>
+                                            <select className="form-select " value={booktrip.cabType} onChange={addTrip} name="cabType">
+                                                <option selected defaultValue>CabType</option>
                                                 <option >Mini</option>
                                                 <option>Auto</option>
                                                 <option>Luxury</option>
                                             </select>
-                                            </div>
-
                                         </div>
-                                        <div className="col-lg-2">
+
+                                    </div>
+                                    <div className="col-lg-2">
                                         <input
                                             type="submit"
                                             className="btn btn-warning form-control  href=data  "
@@ -161,11 +161,11 @@ const Booktrip = () =>{
                                             onClick={addCab}
                                         />
 
-                                        </div>
                                     </div>
-                                </form>
-                            </div>
-                            
+                                </div>
+                            </form>
+                        </div>
+
 
 
                     </div>
@@ -173,8 +173,8 @@ const Booktrip = () =>{
 
                 </div>
                 {/* <div> */}
-    
-                    {/* <div id="data1" class="collapse card bg-gray col-md-5 mt-5 mb-5">
+
+                {/* <div id="data1" class="collapse card bg-gray col-md-5 mt-5 mb-5">
                         <div className="card-body justify-content-left ">
                          <p className="text-primary text-center font-weight-bold lead  collapse">Trip Booking Details</p>
                          <p>FromLocation :{TripListStore.fromLocation}</p>
@@ -187,7 +187,7 @@ const Booktrip = () =>{
 
                 {/* </div> */}
 
-                    {/* <div class=" Bookcard card collapse"  id="data">
+                {/* <div class=" Bookcard card collapse"  id="data">
                         <h4 class="card-header">Booking Details</h4>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">FromLocation :{TripListStore.fromLocation}</li>
@@ -196,8 +196,8 @@ const Booktrip = () =>{
                             <li class="list-group-item">BookedTime :{TripListStore.fromDateTime}</li>
                         </ul>
                     </div> */}
-                    
-                
+
+
 
             </div>
         </div>
