@@ -44,7 +44,7 @@ const Login = () => {
                                 console.log(response.data)
                                 localStorage.setItem('loggedInUser', JSON.stringify(response.data));
                                 alert('Success');
-                                history.push('/home');
+                                history.push('/');
                                 window.location.reload();
                         }).catch((error) => {
                                 localStorage.removeItem('loggedInUser');

@@ -26,7 +26,7 @@ const Header = () => {
     const logUser = () => {
         setUser();
         setRole();
-        history.push("/home")
+        history.push("/")
     }
 
     return ((!role) ?

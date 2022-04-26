@@ -1,54 +1,92 @@
-import React from 'react';
-const updateTrip = () => {
+import {updateTripService } from '../../services/TripService'
+import {useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import  { setTripList} from '../../redux/TripSlice'
 
-    return (
+const UpdateTrip=()=>{
+
+    const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
+
+    const[currenttripupdate,setcurrenttripupdate]=useState(CurrentTripListStore);
+    
+
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+
+    },[CurrentTripListStore])
+
+    const handleUpdate=(e)=>{
+        e.preventDefault();
+        // console.log(e.value)
+        setcurrenttripupdate({
+            ...currenttripupdate,[e.target.name]:e.target.value
+        })
+        console.log(currenttripupdate.fromLocation);
+        console.log(currenttripupdate.toLocation);
+
+
+    }
+
+    const update=(e)=>{
+        e.preventDefault();
+        // setshow({getTrip:false, update:true });
+        updateTripService(currenttripupdate).then((response)=>{
+            dispatch( setTripList(response.data));
+            localStorage.setItem('TripList', JSON.stringify(response.data));
+
+            alert("Updated")
+
+
+        })
+        .catch(()=>{
+            alert("Not Updated")
+
+        })
+       
+
+
+    }
+    return(
         <div>
-            <div className="container">
-                <div className="row">
-                    <div id="bookcabcard" className="card col-md-6 offset-md-3 offset-md-3 text-center mt-5">
-                        <h3 className="text-center card-header mt-2">Enter Trip details</h3>
-                        <div className="card-body">
-                            <form>
-                                <div className="form-group">
-                                    <label className='card-title'>Enter Pickup Location</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter pickup Location"
-                                        name="fromLocation"
-                                        className="form-control"
-                                        value={booktrip.fromLocation}
-                                        onChange={addTrip}
-                                    />
-                                    <label className='card-title'>Enter Drop Location</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter drop Location"
-                                        name="toLocation"
-                                        className="form-control"
-                                        value={booktrip.toLocation}
-                                        onChange={addTrip}
-                                    />
-                                    <input
-                                        type="submit"
-                                        className="btn btn-primary form-control mb-3 mt-3"
-                                        value="Book Cab"
-                                        onClick={addCab}
-                                    />
+            <div className='card mt-3 ml-3'>
+                <div className='card-body text-left roundered'>
+                    <div>
+                        <h4 className='card-header'><center>Update trip </center></h4>
+                        <label>FromLocation</label>
+                        <input
+                        type="text"
+                        name="fromLocation"
+                        className='form-control'
+                        onChange={handleUpdate}
+                        value={currenttripupdate.fromLocation}
+                        />
+                        <label>To Location</label>
+                        <input
+                        type="text"
+                        name="toLocation"
+                        className='form-control'
+                        onChange={handleUpdate}
+                        value={currenttripupdate.toLocation}
+                        />
+                        {currenttripupdate.status &&
+                        <input
+                        type="submit"
+                        className='btn btn-success form-control mt-3'
+                        value="Update"
+                        onClick={update}
 
-
-                                </div>
-                            </form>
-
-                        </div>
+                        />
+                    }
 
                     </div>
-
                 </div>
-
+                
             </div>
-        </div>
 
+        </div>
     )
 
 }
-export default updateTrip;
+
+export default UpdateTrip;
