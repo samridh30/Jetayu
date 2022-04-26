@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "./BookTrip.css";
 
 const Booktrip = () => {
-  const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
 
   const [booktrip, setBookTrip] = useState({
     fromLocation: "",
@@ -16,12 +15,6 @@ const Booktrip = () => {
   });
   const dispatch = useDispatch();
   const history = useHistory();
-  useEffect(() => {
-    localStorage.setItem(
-      "CurrentTripList",
-      JSON.stringify(CurrentTripListStore)
-    );
-  }, [CurrentTripListStore]);
   const handleaddTripData = (e) => {
     console.log(e.target.value);
     setBookTrip({
@@ -33,14 +26,10 @@ const Booktrip = () => {
   const addTrip = (e) => {
     console.log(booktrip.cabType);
     e.preventDefault();
-    // console.log(booktrip);
     let tripDetails = { ...booktrip };
     bookCabService(tripDetails)
       .then((response) => {
-        // console.loge(response.data.value);
         dispatch(setTripList(response.data));
-
-        // setTripdata(response.data);
         alert("Cab Booked Succesfully");
         history.push("/");
       })

@@ -1,6 +1,4 @@
 import {
-  bookCabService,
-  updateTripService,
   viewTripService,
   endTripService,
 } from "../../services/TripService";
@@ -9,13 +7,15 @@ import { setAllTripsList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { setTripList } from "../../redux/TripSlice";
-import loaddash, { update } from "lodash";
 import UpdateTrip from "./UpdateTrip";
 import BookingTripDetails from "./BookingTripDetails";
 import TripPagination from "./TripPagination";
+import { forwardRef, useRef } from "react";
+
+
 
 const ViewTrips = () => {
-  const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
+  const childCompRef = useRef()
 
   const [show, setshow] = useState({
     getTrip: false,
@@ -26,17 +26,6 @@ const ViewTrips = () => {
 
   const dispatch = useDispatch();
 
-  const [currenttripupdate, setcurrenttripupdate] =
-    useState(CurrentTripListStore);
-
-  useEffect(() => {
-    localStorage.setItem(
-      "CurrentTripList",
-      JSON.stringify(CurrentTripListStore)
-    );
-  }, [CurrentTripListStore]);
-
-  // fetching trips history for a customer
   const submitGetTripById = (evt) => {
     setshow({
       getTrip: true,
@@ -47,8 +36,6 @@ const ViewTrips = () => {
     evt.preventDefault();
     viewTripService()
       .then((response) => {
-        console.log("Page");
-        console.log(response.data.slice(0));
         dispatch(setAllTripsList(response.data));
       })
       .catch((error) => {
@@ -64,16 +51,10 @@ const ViewTrips = () => {
       bookingdetails: false,
     });
     e.preventDefault();
-
-    setcurrenttripupdate({
-      status: false,
-    });
     endTripService()
       .then((response) => {
-        console.log("current trip data");
-        console.log(currenttripupdate);
-        dispatch(setTripList(currenttripupdate));
-        console.log(CurrentTripListStore);
+        dispatch(setTripList(response.data));
+        localStorage.setItem('CurrentTripList',JSON.stringify(response.data));
         alert(response.data.customer.userName + " Your Trip Ended ");
       })
       .catch(() => {
@@ -88,7 +69,8 @@ const ViewTrips = () => {
       endTrip: false,
       bookingdetails: false,
     });
-    update();
+    childCompRef.current.update();
+    
   };
 
   const bookingdetails = () => {
@@ -144,7 +126,7 @@ const ViewTrips = () => {
         )}
         {show.update && (
           <div className="col-lg-6">
-            <UpdateTrip fun={update} />
+            <UpdateTrip fun={childCompRef} />
           </div>
         )}
         {show.bookingdetails && (
