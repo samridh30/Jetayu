@@ -28,8 +28,8 @@ const Routes = () => {
 
                             <Route exact path="/login"><Login /></Route>
                             <Route path="/book" ><Booktrip /></Route>
-                            <Route path="/view" ><ViewTrips /></Route>
-                            <Route path="/endTrip"><EndTrip /></Route>
+                            {/* <Route path="/view" ><ViewTrips /></Route> */}
+                            {/* <Route path="/endTrip"><EndTrip /></Route> */}
                             {/* <Route path="/dashboard"><Dashboard /></Route> */}
 
                         </Switch >
