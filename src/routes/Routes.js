@@ -20,6 +20,7 @@ const Routes = () => {
                         <Switch>
 
                             <Route path="/register"><Register /></Route>
+                            
                             <Route exact path="/"><Home /></Route>
 
                             {/* <Route path="/register"><Register/></Route> */}
