@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Logout from "../Auth/Logout";
+import Dashboard from "../Dashboard/DashBoard";
 const Header = () => {
 
 
     const [user, setUser] = useState();
+    const [role, setRole] = useState();
+
+    const history = useHistory();
+
 
     useEffect(() => {
         if (localStorage.getItem("loggedInUser")) {
@@ -13,11 +19,17 @@ const Header = () => {
         }
     }, [user])
 
-    const logUser = () => {
-        setUser();
+    const Dash = () => {
+        setRole(JSON.parse(localStorage.getItem('loggedInUser')).role)
     }
 
-    return (
+    const logUser = () => {
+        setUser();
+        setRole();
+        history.push("/home")
+    }
+
+    return ((!role) ?
         <header className="header sticky-top">
             <nav className="navbar navbar-fixed-top navbar-expand-sm navbar-dark bg-dark">
                 <div className="container">
@@ -30,7 +42,7 @@ const Header = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     {
-                        (!user) ?
+                        ((!user) ?
                             <div className="collapse navbar-collapse" id="navbarResponsive">
                                 <ul className="navbar-nav ml-auto">
                                     <li className="nav-item">
@@ -43,21 +55,19 @@ const Header = () => {
                             </div> :
                             <div className="collapse navbar-collapse" id="navbarResponsive">
                                 <ul className="navbar-nav ml-auto">
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/book">Ride</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/view">MyTrips</Link>
+                                    <li>
+                                        <Link className="nav-link" to="/dashboard" onClick={Dash}>Dashboard</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Logout logUser={logUser} />
                                     </li>
                                 </ul>
                             </div>
-                    }
+                        )}
                 </div>
             </nav>
-        </header>
+        </header> :
+        <Dashboard fun={logUser} />
     );
 
 }

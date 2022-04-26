@@ -7,6 +7,7 @@ import ViewTrips from '../components/TripBooking/ViewTrips';
 import Booktrip from '../components/TripBooking/BookTrip';
 import EndTrip from '../components/TripBooking/EndTrip';
 import Register from '../components/Auth/Register';
+import Dashboard from '../components/Dashboard/DashBoard';
 
 
 const Routes = () => {
@@ -29,6 +30,7 @@ const Routes = () => {
                             <Route path="/book" ><Booktrip /></Route>
                             <Route path="/view" ><ViewTrips /></Route>
                             <Route path="/endTrip"><EndTrip /></Route>
+                            {/* <Route path="/dashboard"><Dashboard /></Route> */}
 
                         </Switch >
                     </div >
