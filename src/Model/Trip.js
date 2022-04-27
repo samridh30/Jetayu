@@ -1,10 +1,10 @@
-import driver from './driver'
+import Driver from './Driver'
 import Customer from './Customer'
 class Trip {
 
     tripBookingId;
     customer = new Customer();
-    driver= new driver();
+    driver= new Driver();
     FromLocation;
     ToLocation;
     fromDateTime;
