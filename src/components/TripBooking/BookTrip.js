@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "./BookTrip.css";
 
 const Booktrip = () => {
-
   const [booktrip, setBookTrip] = useState({
     fromLocation: "",
     toLocation: "",
