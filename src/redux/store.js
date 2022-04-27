@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import TripReducer from './TripSlice';
 import appUserReducer from './AppUserSlice'
+import DriverReducer from './DriverSlice'
 
 
 console.log('store initialized...');
@@ -9,7 +10,8 @@ const store = configureStore(
         {
                 reducer: {
                         Trip: TripReducer,
-                        appUser: appUserReducer
+                        appUser: appUserReducer,
+                        Driver: DriverReducer
                         // parent: parentReducer
                         // , more reducers 
                 },

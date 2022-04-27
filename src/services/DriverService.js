@@ -1,14 +1,14 @@
 import axios from 'axios';
 const springBootAppUrl = `http://localhost:8088/driver`;
-const insertDriver = (driver) => {
-    return axios.post(`${springBootAppUrl}/insert-driver`, driver);
+const insertDriver = (Driver) => {
+    return axios.post(`${springBootAppUrl}/insert-driver`, Driver);
 }
-const updateDriver = (driver) => {
-    return axios.put(`${springBootAppUrl}/update-driver`, driver);
+const updateDriver = (Driver) => {
+    return axios.put(`${springBootAppUrl}/update-driver`, Driver);
 }
 
 
-const viewaAllDrivers = () => {
+const viewAllDrivers = () => {
     return axios.get(`${springBootAppUrl}/view-all-drivers`);
 }
 
@@ -18,4 +18,4 @@ const viewBestDrivers = () => {
 const viewDriver = (driverId) => {
     return axios.get(`${springBootAppUrl}/view-drivers/${driverId}`);
 }
-export {insertDriver,updateDriver,viewaAllDrivers,viewBestDrivers,viewDriver}
+export  {insertDriver,updateDriver,viewAllDrivers,viewBestDrivers,viewDriver}
