@@ -1,5 +1,5 @@
 import { updateTripService } from "../../services/TripService";
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTripList } from "../../redux/TripSlice";
 
@@ -11,15 +11,8 @@ const UpdateTrip = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    localStorage.setItem("CurrentTripList", JSON.stringify(CurrentTripListStore));
-
-  }, [CurrentTripListStore]);
-  const LocalCurrentTripListStore = JSON.parse(localStorage.getItem("CurrentTripList"));
-
   const handleUpdate = (e) => {
     e.preventDefault();
-    // console.log(e.value)
     setcurrenttripupdate({
       ...currenttripupdate,
       [e.target.name]: e.target.value,
@@ -30,11 +23,9 @@ const UpdateTrip = () => {
 
   const update = (e) => {
     e.preventDefault();
-    // setshow({getTrip:false, update:true });
     updateTripService(currenttripupdate)
       .then((response) => {
         dispatch(setTripList(response.data));
-        localStorage.setItem("TripList", JSON.stringify(response.data));
 
         alert("Updated");
       })
@@ -42,6 +33,7 @@ const UpdateTrip = () => {
         alert("Not Updated");
       });
   };
+
   return (
     <div>
       <div className="card mt-3 ml-3">
@@ -66,7 +58,7 @@ const UpdateTrip = () => {
               onChange={handleUpdate}
               value={currenttripupdate.toLocation}
             />
-            {currenttripupdate.status && (
+            {CurrentTripListStore.status && (
               <input
                 type="submit"
                 className="btn btn-success form-control mt-3"

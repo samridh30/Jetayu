@@ -10,13 +10,6 @@ const EndTrip = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
-
-  useEffect(() => {
-    localStorage.setItem(
-      "CurrentTripList",
-      JSON.stringify(CurrentTripListStore)
-    );
-  }, [CurrentTripListStore]);
   const [currenttripupdate, setcurrenttripupdate] =
     useState(CurrentTripListStore);
 
@@ -31,7 +24,7 @@ const EndTrip = () => {
       .then((response) => {
         console.log(response);
         console.log(response.data.customer.userName);
-        dispatch(setTripList(setcurrenttripupdate));
+        dispatch(setTripList({}));
         alert(response.data.customer.userName + " Your Trip Ended ");
       })
       .catch(() => {

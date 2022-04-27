@@ -1,8 +1,10 @@
+import { isNull } from "lodash";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Logout from "../Auth/Logout";
 import Dashboard from "../Dashboard/DashBoard";
+import ViewTrips from "../TripBooking/ViewTrips";
 const Header = () => {
 
 
@@ -17,7 +19,7 @@ const Header = () => {
             setUser(JSON.parse(localStorage.getItem('loggedInUser')).role)
             console.log(user)
         }
-    }, [user])
+    }, [])
 
     const Dash = () => {
         setRole(JSON.parse(localStorage.getItem('loggedInUser')).role)
@@ -67,7 +69,8 @@ const Header = () => {
                 </div>
             </nav>
         </header> :
-        <Dashboard fun={logUser} />
+        // <Dashboard fun={logUser} />
+        <ViewTrips />
     );
 
 }

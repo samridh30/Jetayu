@@ -23,7 +23,7 @@ const Login = () => {
 
         useEffect(() => {
                 // console.log(JSON.parse(localStorage.getItem('loggedInUser')).role)
-                if (localStorage.getItem('loggedInUser')) {
+                if (localStorage.getItem('loggedInUser') !== null) {
                         history.push("/")
                 }
                 // console.log(temp);

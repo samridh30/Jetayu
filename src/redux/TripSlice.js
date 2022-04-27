@@ -22,6 +22,7 @@ const TripSlice = createSlice({
             console.log(state);
             console.log(action.payload);
             state.TripList = action.payload;
+            localStorage.setItem("Trip", JSON.stringify(state.TripList))
 
         },
         setAllTripsList: (state, action) => {

@@ -9,7 +9,7 @@ const CustomerDash = (props) => {
 
         useEffect(() => {
                 if (!JSON.parse(localStorage.getItem("loggedInUser"))) {
-                        history.push("/home")
+                        history.push("/")
 
                 }
         }, [])

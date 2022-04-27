@@ -1,16 +1,19 @@
-#BookTripBlock{
+#BookTripBlock {
     background-color: #B89BE8;
     border: 2px gray solid;
 }
-.Bookcard{
-    width:18rem;
+
+.Bookcard {
+    width: 18rem;
 }
-.Button-box{
+
+.Button-box {
     border: 2px solid black;
     border-radius: 10px;
-    height: 350px
+    height: 50%
 }
-.trip-table{
+
+.trip-table {
     height: 600px;
 
 }
