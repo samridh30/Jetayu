@@ -3,7 +3,7 @@ import Cab from './Cab'
 class driver{
 
     driverId;
-    driverName;
+    driverName='';
     licenseNo;
     rating;
     cab=new Cab();
