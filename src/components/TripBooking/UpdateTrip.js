@@ -3,7 +3,7 @@ import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTripList } from "../../redux/TripSlice";
 
-const UpdateTrip = forwardRef((ref) => {
+const UpdateTrip = () => {
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
 
   const [currenttripupdate, setcurrenttripupdate] =
@@ -71,6 +71,6 @@ const UpdateTrip = forwardRef((ref) => {
       </div>
     </div>
   );
-});
+};
 
 export default UpdateTrip;
