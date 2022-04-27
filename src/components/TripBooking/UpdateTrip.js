@@ -1,15 +1,13 @@
 import { updateTripService } from "../../services/TripService";
-import { useState, useEffect,forwardRef,useImperativeHandle } from "react";
+import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTripList } from "../../redux/TripSlice";
 
-
 const UpdateTrip = forwardRef((ref) => {
-
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
 
   const [currenttripupdate, setcurrenttripupdate] =
-  useState(JSON.parse( localStorage.getItem("CurrentTripList")));
+    useState(CurrentTripListStore);
 
   const dispatch = useDispatch();
 
@@ -28,7 +26,6 @@ const UpdateTrip = forwardRef((ref) => {
     updateTripService(currenttripupdate)
       .then((response) => {
         dispatch(setTripList(response.data));
-        localStorage.setItem("CurrentTripList", JSON.stringify(response.data));
 
         alert("Updated");
       })
@@ -37,7 +34,6 @@ const UpdateTrip = forwardRef((ref) => {
       });
   };
 
- 
   return (
     <div>
       <div className="card mt-3 ml-3">
@@ -62,7 +58,7 @@ const UpdateTrip = forwardRef((ref) => {
               onChange={handleUpdate}
               value={currenttripupdate.toLocation}
             />
-            {currenttripupdate.status && (
+            {CurrentTripListStore.status && (
               <input
                 type="submit"
                 className="btn btn-success form-control mt-3"

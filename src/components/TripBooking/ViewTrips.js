@@ -1,7 +1,4 @@
-import {
-  viewTripService,
-  endTripService,
-} from "../../services/TripService";
+import { viewTripService, endTripService } from "../../services/TripService";
 
 import { setAllTripsList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,10 +9,8 @@ import BookingTripDetails from "./BookingTripDetails";
 import TripPagination from "./TripPagination";
 import { forwardRef, useRef } from "react";
 
-
-
 const ViewTrips = () => {
-  const childCompRef = useRef()
+  const childCompRef = useRef();
 
   const [show, setshow] = useState({
     getTrip: false,
@@ -54,7 +49,6 @@ const ViewTrips = () => {
     endTripService()
       .then((response) => {
         dispatch(setTripList(response.data));
-        localStorage.setItem('CurrentTripList',JSON.stringify(response.data));
         alert(response.data.customer.userName + " Your Trip Ended ");
       })
       .catch(() => {
@@ -70,7 +64,6 @@ const ViewTrips = () => {
       bookingdetails: false,
     });
     childCompRef.current.update();
-    
   };
 
   const bookingdetails = () => {

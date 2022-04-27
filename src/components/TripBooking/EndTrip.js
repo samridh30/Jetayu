@@ -24,7 +24,7 @@ const EndTrip = () => {
       .then((response) => {
         console.log(response);
         console.log(response.data.customer.userName);
-        dispatch(setTripList(setcurrenttripupdate));
+        dispatch(setTripList({}));
         alert(response.data.customer.userName + " Your Trip Ended ");
       })
       .catch(() => {
