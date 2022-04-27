@@ -7,11 +7,8 @@ import { setTripList } from "../../redux/TripSlice";
 import UpdateTrip from "./UpdateTrip";
 import BookingTripDetails from "./BookingTripDetails";
 import TripPagination from "./TripPagination";
-import { forwardRef, useRef } from "react";
 
 const ViewTrips = () => {
-  const childCompRef = useRef();
-
   const [show, setshow] = useState({
     getTrip: false,
     update: false,
@@ -63,7 +60,6 @@ const ViewTrips = () => {
       endTrip: false,
       bookingdetails: false,
     });
-    childCompRef.current.update();
   };
 
   const bookingdetails = () => {
@@ -119,7 +115,7 @@ const ViewTrips = () => {
         )}
         {show.update && (
           <div className="col-lg-6">
-            <UpdateTrip fun={childCompRef} />
+            <UpdateTrip />
           </div>
         )}
         {show.bookingdetails && (

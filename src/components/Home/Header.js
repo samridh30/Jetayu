@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Logout from "../Auth/Logout";
 import Dashboard from "../Dashboard/DashBoard";
+import ViewTrips from "../TripBooking/ViewTrips";
 const Header = () => {
 
 
@@ -68,6 +69,7 @@ const Header = () => {
             </nav>
         </header> :
         <Dashboard fun={logUser} />
+        // <ViewTrips />
     );
 
 }

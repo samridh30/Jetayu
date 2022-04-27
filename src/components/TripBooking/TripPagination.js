@@ -33,50 +33,49 @@ const Pagination = () => {
   };
 
   return (
+
     <div>
-      <div>
-        <table className="table table-bordered table-striped">
-          <thead className="thead-dark">
-            <tr>
-              <th>tripBooking Id</th>
-              <th>From Location</th>
-              <th>To Location</th>
-              <th>Bill</th>
-              <th>driver Id</th>
-              <th>driver rating</th>
-              <th>Cab Type</th>
+      <table className="table table-bordered table-striped">
+        <thead className="thead-dark">
+          <tr>
+            <th>tripBooking Id</th>
+            <th>From Location</th>
+            <th>To Location</th>
+            <th>Bill</th>
+            <th>driver Id</th>
+            <th>driver rating</th>
+            <th>Cab Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {paginatedPosts.map((e, index) => (
+            <tr key={e.index}>
+              <td>{e.tripBookingId}</td>
+              <td>{e.fromLocation}</td>
+              <td>{e.toLocation}</td>
+              <td>{e.bill}</td>
+              <td>{e.driver.driverName}</td>
+              <td>{e.driver.rating}</td>
+              <td>{e.driver.cab.carType}</td>
             </tr>
-          </thead>
-          <tbody>
-            {paginatedPosts.map((e, index) => (
-              <tr key={e.index}>
-                <td>{e.tripBookingId}</td>
-                <td>{e.fromLocation}</td>
-                <td>{e.toLocation}</td>
-                <td>{e.bill}</td>
-                <td>{e.driver.driverName}</td>
-                <td>{e.driver.rating}</td>
-                <td>{e.driver.cab.carType}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <nav className="d-flex justify-content-center mt-3">
-          <ul className="pagination">
-            {pages.map((page) => (
-              <li
-                className={
-                  page === currentpage ? "page-item active" : "page-item"
-                }
-              >
-                <p className="page-link" onClick={() => pagination(page)}>
-                  {page}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+          ))}
+        </tbody>
+      </table>
+      <nav className="d-flex justify-content-center mt-3">
+        <ul className="pagination">
+          {pages.map((page) => (
+            <li
+              className={
+                page === currentpage ? "page-item active" : "page-item"
+              }
+            >
+              <p className="page-link" onClick={() => pagination(page)}>
+                {page}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 };

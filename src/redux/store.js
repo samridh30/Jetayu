@@ -27,11 +27,11 @@ import ReduxThunk from 'redux-thunk'
 
 console.log('store initialized...');
 
-const persitConfig={
-        key:'TripData',
+const persitConfig = {
+        key: 'TripData',
         storage: storage,
-        whitelist:['TripList'],
-        blacklist:[]
+        whitelist: ['TripList'],
+        blacklist: []
 }
 
 
@@ -43,16 +43,16 @@ const store = configureStore(
                         // persistReducer(persitConfig, TripReducer),
                         // parent: parentReducer
                         // , more reducers 
-                        
+
                 },
                 // middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
                 middleware:[ReduxThunk]
-                
-                
-               
+
+
+
         });
-       
 
 
-export default  store;
-export const  persistor=persistStore(store);
+
+export default store;
+export const persistor = persistStore(store);

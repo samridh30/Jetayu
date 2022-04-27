@@ -19,20 +19,10 @@ const Routes = () => {
                     <div>
                         <Switch>
 
-                            <Route path="/register"><Register /></Route>
-                            
                             <Route exact path="/"><Home /></Route>
-
-                            {/* <Route path="/register"><Register/></Route> */}
-
-
-
+                            <Route path="/register"><Register /></Route>
                             <Route exact path="/login"><Login /></Route>
                             <Route path="/book" ><Booktrip /></Route>
-                            {/* <Route path="/view" ><ViewTrips /></Route> */}
-                            {/* <Route path="/endTrip"><EndTrip /></Route> */}
-                            {/* <Route path="/dashboard"><Dashboard /></Route> */}
-
                         </Switch >
                     </div >
                     <Footer />
