@@ -17,7 +17,7 @@ const Header = () => {
             setUser(JSON.parse(localStorage.getItem('loggedInUser')).role)
             console.log(user)
         }
-    }, [user])
+    }, [])
 
     const Dash = () => {
         setRole(JSON.parse(localStorage.getItem('loggedInUser')).role)

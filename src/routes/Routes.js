@@ -8,6 +8,7 @@ import Booktrip from '../components/TripBooking/BookTrip';
 import EndTrip from '../components/TripBooking/EndTrip';
 import Register from '../components/Auth/Register';
 import Dashboard from '../components/Dashboard/DashBoard';
+import UpdateCustomer from "../components/Customer/UpdateCustomer"
 
 
 const Routes = () => {
@@ -25,7 +26,7 @@ const Routes = () => {
 
                             {/* <Route path="/register"><Register/></Route> */}
 
-
+                            <Route path="/Customer/update"><UpdateCustomer /></Route>
 
                             <Route exact path="/login"><Login /></Route>
                             <Route path="/book" ><Booktrip /></Route>

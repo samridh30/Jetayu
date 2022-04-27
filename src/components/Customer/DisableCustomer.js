@@ -1,0 +1,7 @@
+DisableCustomer=()=>{
+    return(
+        <div>
+            
+        </div>
+    )
+}

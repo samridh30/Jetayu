@@ -35,7 +35,7 @@ const Pagination = () => {
   return (
     <div>
       <div>
-        <table className="table table-bordered table-striped">
+        <table className="table table-bordered table-striped ">
           <thead className="thead-dark">
             <tr>
               <th>tripBooking Id</th>
@@ -49,7 +49,7 @@ const Pagination = () => {
           </thead>
           <tbody>
             {paginatedPosts.map((e, index) => (
-              <tr key={e.index}>
+              <tr key={index}>
                 <td>{e.tripBookingId}</td>
                 <td>{e.fromLocation}</td>
                 <td>{e.toLocation}</td>
