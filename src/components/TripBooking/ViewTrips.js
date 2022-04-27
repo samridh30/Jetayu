@@ -74,7 +74,7 @@ const ViewTrips = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="bg-white shadow shadow-regular mb-3 mt-3 ml-0 px-3 py-3 pb-3 pt-3  col-lg-2">
+        <div className="bg-white h-50 shadow shadow-regular mb-3 mt-3 ml-0 px-3 py-3 pb-3 pt-3 col-lg-2">
           <div className="form form-group ">
             <input
               type="submit"

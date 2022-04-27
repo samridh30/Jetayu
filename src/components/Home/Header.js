@@ -1,3 +1,4 @@
+import { isNull } from "lodash";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -68,8 +69,8 @@ const Header = () => {
                 </div>
             </nav>
         </header> :
-        <Dashboard fun={logUser} />
-        // <ViewTrips />
+        // <Dashboard fun={logUser} />
+        <ViewTrips />
     );
 
 }

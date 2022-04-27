@@ -3,29 +3,34 @@ import { useState, useEffect } from "react";
 import loaddash from "lodash";
 
 const pagesize = 10;
+
 const Pagination = () => {
-  const AllTripsListStore = useSelector((state) => state.Trip.AllTripsList);
+
+  const allTripsListStore = useSelector((state) => state.Trip.AllTripsList);
+  // const [allTripsListStore, setAllTripsListStore] = useSelector((state) => state.Trip.AllTripsList)
   const [paginatedPosts, setpaginatedPosts] = useState([]);
   const [currentpage, setcurrentpage] = useState(1);
-  useEffect(() => {
-    setpaginatedPosts(
-      loaddash(AllTripsListStore).slice(0).take(pagesize).value()
-    );
-  }, [AllTripsListStore]);
 
-  const pageCount = AllTripsListStore
-    ? Math.ceil(AllTripsListStore.length / pagesize)
+  useEffect(() => {
+    // console.log(AllTripsListStore)
+    setpaginatedPosts(
+      loaddash(allTripsListStore).slice(0).take(pagesize).value()
+    );
+  }, [allTripsListStore]);
+
+  const pageCount = allTripsListStore
+    ? Math.ceil(allTripsListStore.length / pagesize)
     : 0;
 
-  if (pageCount === 1) {
-    return null;
-  }
+  // if (pageCount === 1) {
+  //   return null;
+  // }
   const pages = loaddash.range(1, pageCount + 1);
 
   const pagination = (pageNo) => {
     setcurrentpage(pageNo);
     const startIndex = (pageNo - 1) * pagesize;
-    const paginatedPost = loaddash(AllTripsListStore)
+    const paginatedPost = loaddash(allTripsListStore)
       .slice(startIndex)
       .take(pagesize)
       .value();
