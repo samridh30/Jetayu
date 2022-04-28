@@ -23,7 +23,7 @@ const logoutCustomerService = () => {
 }
 
 const viewAllCustomersCustomerService = () => {
-    return axios.post(`${springBootAppUrl}/viewAllCustomers`);
+    return axios.get(`${springBootAppUrl}/viewAllCustomers`);
 }
 
 const viewCustomerCustomerService = () => {
