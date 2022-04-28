@@ -34,7 +34,7 @@ const Routes = () => {
 
                             {/* <Route path="/register"><Register/></Route> */}
 
-                            {/* <Route path="/Customer/update"><UpdateCustomer /></Route> */}
+                            <Route path="/Customer/update"><UpdateCustomer /></Route>
 
                             <Route path="/driver"><ViewDriver /></Route>
                             <Route path="/driver1"><InsertDriver /></Route>

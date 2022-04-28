@@ -36,12 +36,28 @@ const UpdateCustomer = () => {
 
   return (
     <div >
-      <div className="card mt-3 ml-3">
-        <div className="card-body text-left roundered">
+      <div className="card mt-3 ml-3 col-lg-7 mb-10">
+        <div className="card-body text-left roundered col-lg-auto mb-10">
           <div>
             <h4 className="card-header">
               <center>Update Details </center>
             </h4>
+            {/* <label>Customer Id</label>
+            <input
+              type="text"
+              name="customerId"
+              className="form-control "
+              onChange={handleUpdate}
+              value={updatecustomerstate.customerId}
+            /> */}
+            <label>userName</label>
+            <input
+              type="text"
+              name="userName"
+              className="form-control"
+              onChange={handleUpdate}
+              value={updatecustomerstate.userName}
+            />
             <label>Address</label>
             <input
               type="text"

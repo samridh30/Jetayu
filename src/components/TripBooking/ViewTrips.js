@@ -7,6 +7,7 @@ import { setTripList } from "../../redux/TripSlice";
 import UpdateTrip from "./UpdateTrip";
 import BookingTripDetails from "./BookingTripDetails";
 import TripPagination from "./TripPagination";
+import Trip from "../../Model/Trip";
 
 const ViewTrips = () => {
   const [show, setshow] = useState({
@@ -45,7 +46,7 @@ const ViewTrips = () => {
     e.preventDefault();
     endTripService()
       .then((response) => {
-        dispatch(setTripList(response.data));
+        dispatch(setTripList(new Trip()));
         alert(response.data.customer.userName + " Your Trip Ended ");
       })
       .catch(() => {

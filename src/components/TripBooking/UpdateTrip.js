@@ -36,6 +36,7 @@ const UpdateTrip = () => {
 
   return (
     <div>
+      {CurrentTripListStore.status?
       <div className="card mt-3 ml-3">
         <div className="card-body text-left roundered">
           <div>
@@ -69,6 +70,7 @@ const UpdateTrip = () => {
           </div>
         </div>
       </div>
+      :alert("No Trip")}
     </div>
   );
 };

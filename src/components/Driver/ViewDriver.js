@@ -5,7 +5,6 @@ import { updateDriver } from "../../services/DriverService";
 import { setDriverList } from "../../redux/DriverSlice";
 import { viewDriver } from "../../services/DriverService";
 const ViewDriver = () => {
-  
   const DriverDataFromStore = useSelector((state) => state.Driver.DriverData);
   const [driverUpdate, setDriverUpdate] = useState(DriverDataFromStore);
   // setDriverUpdate(DriverDataFromStore)
@@ -73,7 +72,6 @@ const ViewDriver = () => {
             <div>
               <input
                 type="text"
-
                 value={driverUpdate.driverName}
                 onChange={handleUpdate}
               />
@@ -87,7 +85,7 @@ const ViewDriver = () => {
                 value={driverUpdate.rating}
                 onChange={handleUpdate}
               />
-               <input
+              <input
                 type="submit"
                 className="btn btn-success form-control mt-3"
                 value="Update"
@@ -109,7 +107,6 @@ const ViewDriver = () => {
               </p>
               {DriverDataFromStore.cab && (
                 <div>
-                  
                   <p>
                     Cab Id:
                     {DriverDataFromStore.cab.cabId}

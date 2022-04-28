@@ -47,7 +47,7 @@ const Pagination = () => {
               <th>From Location</th>
               <th>To Location</th>
               <th>Bill</th>
-              <th>driver Id</th>
+              <th>driver Name</th>
               <th>driver rating</th>
               <th>Cab Type</th>
             </tr>
