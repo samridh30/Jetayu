@@ -21,23 +21,26 @@ const Home = () => {
 
   useEffect(() => {
     // console.log(CurrentTripListStore)
-    if (localStorage.getItem('loggedInUser')) {
-      viewTripService()
-        .then((response) => {
-          setTmp(CurrentTripListStore)
-          dispatch(setTripList(response.data[0]));
-        })
-        .catch((error) => {
-          alert(error);
-        });
-      setTmp(CurrentTripListStore);
-      // history.push("/")
-      // window.location.reload(true)
-      // console.log(CurrentTripListStore)
+    if (JSON.parse(localStorage.getItem('loggedInUser'))) {
+      const role = JSON.parse(localStorage.getItem('loggedInUser')).role
+      if (role === "CUSTOMER") {
+
+        viewTripService()
+          .then((response) => {
+            setTmp(CurrentTripListStore)
+            dispatch(setTripList(response.data[0]));
+          })
+          .catch((error) => {
+            alert(error);
+          });
+        setTmp(CurrentTripListStore);
+        // history.push("/")
+        // window.location.reload(true)
+        // console.log(CurrentTripListStore)
+      }
     }
     console.log(tmp)
   }, [])
-
   return (
     <div className="p-3">
       <h1 className="mt-3 display-3 font-weight-lighter">JATAYU</h1>
