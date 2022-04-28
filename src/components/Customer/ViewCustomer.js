@@ -14,8 +14,8 @@ const ViewCustomer=()=>{
             <h4 className="card-header">
               <center>Profile Details </center>
               <h3 className="text-primary">
-                UserName: 
-                <small class="text-muted">{Updatecustomerstate.userName}</small>
+                UserName:
+                <small class="text-muted ">{ Updatecustomerstate.userName}</small>
             </h3>
             <h3 className="text-primary">
                 Address: 
