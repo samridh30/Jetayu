@@ -9,7 +9,7 @@ const ViewCustomer=()=>{
     },[localStorage.getItem('loggedInUser')])
 
     return(
-        <div className='card  mx-auto   p-auto col-md-7 '>
+        <div className='card  mx-auto bg-light  p-auto col-md-7 '>
             <div className="card-body  text-left roundered col-md-auto ">
             <h4 className="card-header">
               <center>Profile Details </center>

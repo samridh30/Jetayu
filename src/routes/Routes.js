@@ -17,6 +17,15 @@ import ViewCustomer  from '../components/Customer/ViewCustomer';
 import UpdateCustomer from "../components/Customer/UpdateCustomer";
 import ViewAllCustomers from '../components/Customer/ViewAllCustomers';
 
+import InsertCab from '../components/Cab/InsertCab';
+import UpdateCab from '../components/Cab/UpdateCab';
+import ViewAllCabs from '../components/Cab/ViewAllCabs';
+import ViewCabsofType from '../components/Cab/ViewCabsofType';
+import CountCabsofType from '../components/Cab/CountCabsOfType';
+
+import ViewCabsofType from '../components/Cab/ViewCabsofType';
+
+
 
 
 const Routes = () => {
@@ -37,6 +46,7 @@ const Routes = () => {
                             <Route path="/Customer/update"><UpdateCustomer /></Route>
                             <Route path="/Customer/view"><ViewCustomer /></Route>
                             <Route path="/Customer/viewAll"><ViewAllCustomers /></Route>
+                            <Route path="/cab/viewByType"><ViewCabsofType /></Route>
 
                             <Route path="/driver"><ViewDriver /></Route>
                             <Route path="/driver1"><InsertDriver /></Route>
@@ -45,6 +55,13 @@ const Routes = () => {
                             <Route path="/driver4"><UpdateDriver /></Route>
                             <Route exact path="/login"><Login /></Route>
                             <Route path="/book" ><Booktrip /></Route>
+
+                            <Route path="/insertCab"><InsertCab /></Route>
+                            <Route path="/updateCab"><UpdateCab /></Route>
+                            <Route path="/viewCabs"><ViewAllCabs /></Route>
+                            <Route path="/viewCabsOfType"><ViewCabsofType /></Route>
+                            <Route path="/countCabsOfType"><CountCabsofType /></Route>
+
                             {/* <Route path="/view" ><ViewTrips /></Route> */}
                             {/* <Route path="/endTrip"><EndTrip /></Route> */}
                             {/* <Route path="/dashboard"><Dashboard /></Route> */}

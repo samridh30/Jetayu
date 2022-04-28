@@ -1,99 +1,82 @@
-import React from 'react';
-import { insertCab } from '../../models/CabService';
-import "./BookTrip.css"
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-const insertCab =() => {
-  const [cabToBeAdded, setCabToBeAdded] = useState({
-    cabId: '',
-    cabType: ''
-
-  })
-}
-
-const dispatch = useDispatch();
-const history = useHistory();
-const addCabService = (e) => {
-    console.log(e.target.value);
-    setCabToBeAdded({
-        ...cabToBeAdded, [e.target.name]: e.target.value
-    })
-
-}
+import React, { useState } from "react";
+import Cab from "../../Model/Cab";
+import {insertCab} from "../../services/CabService";
 
 const InsertCab = () => {
+//   const [addCab, setAddCab] = useState(new Cab());
+  const [cab, setCab] = useState(new Cab());
     
-       const handleAddCab = (cab) => {
-        console.log(cab.target.name);
-        console.log(cab.target.value);
-        setCabToBeAdded({
-            ...cabToBeAdded,
-            [cab.target.name]: cab.target.value
-        });
-        const submitAddCab = (evt) => {
-          evt.preventDefault();
-          let cabTemp = { ...cabToBeAdded };
-          addCabService(cabTemp)
-              .then((response) => {
-                  console.log(response.data);
-                  alert(`Cab with cabId ${response.data.cabId} added successfully.`);
-              })
-              .catch(() => {
-                  setCabToBeAdded(new cab());
-                  cabTemp = '';
-                  alert("Cab could not be added.");
-              });
-      
-  
-  
-}
-       return (
-        <div>
-        <div className="container">
-            <div id="block" className="row">
-                <div id="InsertCabBlock" className="card col-md-10 mt-5 mb-5 ">
+  const handleAddCab = (e) => {
+    setAddCab({
+      ...addCab,
+      [e.target.name]: e.target.value,
+    });
+    setCab({
+      ...cab,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const submitAddCab = (evt) => {
+    evt.preventDefault();
+    let cabTemp = {
+      ...addCab,
+      cab
+    };
+    insertCab(cabTemp)
+      .then((response) => {
+        console.log(response.data);
+        alert(`Cab added successfully`);
+      })
+      .catch(() => {
+        alert("Cab could not be added");
+        setAddCab(new Cab());
+        cabTemp = "";
+      });
+  };
 
-                    <div className='card-body '>
-                        <form>
-                            <div className="form-inline bg-gray ">
-                                <div class="col col-lg-3">
-                                    {/* <label className='card-title'>Pickup</label> */}
-                                    <input
-                                        type="text"
-                                        placeholder="Enter Cab Id"
-                                        name="cabId"
-                                        className="form-control col-md-auto"
-                                        value={InsertCab.cabId}
-                                        onChange={insertCab}
-                                    />
-
-                                </div>
-                                <div class=" col col-lg-3">
-                                    {/* <label className='card-title'>Enter Drop Location</label> */}
-                                    <input
-                                        type="text"
-                                        placeholder="Enter Cab Type"
-                                        name="cabType"
-                                        className="form-control col-md-auto "
-                                        value={InsertCab.cabType}
-                                        onChange={insertCab}
-                                    />
-                                  
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
-
-
-
-                    </div>
-                </div>
-
-                </div>
+  return (
+    <div className="container">
+      <p className="display-4 text-primary">Cab Component</p>
+      <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
+        <p>Add New Cab</p>
+        <div className="form form-group">
+          <input
+            type="text"
+            id="carType"
+            name="carType"
+            className="form-control mb-3 mt-3"
+            value={addCab.carType}
+            onChange={handleAddCab}
+            placeholder="Enter cab type"
+          />
+          <input
+            type="text"
+            name="perKmRate"
+            id="perKmRate"
+            className="form-control mb-3 mt-3"
+            value={addCab.perKmRate}
+            onChange={handleAddCab}
+            placeholder="Enter per km rate"
+          />
+          <input
+            type="text"
+            id="status"
+            name="status"
+            className="form-control mb-3 mt-3"
+            value={addCab.status}
+            onChange={handleAddCab}
+            placeholder="Enter cab status"
+          />
+           <input
+            type="submit"
+            className="btn btn-primary form-control mb-3 mt-3"
+            value="Add Cab"
+            onClick={submitAddCab}
+          />
         </div>
-       )
+      </div>
+    </div>
+  );
+};
 
 export default InsertCab;
-       
