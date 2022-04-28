@@ -9,15 +9,11 @@ const Home = () => {
 
   // const [book, setBook] = useState();
   // const book = useSelector((state) => state.Trip.TripList);
-  const [tmp, setTmp] = useState()
+  const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
+  const [tmp, setTmp] = useState(CurrentTripListStore)
 
 
-  useEffect(() => {
-    // console.log(book)
-    // setTmp(book.status)
-    console.log(JSON.parse(localStorage.getItem('Trip')).status)
-    setTmp(JSON.parse(localStorage.getItem('Trip')).status)
-  }, [])
+  
 
 
 
@@ -26,7 +22,7 @@ const Home = () => {
     <div>
 
       THIS IS HOME{
-        (tmp) ?
+        (tmp.status) ?
           <EndTrip /> :
           <Booktrip />
       }
