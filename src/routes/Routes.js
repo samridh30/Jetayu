@@ -23,7 +23,7 @@ import ViewAllCabs from '../components/Cab/ViewAllCabs';
 import ViewCabsofType from '../components/Cab/ViewCabsofType';
 import CountCabsofType from '../components/Cab/CountCabsOfType';
 
-import ViewCabsofType from '../components/Cab/ViewCabsofType';
+// import ViewCabsofType from '../components/Cab/ViewCabsofType';
 
 
 
