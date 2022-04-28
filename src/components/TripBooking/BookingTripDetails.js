@@ -22,7 +22,7 @@ const BookingTripDetails = () => {
           
         </div>
       </div>
-      :alert("No Trip")}
+      :alert("No Live Trip to Show Booking Details")}
     </div>
     
   );

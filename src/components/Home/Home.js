@@ -12,6 +12,11 @@ const Home = () => {
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
   const [tmp, setTmp] = useState(CurrentTripListStore)
 
+  useEffect(()=>{
+    setTmp(CurrentTripListStore);
+
+  },[CurrentTripListStore])
+
 
   
 

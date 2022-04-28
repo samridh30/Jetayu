@@ -70,7 +70,7 @@ const UpdateTrip = () => {
           </div>
         </div>
       </div>
-      :alert("No Trip")}
+      :alert("No Live Trip to Update")}
     </div>
   );
 };
