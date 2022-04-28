@@ -33,7 +33,7 @@ const ViewAllCustomers=()=>{
                     
                     <label className="text-primary"><h3>Customers </h3></label>
                     
-                    <table className="table table-bordered table-striped ">
+                    <table className="table table-bordered table-light table-striped ">
                         <thead className="thead-dark">
                             <tr>
                                 <th>customerId</th>

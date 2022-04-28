@@ -71,9 +71,9 @@ const UpdateTrip = () => {
           </div>
         </div>
         : <div class="alert alert-success alert-dismissible">
-          {/* <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> */}
-          <strong>Info!</strong> No Trip to Update.
-        </div>}
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Info!</strong> No Trip To update.
+      </div>}
     </div>
   );
 };
