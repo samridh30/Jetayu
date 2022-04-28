@@ -13,11 +13,11 @@ const Logout = (props) => {
                         alert(response.data)
                 })
                 localStorage.removeItem('loggedInUser')
-                props.logUser();
+                // props.logUser();
         }
         return (
                 <div className="">
-                        <input className="bg-danger px-5 btn-outline-none btn btn-primary" type="submit" value="Logout" onClick={method} />
+                        <input className="bg-danger btn-outline-none btn btn-primary" type="submit" value="Logout" onClick={method} />
                 </div>
         )
 }
