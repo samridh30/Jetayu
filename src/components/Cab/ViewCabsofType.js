@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { useState } from "react";
+import { countCabsofType, viewCabsofType } from "../../services/CabService";
 import { useDispatch, useSelector } from "react-redux";
-import {getCabType} from "../../redux/CabSlice";
-
-import { viewCabsofType } from "../../services/CabService";
 
 const ViewCabsofType = () => {
-  const allCabDataFromStore = useSelector(
-    (state) => state.Cab.CabList
-  );
+  const [type, settype] = useState("");
+  const [cabTypeData, setcabTypeData] = useState([]);
   const dispatch = useDispatch();
-  const submitViewCabsofType = (evt) => {
+
+  const handletripTypeData = (e) => {
+    console.log(e.target.value)
+    settype(e.target.value);
+  };
+
+  const GetCabsByType = (evt) => {
+    console.log(type)
     evt.preventDefault();
-    viewCabsofType()
+    viewCabsofType(type)
       .then((response) => {
-        dispatch(getCabType(response.data));
+        // dispatch(setAllTripsList(response.data));
+        console.log(response.data)
+        setcabTypeData(response.data);
       })
       .catch((error) => {
         alert(error);

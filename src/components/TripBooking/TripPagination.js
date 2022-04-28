@@ -39,8 +39,9 @@ const Pagination = () => {
 
   return (
     <div>
+      {allTripsListStore.length>1  ?
       <div>
-        <table className="table table-bordered table-striped ">
+        <table className="table table-bordered table-warning table-striped ">
           <thead className="thead-dark">
             <tr>
               <th>tripBooking Id</th>
@@ -52,6 +53,7 @@ const Pagination = () => {
               <th>Cab Type</th>
             </tr>
           </thead>
+        
           <tbody>
             {paginatedPosts.map((e, index) => (
               <tr key={index}>
@@ -81,7 +83,12 @@ const Pagination = () => {
             ))}
           </ul>
         </nav>
+
       </div>
+      :<div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Info!</strong> No Trips To Show.
+    </div>}
     </div>
   );
 };

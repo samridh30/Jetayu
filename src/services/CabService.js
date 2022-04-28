@@ -2,27 +2,29 @@ import axios from 'axios';
 
 // Create services for other components in this way. 
 
-const springBootAppUrl = `http://localhost:8088/`;
-const getCabById = (cabId) => {
+const springBootAppUrl = `http://localhost:8088/cab`;
+const getCabByIdService = (cabId) => {
     console.log(cabId);
-    return axios.get(`${springBootAppUrl}cab/get-cab-by-id/${cabId}`);
+    return axios.get(`${springBootAppUrl}get-cab-by-id/${cabId}`);
 }
 
 const insertCab = () => {
-    console.log(cab);
-    return axios.get(`${springBootAppUrl}cab/insert-cab`);
+    return axios.get(`${springBootAppUrl}insert-cab`);
 }
 const updateCab = () => {
     console.log(`getCabByIdService`);
-    return axios.get(`${springBootAppUrl}cab/update-cab`);
+    return axios.get(`${springBootAppUrl}update-cab`);
 }
-const viewCabsofType = () => {
-    return axios.get(`${springBootAppUrl}cab/viewCabsOfType`);
+
+const deleteCab = () => {
+    console.log(`getCabByIdService`);
+    return axios.get(`${springBootAppUrl}/delete-cab`);
 }
-const viewAllCabs = () => {
-    return axios.get(`${springBootAppUrl}emp/viewAllCabs`);
+const viewCabsofType = (cabType) => {
+    return axios.get(`${springBootAppUrl}/viewCabsOfType/${cabType}`);
 }
-const countCabsofType = () => {
-    return axios.get(`${springBootAppUrl}emp/countCabsOfType`);
-}
-export { getCabById, insertCab, updateCab, viewCabsofType, viewAllCabs,countCabsofType};
+// const countCabsofType = (cabType) => {
+//     return axios.get(`${springBootAppUrl}/countCabsOfType/${cabType}`);
+// }
+export { getCabByIdService, insertCab, updateCab, deleteCab ,viewCabsofType };
+
