@@ -12,10 +12,10 @@ const UpdateCab = () => {
     const CurrentCabListStore = useSelector(
       (state) => state.Cab.CabData
     );
-    useEffect(()=>{
-      console.log(CurrentCabListStore)
+    // useEffect(()=>{
+    //   console.log(CurrentCabListStore)
   
-    },[])
+    // },[])
     const [cabUpdate, setCabUpdate] = useState(CurrentCabListStore);
     const dispatch = useDispatch();
   
