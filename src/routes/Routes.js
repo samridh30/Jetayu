@@ -14,7 +14,7 @@ import ViewDriver from '../components/Driver/ViewDriver';
 import ViewAllDrivers from '../components/Driver/ViewAllDrivers';
 import ViewBestDrivers from '../components/Driver/ViewBestDrivers';
 import UpdateDriver from '../components/Driver/UpdateDriver';
-
+import ViewCustomer  from '../components/Customer/ViewCustomer';
 import UpdateCustomer from "../components/Customer/UpdateCustomer"
 
 
@@ -35,6 +35,7 @@ const Routes = () => {
                             {/* <Route path="/register"><Register/></Route> */}
 
                             <Route path="/Customer/update"><UpdateCustomer /></Route>
+                            <Route path="/Customer/view"><ViewCustomer /></Route>
 
                             <Route path="/driver"><ViewDriver /></Route>
                             <Route path="/driver1"><InsertDriver /></Route>

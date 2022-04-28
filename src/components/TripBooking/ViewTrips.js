@@ -50,7 +50,12 @@ const ViewTrips = () => {
         alert(response.data.customer.userName + " Your Trip Ended ");
       })
       .catch(() => {
-        alert("No Trips to End");
+
+        <div class="alert alert-success alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Info!</strong> No Trips To end.
+        </div>
+        alert("No trips to end")
       });
   };
 

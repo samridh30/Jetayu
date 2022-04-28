@@ -70,7 +70,10 @@ const UpdateTrip = () => {
           </div>
         </div>
       </div>
-      :alert("No Live Trip to Update")}
+      :<div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Info!</strong> No Trip to Update.
+    </div>}
     </div>
   );
 };

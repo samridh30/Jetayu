@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import "./BookTrip.css";
 
 const Booktrip = () => {
+  const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
+
   const [booktrip, setBookTrip] = useState({
     fromLocation: "",
     toLocation: "",
@@ -102,8 +104,8 @@ const Booktrip = () => {
 
     <div>
       <div className="container">
-        <div id="block" className="row">
-          <div id="BookTripBlock" className="card col-md-10 mt-5 mb-5 ">
+        <div id="block" className="row mx-auto">
+          <div id="BookTripBlock" className="card col-md-10 mx-auto my-10px ">
             <div className="card-body ">
               <form>
                 <div className="form-inline bg-gray ">
