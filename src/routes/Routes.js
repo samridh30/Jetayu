@@ -26,7 +26,7 @@ const Routes = () => {
 
                             {/* <Route path="/register"><Register/></Route> */}
 
-                            <Route path="/Customer/update"><UpdateCustomer /></Route>
+                            {/* <Route path="/Customer/update"><UpdateCustomer /></Route> */}
 
                             <Route exact path="/login"><Login /></Route>
                             <Route path="/book" ><Booktrip /></Route>
