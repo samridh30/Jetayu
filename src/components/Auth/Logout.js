@@ -11,8 +11,10 @@ const Logout = (props) => {
                 // console.log(JSON.parse(localStorage.getItem("loggedInUser")))
                 logoutService().then((response) => {
                         alert(response.data)
-                })
-                localStorage.removeItem('loggedInUser')
+                        localStorage.removeItem('loggedInUser')
+                }).then(
+                        props.logUser()
+                )
                 // props.logUser();
         }
         return (

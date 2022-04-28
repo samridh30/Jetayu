@@ -12,25 +12,26 @@ const Home = () => {
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
   const [tmp, setTmp] = useState(CurrentTripListStore)
 
-  useEffect(()=>{
+  useEffect(() => {
     setTmp(CurrentTripListStore);
 
-  },[CurrentTripListStore])
-
-
-  
-
-
-
+  }, [CurrentTripListStore])
 
   return (
-    <div>
+    <div className="p-3">
 
-      THIS IS HOME{
-        (tmp.status) ?
-          <EndTrip /> :
-          <Booktrip />
-      }
+
+      <h1 className="mt-3 display-3 font-weight-lighter">JATAYU</h1>
+      <img className="" height="20%" width="20%" src={require('./HomePageImg.png')} alt="image" />
+      <h3 className="font-weight-lighter uppercase">Travel to your Destinsation now</h3>
+      {/* <br /> */}
+      <div className="mt-2">
+        {
+          (tmp.status) ?
+            <EndTrip /> :
+            <Booktrip />
+        }
+      </div>
     </div>
   );
 };

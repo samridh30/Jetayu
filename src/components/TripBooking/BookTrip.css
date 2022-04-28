@@ -1,6 +1,7 @@
 #BookTripBlock {
-    background-color: #B89BE8;
-    border: 2px gray solid;
+    background-color: #efefef;
+    border: 2px #efefef solid;
+    /* border-radius: 10%; */
 }
 
 .Bookcard {
