@@ -1,6 +1,6 @@
 import Cabservicedto from "./Cabservicedto";
 import Cab from './Cab'
-class driver{
+class Driver{
 
     driverId;
     driverName='';
@@ -11,4 +11,4 @@ class driver{
 
 }
 
-export default driver;
+export default Driver;

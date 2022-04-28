@@ -19,15 +19,15 @@ const TripSlice = createSlice({
     reducers: {
 
         setTripList: (state, action) => {
-            console.log(state);
-            console.log(action.payload);
+            // console.log(state);
+            // console.log(action.payload);
             state.TripList = action.payload;
             localStorage.setItem("Trip", JSON.stringify(state.TripList))
 
         },
         setAllTripsList: (state, action) => {
-            console.log(state);
-            console.log(action.payload);
+            // console.log(state);
+            // console.log(action.payload);
             state.AllTripsList = action.payload;
         }
         // , more methods in reducers   

@@ -29,6 +29,7 @@ const Header = () => {
         setUser();
         setRole();
         history.push("/")
+        window.location.reload(true)
     }
 
     return ((!role) ?

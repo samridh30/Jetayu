@@ -16,18 +16,15 @@ const EndTrip = () => {
 
   const endCab = (e) => {
     e.preventDefault();
-    console.log("Trip booked data");
-
     setcurrenttripupdate.status = false;
-
     console.log(currenttripupdate.status);
     endTripService()
       .then((response) => {
         console.log(response);
         console.log(response.data.customer.userName);
         dispatch(setTripList({}));
-        // alert(response.data.customer.userName + " Your Trip Ended ");
-
+        alert(response.data.customer.userName + " Your Trip Ended ");
+        window.location.reload(true)
       })
       .catch(() => {
         alert("No Trips to End");
@@ -42,7 +39,7 @@ const EndTrip = () => {
           <div className="card-body">
             <form>
               <div className="form-inline bg-gray w-100 ">
-                <div class="col col-lg-3">
+                <div className="col col-lg-3">
                   <input
                     type="button"
                     disabled
@@ -52,9 +49,9 @@ const EndTrip = () => {
                     value={CurrentTripListStore.fromLocation}
                   />
                 </div>
-                {/* <div><p class="glyphicon glyphicon-arrow-right"></p></div> */}
+                {/* <div><p className="glyphicon glyphicon-arrow-right"></p></div> */}
                 <img className="" src={require(`./arrow.png`)} />
-                <div class=" col col-lg-3">
+                <div className=" col col-lg-3">
                   <input
                     type="button"
                     disabled

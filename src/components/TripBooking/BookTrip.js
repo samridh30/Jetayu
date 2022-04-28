@@ -39,8 +39,8 @@ const Booktrip = () => {
 
   const errorBooking = () => {
     return (
-      <div class="position-absolute w-100 alert alert-success alert-dismissible">
-        {/* <a href="#" class="close" data-dismiss="alert" onClick={() => setError(false)} aria-label="close">&times;</a> */}
+      <div className="position-absolute w-100 alert alert-success alert-dismissible">
+        {/* <a href="#" className="close" data-dismiss="alert" onClick={() => setError(false)} aria-label="close">&times;</a> */}
         <h5>
           <strong>Info!</strong> Please Enter Valid Details
           <br />
@@ -64,8 +64,9 @@ const Booktrip = () => {
       bookCabService(tripDetails)
         .then((response) => {
           dispatch(setTripList(response.data));
-          alert("Cab Booked Succesfully");
-          history.push("/");
+          // alert("Cab Booked Succesfully");
+          // history.push("/");
+          window.location.reload(true)
         })
         .catch(() => {
           // alert("Invalid Inputs");
@@ -90,7 +91,7 @@ const Booktrip = () => {
             <form>
               {(!error) ?
                 <div className="form-inline">
-                  <div class="col col-lg-3">
+                  <div className="col col-lg-3">
                     {/* <label className='card-title'>Pickup</label> */}
                     <input
                       type="text"
@@ -101,7 +102,7 @@ const Booktrip = () => {
                       onChange={handleaddTripData}
                     />
                   </div>
-                  <div class=" col col-lg-3">
+                  <div className=" col col-lg-3">
                     {/* <label className='card-title'>Enter Drop Location</label> */}
                     <input
                       type="text"
@@ -122,10 +123,10 @@ const Booktrip = () => {
                         name="cabType"
                         placeholder="CabType"
                       >
-                        <option selected>Choose Cab Type...</option>
-                        <option>Mini</option>
-                        <option>Auto</option>
-                        <option>Luxury</option>
+                        <option value="" selected >Choose Cab Type...</option>
+                        <option value="Mini">Mini</option>
+                        <option value="Auto">Auto</option>
+                        <option value="Luxury">Luxury</option>
                       </select>
                     </div>
                   </div>
