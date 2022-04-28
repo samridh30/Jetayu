@@ -37,7 +37,7 @@ const UpdateCustomer = () => {
   return (
     <div >
       <div className="card mt-3 ml-3 col-lg-7 mb-10">
-        <div className="card-body text-left roundered col-lg-auto mb-10">
+        <div className="card-body text-left roundered col-md-auto mb-10">
           <div>
             <h4 className="card-header">
               <center>Update Details </center>
@@ -50,7 +50,7 @@ const UpdateCustomer = () => {
               onChange={handleUpdate}
               value={updatecustomerstate.customerId}
             /> */}
-            <label>userName</label>
+            <label className="text-primary">UserName</label>
             <input
               type="text"
               name="userName"
@@ -58,7 +58,7 @@ const UpdateCustomer = () => {
               onChange={handleUpdate}
               value={updatecustomerstate.userName}
             />
-            <label>Address</label>
+            <label className="text-primary"> Address</label>
             <input
               type="text"
               name="address"
@@ -66,7 +66,7 @@ const UpdateCustomer = () => {
               onChange={handleUpdate}
               value={updatecustomerstate.address}
             />
-            <label>MobileNumber</label>
+            <label className="text-primary">MobileNumber</label>
             <input
               type="text"
               name="mobileNumber"
@@ -74,7 +74,7 @@ const UpdateCustomer = () => {
               onChange={handleUpdate}
               value={updatecustomerstate.mobileNumber}
             />
-            <label>Email</label>
+            <label className="text-primary">Email</label>
             <input
               type="text"
               name="email"

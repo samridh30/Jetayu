@@ -22,7 +22,10 @@ const BookingTripDetails = () => {
           
         </div>
       </div>
-      :alert("No Live Trip to Show Booking Details")}
+      :<div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Info!</strong> No Live Trip To Show Details.
+    </div>}
     </div>
     
   );

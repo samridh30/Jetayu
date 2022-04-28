@@ -26,6 +26,7 @@ const EndTrip = () => {
         console.log(response.data.customer.userName);
         dispatch(setTripList({}));
         alert(response.data.customer.userName + " Your Trip Ended ");
+        
       })
       .catch(() => {
         alert("No Trips to End");
@@ -35,8 +36,8 @@ const EndTrip = () => {
   return (
     <div>
       <div className="container">
-        <div id="block" className="row">
-          <div id="EndTripBlock" className="card col-md-10 mt-5 mb-5 ">
+      <div id="block" className="row mx-auto">
+          <div id="EndTripBlock" className="card col-md-10 mx-auto my-10px ">
             <label className="card-title">Booking Info</label>
 
             <div className="card-body ">
@@ -51,6 +52,7 @@ const EndTrip = () => {
                       value={CurrentTripListStore.fromLocation}
                     />
                   </div>
+                  {/* <div><p class="glyphicon glyphicon-arrow-right"></p></div> */}
                   <div class=" col col-lg-3">
                     <input
                       type="button"
