@@ -145,7 +145,7 @@ const ViewTrips = (props) => {
     <div>
       <div className="wrapper">
         {role === "CUSTOMER" ? (
-          <nav id="sidebar" className="bg-dark">
+          <nav id="sidebar" className="">
             <div className="sidebar-header">
               <h3>JATAYU</h3>
             </div>

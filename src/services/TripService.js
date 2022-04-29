@@ -13,6 +13,10 @@ const viewTripService = () => {
     return axios.get(`${springBootAppUrl}/view`);
 }
 
+const viewAllTripDataService = () => {
+    return axios.get(`${springBootAppUrl}/viewAllTripData`);
+}
+
 const viewTripByIdService = (Id) => {
     console.log(Id)
     return axios.get(`${springBootAppUrl}/viewAll/${Id}`);
@@ -22,4 +26,4 @@ const endTripService = () => {
     return axios.put(`${springBootAppUrl}/endTrip`);
 }
 
-export {bookCabService, updateTripService,viewTripService,endTripService,viewTripByIdService};
+export {bookCabService, updateTripService,viewTripService,endTripService,viewTripByIdService,viewAllTripDataService};
