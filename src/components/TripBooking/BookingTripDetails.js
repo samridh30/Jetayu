@@ -4,12 +4,10 @@ const BookingTripDetails = () => {
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
 
   return (
-    
     <div id="bookingdetails">
-      {CurrentTripListStore.status?
-      <div className="card mt-3">
-        <div class="card-body text-left roundered">
-          
+      {CurrentTripListStore.status ? (
+        <div className="card mt-3">
+          <div class="card-body text-left roundered">
             <div>
               <h4 className="card-header text-center">Booking Details</h4>
               <p>FromLocation- {CurrentTripListStore.fromLocation}</p>
@@ -19,15 +17,17 @@ const BookingTripDetails = () => {
               <p>DriverRating- {CurrentTripListStore.driver.rating}</p>
               <p>CabType- {CurrentTripListStore.driver.cab.carType}</p>
             </div>
-          
+          </div>
         </div>
-      </div>
-      :<div class="alert alert-success alert-dismissible">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Info!</strong> No Live Trip To Show Details.
-    </div>}
+      ) : (
+        <div class="alert alert-success alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            &times;
+          </a>
+          <strong>Info!</strong> No Live Trip To Show Details.
+        </div>
+      )}
     </div>
-    
   );
 };
 

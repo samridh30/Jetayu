@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Customer from "../../Model/Customer";
 import { useDispatch, useSelector } from "react-redux";
 import {viewAllCustomersCustomerService} from '../../services/CustomerService'
+import './Customer.css'
 
 const ViewAllCustomers=()=>{
 
@@ -27,13 +28,13 @@ const ViewAllCustomers=()=>{
             value='Customers'
             onClick={getAllCustomers}
             />
-            <div>
+            <div className="">
             {AllCustomers.length>1 &&
                 <div className="m-auto col-lg-10">
                     
                     <label className="text-primary"><h3>Customers </h3></label>
-                    
-                    <table className="table table-bordered table-light table-striped ">
+                    <div class="scrollit">
+                    <table className="table table-bordered table-light table-striped overflow-auto">
                         <thead className="thead-dark">
                             <tr>
                                 <th>customerId</th>
@@ -59,25 +60,10 @@ const ViewAllCustomers=()=>{
                             ))}
                         </tbody>
                     </table>
-                    
-        {/* <nav className="d-flex justify-content-center mt-3">
-          <ul className="pagination">
-            {pages.map((page) => (
-              <li
-                className={
-                  page === currentpage ? "page-item active" : "page-item"
-                }
-              >
-                <p className="page-link" onClick={() => pagination(page)}>
-                  {page}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </nav> */}
+                    </div>
     
                 </div>
-}
+                }
             </div>
     
 

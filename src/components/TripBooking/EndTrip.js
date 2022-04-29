@@ -6,7 +6,6 @@ import { setTripList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "./BookTrip.css";
 
-
 const EndTrip = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -24,7 +23,7 @@ const EndTrip = () => {
         console.log(response.data.customer.userName);
         dispatch(setTripList({}));
         alert(response.data.customer.userName + " Your Trip Ended ");
-        window.location.reload(true)
+        window.location.reload(true);
       })
       .catch(() => {
         alert("No Trips to End");
@@ -34,8 +33,20 @@ const EndTrip = () => {
   return (
     <div className="container">
       <div id="block" className="row mx-auto">
-        <div id="BookTripBlock" className="card col-md-10 mx-auto shadow-lg" style={{ borderRadius: "10" }}>
-          <h4 className="=card-title font-weight-lighter p-2">Booking Info<img className="float-right" src={require(`./hamburger.png`)} height="30" width="30" /></h4>
+        <div
+          id="BookTripBlock"
+          className="card col-md-10 mx-auto shadow-lg"
+          style={{ borderRadius: "10" }}
+        >
+          <h4 className="=card-title font-weight-lighter p-2">
+            Booking Info
+            <img
+              className="float-right"
+              src={require(`./hamburger.png`)}
+              height="30"
+              width="30"
+            />
+          </h4>
           <div className="card-body">
             <form>
               <div className="form-inline bg-gray w-100 ">

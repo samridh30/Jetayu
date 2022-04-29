@@ -1,5 +1,8 @@
-import { viewTripService, endTripService,viewTripByIdService } from "../../services/TripService";
-
+import {
+  viewTripService,
+  endTripService,
+  viewTripByIdService,
+} from "../../services/TripService";
 import { setAllTripsList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -10,7 +13,8 @@ import TripPagination from "./TripPagination";
 import Trip from "../../Model/Trip";
 
 const ViewTrips = () => {
-  const role = JSON.parse(localStorage.getItem('loggedInUser')).role
+
+  const role = JSON.parse(localStorage.getItem("loggedInUser")).role;
   const [show, setshow] = useState({
     getTrip: false,
     update: false,
@@ -18,7 +22,7 @@ const ViewTrips = () => {
     endTrip: false,
   });
 
-  const[CusId,setCusId]= useState('');
+  const [CusId, setCusId] = useState("");
 
   const dispatch = useDispatch();
 
@@ -52,7 +56,7 @@ const ViewTrips = () => {
       bookingdetails: false,
     });
     evt.preventDefault();
-    console.log(CusId)
+    console.log(CusId);
     viewTripByIdService(CusId)
       .then((response) => {
         console.log(response.data);
@@ -77,12 +81,13 @@ const ViewTrips = () => {
         alert(response.data.customer.userName + " Your Trip Ended ");
       })
       .catch(() => {
-
         <div class="alert alert-success alert-dismissible">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            &times;
+          </a>
           <strong>Info!</strong> No Trips To end.
-        </div>
-        alert("No trips to end")
+        </div>;
+        alert("No trips to end");
       });
   };
 
@@ -107,58 +112,59 @@ const ViewTrips = () => {
   return (
     <div className="container">
       <div className="row">
-        {(role === 'CUSTOMER')?
-        <div className="bg-white h-50 shadow shadow-regular mb-3 mt-3 ml-0 px-3 py-3 pb-3 pt-3 col-lg-2">
-          <div className="form form-group ">
-            <input
-              type="submit"
-              className="form-control mb-3 mt-3 btn btn-primary"
-              value="Booking details"
-              onClick={bookingdetails}
-            />
-            <input
-              type="submit"
-              className="form-control mb-3 mt-3 btn btn-primary"
-              value="update Trip"
-              onClick={updateTrip}
-            />
-            <input
-              type="submit"
-              className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
-              data-toggle="collapse"
-              data-target="#gettrips"
-              value="Get Trips"
-              onClick={submitGetTripById}
-            />
+        {role === "CUSTOMER" ? (
+          <div className="bg-white h-50 shadow shadow-regular mb-3 mt-3 ml-0 px-3 py-3 pb-3 pt-3 col-lg-2">
+            <div className="form form-group ">
+              <input
+                type="submit"
+                className="form-control mb-3 mt-3 btn btn-primary"
+                value="Booking details"
+                onClick={bookingdetails}
+              />
+              <input
+                type="submit"
+                className="form-control mb-3 mt-3 btn btn-primary"
+                value="update Trip"
+                onClick={updateTrip}
+              />
+              <input
+                type="submit"
+                className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
+                data-toggle="collapse"
+                data-target="#gettrips"
+                value="Get Trips"
+                onClick={submitGetTripById}
+              />
 
-            <input
-              type="submit"
-              className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
-              data-toggle="collapse"
-              data-target="#gettrips"
-              value="End Trip"
-              onClick={endCab}
-            />
+              <input
+                type="submit"
+                className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
+                data-toggle="collapse"
+                data-target="#gettrips"
+                value="End Trip"
+                onClick={endCab}
+              />
+            </div>
           </div>
-        </div>
-        : <div>
-          <input
+        ) : (
+          <div>
+            <input
               type="text"
               className="form-control mb-3 mt-3  href=gettrips col-md-6 m-auto "
               value={CusId}
-              placeholder='Customer Id'
+              placeholder="Customer Id"
               onChange={handletripTypeByIdData}
             />
 
-        <input
-          type="submit"
-          placeholder="Get Trips"
-          className="btn-success col-md-3 px-2 w-100 m-auto mb-3"
-          value="Get Trips"
-          onClick={submitGetAllTripById}
-        />
+            <input
+              type="submit"
+              placeholder="Get Trips"
+              className="btn-success col-md-3 px-2 py-1 w-100 m-auto mb-1"
+              value="Get Trips"
+              onClick={submitGetAllTripById}
+            />
           </div>
-        }
+        )}
 
         {show.getTrip && (
           <div className="col-lg-10 mt-3">
