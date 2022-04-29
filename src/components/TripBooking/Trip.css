@@ -1,0 +1,8 @@
+.scrollit {
+    overflow:scroll;
+    height:400px;
+    width: 100%;
+}
+table{
+    table-layout: fixed;
+  }

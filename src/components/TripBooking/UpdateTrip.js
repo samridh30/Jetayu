@@ -36,7 +36,7 @@ const UpdateTrip = () => {
 
   return (
     <div>
-      {CurrentTripListStore.status ?
+      {CurrentTripListStore.status ? (
         <div className="card mt-3 ml-3">
           <div className="card-body text-left roundered">
             <div>
@@ -70,10 +70,14 @@ const UpdateTrip = () => {
             </div>
           </div>
         </div>
-        : <div class="alert alert-success alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Info!</strong> No Trip To update.
-      </div>}
+      ) : (
+        <div class="alert alert-success alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            &times;
+          </a>
+          <strong>Info!</strong> No Trip To update.
+        </div>
+      )}
     </div>
   );
 };

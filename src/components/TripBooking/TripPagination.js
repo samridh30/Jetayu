@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import loaddash from "lodash";
+import './Trip.css'
 
-const pagesize = 5;
+const pagesize = 10;
 
 const Pagination = () => {
-
   const allTripsListStore = useSelector((state) => state.Trip.AllTripsList);
   // const [allTripsListStore, setAllTripsListStore] = useSelector((state) => state.Trip.AllTripsList)
   const [paginatedPosts, setpaginatedPosts] = useState([]);
@@ -38,60 +38,64 @@ const Pagination = () => {
   };
 
   return (
-
     <div>
-      {allTripsListStore.length>=1  ?
-      <div>
-        <table className="table table-bordered table-warning table-striped ">
-          <thead className="thead-dark">
-            <tr>
-              <th>tripBooking Id</th>
-              <th>Customer Id</th>
-              <th>From Location</th>
-              <th>To Location</th>
-              <th>Bill</th>
-              <th>driver Name</th>
-              <th>driver rating</th>
-              <th>Cab Type</th>
-            </tr>
-          </thead>
-        
-          <tbody>
-            {paginatedPosts.map((e, index) => (
-              <tr key={index}>
-                <td>{e.tripBookingId}</td>
-                <td>{e.customer.customerId}</td>
-                <td>{e.fromLocation}</td>
-                <td>{e.toLocation}</td>
-                <td>{e.fromDateTime}</td>
-                <td>{e.driver.driverName}</td>
-                <td>{e.driver.rating}</td>
-                <td>{e.driver.cab.carType}</td>
+      {allTripsListStore.length >= 1 ? (
+        <div>
+          <div class="scrollit">
+          <table className="table table-bordered table-warning table-striped m-auto ">
+            <thead className="thead-dark">
+              <tr>
+                <th>tripBooking Id</th>
+                <th>Customer Id</th>
+                <th>From Location</th>
+                <th>To Location</th>
+                <th>Bill</th>
+                <th>driver Name</th>
+                <th>driver rating</th>
+                <th>Cab Type</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <nav className="d-flex justify-content-center mt-3">
-          <ul className="pagination">
-            {pages.map((page) => (
-              <li
-                className={
-                  page === currentpage ? "page-item active" : "page-item"
-                }
-              >
-                <p className="page-link" onClick={() => pagination(page)}>
-                  {page}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </nav>
+            </thead>
 
-      </div>
-      :<div class="alert alert-success alert-dismissible">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Info!</strong> No Trips To Show.
-    </div>}
+            <tbody>
+              {paginatedPosts.map((e, index) => (
+                <tr key={index}>
+                  <td>{e.tripBookingId}</td>
+                  <td>{e.customer.customerId}</td>
+                  <td>{e.fromLocation}</td>
+                  <td>{e.toLocation}</td>
+                  <td>{e.bill}</td>
+                  <td>{e.driver.driverName}</td>
+                  <td>{e.driver.rating}</td>
+                  <td>{e.driver.cab.carType}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </div>
+          <nav className="d-flex justify-content-center mt-1">
+            <ul className="pagination">
+              {pages.map((page) => (
+                <li
+                  className={
+                    page === currentpage ? "page-item active" : "page-item"
+                  }
+                >
+                  <p className="page-link" onClick={() => pagination(page)}>
+                    {page}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      ) : (
+        <div class="alert alert-success alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            &times;
+          </a>
+          <strong>Info!</strong> No Trips To Show.
+        </div>
+      )}
     </div>
   );
 };
