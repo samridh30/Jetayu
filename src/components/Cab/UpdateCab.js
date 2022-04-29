@@ -2,23 +2,24 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCabById } from "../../redux/CabSlice";
 import { updateCab } from "../../services/CabService";
-import { setCabList } from "../../redux/CabSlice";
 const UpdateCab = () => {
   const CabDataFromStore = useSelector((state) => state.Cab.CabData);
-  const [cabUpdate, setCabUpdate] = useState(CabDataFromStore);
-  const [driverId, setDriverId] = useState("");
-  const dispatch = useDispatch();
-  const UpdateCab = () => {
-    const CurrentCabListStore = useSelector(
-      (state) => state.Cab.CabData
-    );
+  // const [cabUpdate, setCabUpdate] = useState(CabDataFromStore);
+  const [cabId, setcabId] = useState();
+  // const dispatch = useDispatch();
+  // const UpdateCab = () => {
+  //   const CabDataFromStore = useSelector(
+  //     (state) => state.Cab.CabData
+  //   );
     // useEffect(()=>{
     //   console.log(CurrentCabListStore)
   
     // },[])
-    const [cabUpdate, setCabUpdate] = useState(CurrentCabListStore);
+    const [cabUpdate, setCabUpdate] = useState(CabDataFromStore);
     const dispatch = useDispatch();
-  
+    const handleUpdateCab = (evt) => {
+      // setCabId(evt.target.value);
+    };
     const handleUpdate = (e) => {
       e.preventDefault();
       setCabUpdate({
@@ -29,14 +30,15 @@ const UpdateCab = () => {
     const submitUpdateCab = (evt) => {
       evt.preventDefault();
       console.log(cabUpdate)
-      updateCab(cabUpdate)
+      updateCab(cabId)
         .then((response) => {
-          dispatch(setCabList(response.data));
+          dispatch(getCabById(response.data));
           alert("Cab Updated");
         })
         .catch(() => {
           alert("Cab cannot be updated ");
         });
+        setcabId("");
     };
   
     return (
@@ -52,7 +54,7 @@ const UpdateCab = () => {
                 type="text"
                 name="Cab Id"
                 className="form-control"
-                onChange={handleUpdate}
+                onChange={handleUpdateCab}
                 value={cabUpdate.cabId}
               />
               <label>Cab type</label>
@@ -96,7 +98,7 @@ const UpdateCab = () => {
       </div>
     );
   };
-}
+
   
   export default UpdateCab;
   

@@ -9,7 +9,7 @@ const getCabByIdService = (cabId) => {
 }
 
 const insertCab = () => {
-    return axios.get(`${springBootAppUrl}insert-cab`);
+    return axios.post(`${springBootAppUrl}/insert-cab`);
 }
 const updateCab = () => {
     console.log(`getCabByIdService`);
