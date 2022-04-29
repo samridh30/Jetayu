@@ -15,6 +15,8 @@ import { Link } from "react-router-dom";
 import "../../styles/sideNav.css"
 import { useHistory } from "react-router-dom";
 import { logoutService } from "../../services/AuthService"
+import ViewCustomer from "../Customer/ViewCustomer";
+import UpdateCustomer from "../Customer/UpdateCustomer";
 
 
 
@@ -43,6 +45,7 @@ const ViewTrips = (props) => {
   const [role, setRole] = useState();
   const [CusId, setCusId] = useState("");
 
+
   const dispatch = useDispatch();
 
   const handletripTypeByIdData = (e) => {
@@ -56,6 +59,8 @@ const ViewTrips = (props) => {
       update: false,
       endTrip: false,
       bookingdetails: false,
+      viewCust: false,
+      updateCust: false
     });
     evt.preventDefault();
     viewTripService()
@@ -73,6 +78,8 @@ const ViewTrips = (props) => {
       update: false,
       endTrip: false,
       bookingdetails: false,
+      viewCust: false,
+      updateCust: false
     });
     evt.preventDefault();
     console.log(CusId);
@@ -92,6 +99,8 @@ const ViewTrips = (props) => {
       update: false,
       endTrip: true,
       bookingdetails: false,
+      viewCust: false,
+      updateCust: false
     });
     e.preventDefault();
     endTripService()
@@ -116,6 +125,8 @@ const ViewTrips = (props) => {
       update: true,
       endTrip: false,
       bookingdetails: false,
+      viewCust: false,
+      updateCust: false
     });
   };
 
@@ -125,6 +136,8 @@ const ViewTrips = (props) => {
       update: false,
       endTrip: false,
       bookingdetails: true,
+      viewCust: false,
+      updateCust: false
     });
   };
 
@@ -142,22 +155,25 @@ const ViewTrips = (props) => {
   }
 
   return (
-    <div>
+    <div style={{ zIndex: "2" }}>
       <div className="wrapper">
         {role === "CUSTOMER" ? (
           <nav id="sidebar" className="">
             <div className="sidebar-header">
-              <h3>JATAYU</h3>
+              <h3 onClick={() => props.fun} >JATAYU</h3>
             </div>
             <hr />
 
-            <ul className="list-unstyled components">
-              <h4 style={{ fontSize: "40px", fontWeight: 'lighter' }} className="text-light">{user.userName}</h4>
-              <p style={{ fontSize: '15px' }} className="font-weight-lighter">{user.role}</p>
-              {/* <hr /> */}
-              <br />
+            <ul className="list-unstyled components" style={{ marginTop: "-25px" }}>
+              <div style={{ marginTop: '-10px' }}>
 
-              <li>
+                <p style={{ fontSize: "40px", fontWeight: 'lighter' }} className="text-light">{user.userName}</p>
+                <p style={{ fontSize: '15px', marginTop: "-40px" }} className="font-weight-lighter">{user.role}</p>
+              </div>
+              {/* <hr /> */}
+              {/* <br /> */}
+
+              <li style={{ marginTop: '-10px' }}>
                 <a
                   // type="submit"
                   // className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
@@ -165,7 +181,7 @@ const ViewTrips = (props) => {
                   data-target="#gettrips"
                   value="Get Trips"
                   onClick={submitGetTripById}
-                >Get Trips</a>
+                >Trips History</a>
               </li>
               <center>
                 <hr className="w-75" />
@@ -206,9 +222,44 @@ const ViewTrips = (props) => {
               <center>
                 <hr className="w-75" />
               </center>
+              <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Profile</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={() => setshow({
+                        getTrip: false,
+                        update: false,
+                        endTrip: false,
+                        bookingdetails: false,
+                        viewCust: true,
+                        updateCust: false
+                      })}
+                    >View</a>
+                  </li>
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={() => setshow({
+                        getTrip: false,
+                        update: false,
+                        endTrip: false,
+                        bookingdetails: false,
+                        viewCust: false,
+                        updateCust: true
+                      })}
+                    >Update</a>
+                  </li>
 
+                </ul>
+              </li>
             </ul>
-            <ul className="list-unstyled CTAs">
+            <ul className="list-unstyled CTAs" style={{ marginTop: "-30px" }}>
               <li className="w-100">
                 <a className="download bg-danger text-light">Logout</a>
               </li>
@@ -234,16 +285,33 @@ const ViewTrips = (props) => {
               onClick={submitGetAllTripById}
             /> */}
           </div>
-        )}
-        {show.getTrip && (
-          <TripPagination />
-        )}
-        {show.update && (
-          <UpdateTrip />
-        )}
-        {show.bookingdetails && (
-          <BookingTripDetails />
-        )}
+        )
+        }
+        {
+          show.getTrip && (
+            <TripPagination />
+          )
+        }
+        {
+          show.update && (
+            <UpdateTrip />
+          )
+        }
+        {
+          show.bookingdetails && (
+            <BookingTripDetails />
+          )
+        }
+        {
+          show.viewCust && (
+            <ViewCustomer />
+          )
+        }
+        {
+          show.updateCust && (
+            <UpdateCustomer />
+          )
+        }
 
         {/* {show.getTrip && (
         <div className="col-lg-6">
@@ -260,8 +328,8 @@ const ViewTrips = (props) => {
           <BookingTripDetails />
         </div>
       )} */}
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 export default ViewTrips;
