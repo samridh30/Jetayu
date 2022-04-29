@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDriverById } from "../../redux/DriverSlice";
 import { updateDriver } from "../../services/DriverService";
@@ -7,6 +7,9 @@ import { viewDriver } from "../../services/DriverService";
 const ViewDriver = () => {
   const DriverDataFromStore = useSelector((state) => state.Driver.DriverData);
   const [driverUpdate, setDriverUpdate] = useState(DriverDataFromStore);
+  useEffect(()=>{
+    setDriverUpdate(DriverDataFromStore)
+  },[DriverDataFromStore])
   // setDriverUpdate(DriverDataFromStore)
   const [driverId, setDriverId] = useState("");
   const dispatch = useDispatch();
@@ -32,6 +35,7 @@ const ViewDriver = () => {
     });
   };
   const submitUpdateDriver = (evt) => {
+    console.log(driverUpdate)
     evt.preventDefault();
     console.log(driverUpdate);
     updateDriver(driverUpdate)
@@ -72,18 +76,24 @@ const ViewDriver = () => {
             <div>
               <input
                 type="text"
+                name="driverName"
+                className="form-control"
+                onChange={handleUpdate}
                 value={driverUpdate.driverName}
-                onChange={handleUpdate}
               />
               <input
                 type="text"
+                name="licenseNo"
+                className="form-control"
+                onChange={handleUpdate}
                 value={driverUpdate.licenseNo}
-                onChange={handleUpdate}
               />
               <input
                 type="text"
-                value={driverUpdate.rating}
+                name="rating"
+                className="form-control"
                 onChange={handleUpdate}
+                value={driverUpdate.rating}
               />
               <input
                 type="submit"
