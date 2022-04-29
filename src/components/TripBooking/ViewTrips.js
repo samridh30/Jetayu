@@ -1,4 +1,4 @@
-import { viewTripService, endTripService } from "../../services/TripService";
+import { viewTripService, endTripService,viewTripByIdService } from "../../services/TripService";
 
 import { setAllTripsList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import TripPagination from "./TripPagination";
 import Trip from "../../Model/Trip";
 
 const ViewTrips = () => {
+  const role = JSON.parse(localStorage.getItem('loggedInUser')).role
   const [show, setshow] = useState({
     getTrip: false,
     update: false,
@@ -17,7 +18,14 @@ const ViewTrips = () => {
     endTrip: false,
   });
 
+  const[CusId,setCusId]= useState('');
+
   const dispatch = useDispatch();
+
+  const handletripTypeByIdData = (e) => {
+    console.log(e.target.value);
+    setCusId(e.target.value);
+  };
 
   const submitGetTripById = (evt) => {
     setshow({
@@ -29,6 +37,25 @@ const ViewTrips = () => {
     evt.preventDefault();
     viewTripService()
       .then((response) => {
+        dispatch(setAllTripsList(response.data));
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
+  const submitGetAllTripById = (evt) => {
+    setshow({
+      getTrip: true,
+      update: false,
+      endTrip: false,
+      bookingdetails: false,
+    });
+    evt.preventDefault();
+    console.log(CusId)
+    viewTripByIdService(CusId)
+      .then((response) => {
+        console.log(response.data);
         dispatch(setAllTripsList(response.data));
       })
       .catch((error) => {
@@ -80,6 +107,7 @@ const ViewTrips = () => {
   return (
     <div className="container">
       <div className="row">
+        {(role === 'CUSTOMER')?
         <div className="bg-white h-50 shadow shadow-regular mb-3 mt-3 ml-0 px-3 py-3 pb-3 pt-3 col-lg-2">
           <div className="form form-group ">
             <input
@@ -113,6 +141,24 @@ const ViewTrips = () => {
             />
           </div>
         </div>
+        : <div>
+          <input
+              type="text"
+              className="form-control mb-3 mt-3  href=gettrips col-md-6 m-auto "
+              value={CusId}
+              placeholder='Customer Id'
+              onChange={handletripTypeByIdData}
+            />
+
+        <input
+          type="submit"
+          placeholder="Get Trips"
+          className="btn-success col-md-3 px-2 w-100 m-auto mb-3"
+          value="Get Trips"
+          onClick={submitGetAllTripById}
+        />
+          </div>
+        }
 
         {show.getTrip && (
           <div className="col-lg-10 mt-3">

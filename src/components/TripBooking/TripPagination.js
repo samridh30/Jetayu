@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import loaddash from "lodash";
 
-const pagesize = 10;
+const pagesize = 5;
 
 const Pagination = () => {
 
@@ -38,13 +38,15 @@ const Pagination = () => {
   };
 
   return (
+
     <div>
-      {allTripsListStore.length>1  ?
+      {allTripsListStore.length>=1  ?
       <div>
         <table className="table table-bordered table-warning table-striped ">
           <thead className="thead-dark">
             <tr>
               <th>tripBooking Id</th>
+              <th>Customer Id</th>
               <th>From Location</th>
               <th>To Location</th>
               <th>Bill</th>
@@ -58,6 +60,7 @@ const Pagination = () => {
             {paginatedPosts.map((e, index) => (
               <tr key={index}>
                 <td>{e.tripBookingId}</td>
+                <td>{e.customer.customerId}</td>
                 <td>{e.fromLocation}</td>
                 <td>{e.toLocation}</td>
                 <td>{e.fromDateTime}</td>
