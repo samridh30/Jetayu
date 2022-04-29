@@ -2,6 +2,7 @@ import {
   viewTripService,
   endTripService,
   viewTripByIdService,
+  viewAllTripDataService,
 } from "../../services/TripService";
 import { setAllTripsList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,6 +68,24 @@ const ViewTrips = () => {
       });
   };
 
+  const submitGetAllTrip = (evt) => {
+    setshow({
+      getTrip: true,
+      update: false,
+      endTrip: false,
+      bookingdetails: false,
+    });
+    evt.preventDefault();
+    viewAllTripDataService()
+      .then((response) => {
+        console.log(response.data);
+        dispatch(setAllTripsList(response.data));
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
   const endCab = (e) => {
     setshow({
       getTrip: false,
@@ -113,7 +132,7 @@ const ViewTrips = () => {
     <div className="container">
       <div className="row">
         {role === "CUSTOMER" ? (
-          <div className="bg-white h-50 shadow shadow-regular mb-3 mt-3 ml-0 px-3 py-3 pb-3 pt-3 col-lg-2">
+          <div className="bg-white h-50 shadow shadow-regular mb-3 mt-3 ml-0   pl-1 col-lg-2">
             <div className="form form-group ">
               <input
                 type="submit"
@@ -136,6 +155,7 @@ const ViewTrips = () => {
                 onClick={submitGetTripById}
               />
 
+
               <input
                 type="submit"
                 className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
@@ -149,20 +169,33 @@ const ViewTrips = () => {
         ) : (
           <div>
             <input
-              type="text"
-              className="form-control mb-3 mt-3  href=gettrips col-md-6 m-auto "
-              value={CusId}
-              placeholder="Customer Id"
-              onChange={handletripTypeByIdData}
-            />
-
-            <input
-              type="submit"
-              placeholder="Get Trips"
-              className="btn-success col-md-3 px-2 py-1 w-100 m-auto mb-1"
-              value="Get Trips"
-              onClick={submitGetAllTripById}
-            />
+                type="submit"
+                className="form-control mb-3 mt-3 btn btn-primary  col-md-4 "
+                href="#AllTrips"
+                data-toggle="collapse"
+                data-target="#AllTrips"
+                value="Trips"
+                onClick={submitGetAllTrip}
+              />
+            
+            <div id="AllTrips"className="input-group collapse">
+              <input
+                type="text"
+                className="form-control col-lg-6"
+                value={CusId}
+                placeholder="Customer Id"
+                onChange={handletripTypeByIdData}
+              />
+              <div className="input-group-append">
+                <input
+                type="submit"
+                placeholder="Get Trips"
+                className="btn-success ml-1 w-200px"
+                value="Search"
+                onClick={submitGetAllTripById}
+              />
+              </div>
+            </div>
           </div>
         )}
 
