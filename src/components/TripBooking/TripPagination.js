@@ -60,7 +60,7 @@ const Pagination = () => {
                 <td>{e.tripBookingId}</td>
                 <td>{e.fromLocation}</td>
                 <td>{e.toLocation}</td>
-                <td>{e.bill}</td>
+                <td>{e.fromDateTime}</td>
                 <td>{e.driver.driverName}</td>
                 <td>{e.driver.rating}</td>
                 <td>{e.driver.cab.carType}</td>
