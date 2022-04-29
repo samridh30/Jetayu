@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { loginService } from '../../services/AuthService';
 import { useDispatch, useSelector } from "react-redux";
 import { getAppUser } from '../../redux/AppUserSlice';
+import { Link } from 'react-router-dom';
 
 // import AuthUser from '../../models/AuthUser';
 
@@ -55,33 +56,35 @@ const Login = () => {
                 event.preventDefault();
         }
         return (
-                <div className="container" >
-                        <div className="col-4 mt-3 pb-3 shadow bg-white" >
-                                <h1 className="display-4 text-primary">Login</h1>
-                                <form className="form form-group form-dark " onSubmit={submitAppUser}>
-                                        <div>
-                                                <input
-                                                        type="text"
-                                                        name="email"
-                                                        id="email"
-                                                        className="form-control mb-3"
-                                                        placeholder="Enter Email"
-                                                        value={appUser.email}
-                                                        onChange={handleAppUser}
-                                                        autoFocus
-                                                        required
-                                                />
-                                                <input
-                                                        type="password"
-                                                        name="password"
-                                                        id="password"
-                                                        className="form-control mb-3"
-                                                        placeholder="Enter password"
-                                                        value={appUser.password}
-                                                        onChange={handleAppUser}
-                                                        required
-                                                />
-                                                {/* <div class="form-group">
+                <center>
+                        <div className="container justify-content-center" >
+                                <div className="mt-5 w-50 shadow bg-white" style={{ borderRadius: "10px" }} >
+
+                                        <form className="p-3 justify-content-center mt-5 form form-group form-dark " onSubmit={submitAppUser}>
+                                                <h1 className="display-4 font-weight-lighter text-primary">Login</h1>
+                                                <div className='p-3'>
+                                                        <input
+                                                                type="text"
+                                                                name="email"
+                                                                id="email"
+                                                                className="form-control mb-3"
+                                                                placeholder="Enter Email"
+                                                                value={appUser.email}
+                                                                onChange={handleAppUser}
+                                                                autoFocus
+                                                                required
+                                                        />
+                                                        <input
+                                                                type="password"
+                                                                name="password"
+                                                                id="password"
+                                                                className="form-control mb-3"
+                                                                placeholder="Enter password"
+                                                                value={appUser.password}
+                                                                onChange={handleAppUser}
+                                                                required
+                                                        />
+                                                        {/* <div class="form-group">
                                                         <select className="form-control mb-3" name="role" id="role" onChange={handleAppUser}>
                                                                 <option value="Role">Select a role</option>
                                                                 <option value="ADMIN">ADMIN</option>
@@ -89,20 +92,25 @@ const Login = () => {
                                                                 <option value="MANAGER">MANAGER</option>
                                                         </select>
                                                 </div> */}
-                                                <input
-                                                        type="submit"
-                                                        id="submit"
-                                                        name="submit"
-                                                        className="form-control btn btn-success mb-3"
-                                                        value="Login"
-                                                        onClick={submitAppUser}
-                                                />
-                                        </div>
-                                </form>
-                                <p className="text-danger">{credentials}</p>
-                                {/* <Link to="/register" className="btn btn-primary col-12">Not yet registered? Register</Link> */}
-                        </div>
-                </div >
+                                                        <input
+                                                                type="submit"
+                                                                id="submit"
+                                                                name="submit"
+                                                                className="form-control mt-3 w-75 btn btn-success mb-3"
+                                                                value="Login"
+                                                                onClick={submitAppUser}
+                                                        />
+                                                </div>
+
+                                        </form>
+                                        <p className="text-danger">{credentials}</p>
+                                        {/* <Link to="/register" className="btn btn-primary col-12">Not yet registered? Register</Link> */}
+                                        <p className='font-weight-lighter'>
+                                                Not a Member? <Link to="/register">Register</Link>
+                                        </p>
+                                </div>
+                        </div >
+                </center >
         )
 }
 export default Login;
