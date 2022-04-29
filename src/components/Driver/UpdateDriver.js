@@ -46,7 +46,7 @@ const UpdateDriver = () => {
             <label>Driver Id</label>
             <input
               type="text"
-              name="Driver Id"
+              name="driverId"
               className="form-control"
               onChange={handleUpdate}
               value={driverUpdate.driverId}
@@ -54,7 +54,7 @@ const UpdateDriver = () => {
             <label>Driver Name</label>
             <input
               type="text"
-              name="Driver Name"
+              name="driverName"
               className="form-control"
               onChange={handleUpdate}
               value={driverUpdate.driverName}
@@ -63,7 +63,7 @@ const UpdateDriver = () => {
             <label>License No</label>
             <input
               type="text"
-              name="License No"
+              name="licenseNo"
               className="form-control"
               onChange={handleUpdate}
               value={driverUpdate.licenseNo}
@@ -72,7 +72,7 @@ const UpdateDriver = () => {
             <label>Rating</label>
             <input
               type="text"
-              name="Rating"
+              name="rating"
               className="form-control"
               onChange={handleUpdate}
               value={driverUpdate.rating}
