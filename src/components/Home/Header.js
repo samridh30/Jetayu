@@ -70,8 +70,8 @@ const Header = () => {
                 </div>
             </nav>
         </header> :
-        // <Dashboard fun={logUser} />
-        <ViewTrips />
+        <ViewTrips fun={logUser} />
+        // <ViewTrips fun={logUser} />
     );
 
 }

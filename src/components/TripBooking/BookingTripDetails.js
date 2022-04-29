@@ -4,7 +4,7 @@ const BookingTripDetails = () => {
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
 
   return (
-    <div id="bookingdetails">
+    <div id="bookingdetails" className="w-100">
       {CurrentTripListStore.status ? (
         <div className="card mt-3">
           <div class="card-body text-left roundered">

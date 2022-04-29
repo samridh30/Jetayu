@@ -35,7 +35,7 @@ const UpdateTrip = () => {
   };
 
   return (
-    <div>
+    <div className="w-100">
       {CurrentTripListStore.status ? (
         <div className="card mt-3 ml-3">
           <div className="card-body text-left roundered">

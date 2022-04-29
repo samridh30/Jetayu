@@ -11,10 +11,27 @@ import UpdateTrip from "./UpdateTrip";
 import BookingTripDetails from "./BookingTripDetails";
 import TripPagination from "./TripPagination";
 import Trip from "../../Model/Trip";
+import { Link } from "react-router-dom";
+import "../../styles/sideNav.css"
+import { useHistory } from "react-router-dom";
+import { logoutService } from "../../services/AuthService"
 
-const ViewTrips = () => {
 
-  const role = JSON.parse(localStorage.getItem("loggedInUser")).role;
+
+const ViewTrips = (props) => {
+
+  useEffect(() => {
+    if (!JSON.parse(localStorage.getItem("loggedInUser"))) {
+      history.push("/")
+    }
+    else {
+      setRole(JSON.parse(localStorage.getItem("loggedInUser")).role);
+      setUser(JSON.parse(localStorage.getItem("loggedInUser")));
+
+    }
+  }, [])
+  const history = useHistory();
+
   const [show, setshow] = useState({
     getTrip: false,
     update: false,
@@ -22,6 +39,8 @@ const ViewTrips = () => {
     endTrip: false,
   });
 
+  const [user, setUser] = useState();
+  const [role, setRole] = useState();
   const [CusId, setCusId] = useState("");
 
   const dispatch = useDispatch();
@@ -81,8 +100,8 @@ const ViewTrips = () => {
         alert(response.data.customer.userName + " Your Trip Ended ");
       })
       .catch(() => {
-        <div class="alert alert-success alert-dismissible">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">
+        <div className="alert alert-success alert-dismissible">
+          <a href="#" className="close" data-dismiss="alert" aria-label="close">
             &times;
           </a>
           <strong>Info!</strong> No Trips To end.
@@ -109,46 +128,97 @@ const ViewTrips = () => {
     });
   };
 
-  return (
-    <div className="container">
-      <div className="row">
-        {role === "CUSTOMER" ? (
-          <div className="bg-white h-50 shadow shadow-regular mb-3 mt-3 ml-0 px-3 py-3 pb-3 pt-3 col-lg-2">
-            <div className="form form-group ">
-              <input
-                type="submit"
-                className="form-control mb-3 mt-3 btn btn-primary"
-                value="Booking details"
-                onClick={bookingdetails}
-              />
-              <input
-                type="submit"
-                className="form-control mb-3 mt-3 btn btn-primary"
-                value="update Trip"
-                onClick={updateTrip}
-              />
-              <input
-                type="submit"
-                className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
-                data-toggle="collapse"
-                data-target="#gettrips"
-                value="Get Trips"
-                onClick={submitGetTripById}
-              />
+  const logoutMethod = () => {
+    // console.log(JSON.parse(localStorage.getItem("loggedInUser")))
+    logoutService().then((response) => {
+      alert(response.data)
+      localStorage.removeItem('loggedInUser')
+      dispatch(setTripList());
+      window.location.reload(true)
+    }).then(
+      props.logUser()
+    )
+    // props.logUser();
+  }
 
-              <input
-                type="submit"
-                className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
-                data-toggle="collapse"
-                data-target="#gettrips"
-                value="End Trip"
-                onClick={endCab}
-              />
+  return (
+    <div>
+      <div className="wrapper">
+        {role === "CUSTOMER" ? (
+          <nav id="sidebar" className="bg-dark">
+            <div className="sidebar-header">
+              <h3>JATAYU</h3>
             </div>
-          </div>
+            <hr />
+
+            <ul className="list-unstyled components">
+              <h4 style={{ fontSize: "40px", fontWeight: 'lighter' }} className="text-light">{user.userName}</h4>
+              <p style={{ fontSize: '15px' }} className="font-weight-lighter">{user.role}</p>
+              {/* <hr /> */}
+              <br />
+
+              <li>
+                <a
+                  // type="submit"
+                  // className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
+                  data-toggle="collapse"
+                  data-target="#gettrips"
+                  value="Get Trips"
+                  onClick={submitGetTripById}
+                >Get Trips</a>
+              </li>
+              <center>
+                <hr className="w-75" />
+              </center>
+              <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Current Trip</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={bookingdetails}
+                    >View</a>
+                  </li>
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={updateTrip}
+                    >Update</a>
+                  </li>
+                  <li className="p-3 text-light">
+                    <a
+                      className="bg-danger text-light CTAs"
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
+                      data-toggle="collapse"
+                      data-target="#gettrips"
+                      value="End Trip"
+                      onClick={endCab}
+                    >End</a>
+                  </li>
+
+                </ul>
+              </li>
+              <center>
+                <hr className="w-75" />
+              </center>
+
+            </ul>
+            <ul className="list-unstyled CTAs">
+              <li className="w-100">
+                <a className="download bg-danger text-light">Logout</a>
+              </li>
+
+            </ul>
+
+          </nav>
         ) : (
           <div>
-            <input
+            {/* <input
               type="text"
               className="form-control mb-3 mt-3  href=gettrips col-md-6 m-auto "
               value={CusId}
@@ -162,25 +232,34 @@ const ViewTrips = () => {
               className="btn-success col-md-3 px-2 py-1 w-100 m-auto mb-1"
               value="Get Trips"
               onClick={submitGetAllTripById}
-            />
+            /> */}
           </div>
         )}
-
         {show.getTrip && (
-          <div className="col-lg-10 mt-3">
-            <TripPagination />
-          </div>
+          <TripPagination />
         )}
         {show.update && (
-          <div className="col-lg-6">
-            <UpdateTrip />
-          </div>
+          <UpdateTrip />
         )}
         {show.bookingdetails && (
-          <div className="col-lg-6">
-            <BookingTripDetails />
-          </div>
+          <BookingTripDetails />
         )}
+
+        {/* {show.getTrip && (
+        <div className="col-lg-6">
+          <TripPagination />
+        </div>
+      )}
+      {show.update && (
+        <div className="col-lg-6">
+          <UpdateTrip />
+        </div>
+      )}
+      {show.bookingdetails && (
+        <div className="col-lg-6">
+          <BookingTripDetails />
+        </div>
+      )} */}
       </div>
     </div>
   );
