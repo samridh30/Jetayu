@@ -19,6 +19,8 @@ reducers:{
       console.log(state);
       console.log(action.payload);
       state.CabData = action.payload;
+      // localStorage.setItem("Cab", JSON.stringify(state.CabData))
+
     },
     getAllCabs: (state,action) => {
       console.log(state);
