@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Cab from "../../Model/Cab";
-import {insertCab} from "../../services/CabService";
+import { insertCab } from "../../services/CabService";
 
 const InsertCab = () => {
   const [addCab, setAddCab] = useState(new Cab());
   // const [cab, setCab] = useState(new Cab());
-    
+
   const handleAddCab = (e) => {
     setAddCab({
       ...addCab,
@@ -67,7 +67,7 @@ const InsertCab = () => {
             onChange={handleAddCab}
             placeholder="Enter cab status"
           />
-           <input
+          <input
             type="submit"
             className="btn btn-primary form-control mb-3 mt-3"
             value="Add Cab"
