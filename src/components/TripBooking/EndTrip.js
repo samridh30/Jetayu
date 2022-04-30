@@ -30,6 +30,8 @@ const EndTrip = () => {
       });
   };
 
+
+
   return (
     <div className="container">
       <div id="block" className="row mx-auto">
@@ -40,12 +42,17 @@ const EndTrip = () => {
         >
           <h4 className="=card-title font-weight-lighter p-2">
             Booking Info
+            <button  style={{border:0}} className="float-right shadow-none"
+            href="#CabDetails"
+            data-toggle="collapse"
+            >
             <img
-              className="float-right"
+              className="float-right col-md-12"
               src={require(`./hamburger.png`)}
               height="30"
               width="30"
             />
+            </button>
           </h4>
           <div className="card-body">
             <form>
@@ -89,6 +96,11 @@ const EndTrip = () => {
                 </div>
               </div>
             </form>
+            <div className=" card collapse mt-3 col-md-6 m-auto " id="CabDetails">
+              <p>DriverName- {CurrentTripListStore.driver.driverName}</p>
+              <p>CabType- {CurrentTripListStore.driver.cab.carType}</p>
+              <p>Rate Driver- </p>
+            </div>
           </div>
         </div>
       </div>
