@@ -1,6 +1,6 @@
 .scrollit {
     overflow:scroll;
-    height:350px;
+    height:90vh;
     width: 100%;
 }
 /* table{

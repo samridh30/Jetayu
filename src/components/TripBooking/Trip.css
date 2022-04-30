@@ -1,7 +1,8 @@
 .scrollit {
-    overflow:scroll;
-    height:400px;
+    
+    height:90vh;
     width: 100%;
+    overflow-y: scroll;
 }
 table{
     table-layout: fixed;

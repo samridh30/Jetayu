@@ -40,9 +40,8 @@ const Pagination = () => {
   return (
     <div>
       {allTripsListStore.length >= 1 ? (
-        <div>
-          <div class="scrollit">
-          <table className="table table-bordered table-warning table-striped m-auto ">
+        <div class="scrollit">
+          <table className="table table-bordered table-warning table-striped m-auto  ">
             <thead className="thead-dark">
               <tr>
                 <th>tripBooking Id</th>
@@ -57,7 +56,7 @@ const Pagination = () => {
             </thead>
 
             <tbody>
-              {paginatedPosts.map((e, index) => (
+              {allTripsListStore.map((e, index) => (
                 <tr key={index}>
                   <td>{e.tripBookingId}</td>
                   <td>{e.customer.customerId}</td>
@@ -71,8 +70,7 @@ const Pagination = () => {
               ))}
             </tbody>
           </table>
-          </div>
-          <nav className="d-flex justify-content-center mt-1">
+          {/* /* <nav className="d-flex justify-content-center mt-1">
             <ul className="pagination">
               {pages.map((page) => (
                 <li
@@ -86,7 +84,7 @@ const Pagination = () => {
                 </li>
               ))}
             </ul>
-          </nav>
+          </nav> */} 
         </div>
       ) : (
         <div class="alert alert-success alert-dismissible">
