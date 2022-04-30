@@ -103,12 +103,12 @@ const Register = () => {
                                 value="Register"
                                 onClick={submitAppUser}
                             />
+                            <p className="text-danger">{credentials}</p>
+                            <p>
+                                Already a Member? <Link to="/login"><strong style={{ fontWeight: 'bolder', color: 'blueviolet' }}>Login</strong></Link>
+                            </p>
                         </div>
                     </form>
-                    <p className="text-danger">{credentials}</p>
-                    <p className='font-weight-lighter'>
-                        Already a Member? <Link to="/login">Login</Link>
-                    </p>
                 </div>
                 <div>
                     {/* https://material.io/components/dialogs/web#alert-dialog */}

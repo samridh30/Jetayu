@@ -35,8 +35,8 @@ const UpdateCustomer = () => {
 
 
   return (
-    <div >
-      <div className="card mt-3 ml-3 col-lg-7 mb-10- bg-light">
+    <div className="w-100" >
+      <div className="card mt-3 ml-3 mb-10 bg-light col-lg-7 m-auto">
         <div className="card-body text-left  roundered col-md-auto mb-10">
           <div>
             <h4 className="card-header">

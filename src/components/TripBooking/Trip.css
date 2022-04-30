@@ -1,0 +1,9 @@
+.scrollit {
+    
+    height:90vh;
+    width: 100%;
+    overflow-y: scroll;
+}
+table{
+    table-layout: fixed;
+  }

@@ -7,13 +7,12 @@ import ViewTrips from '../components/TripBooking/ViewTrips';
 import Booktrip from '../components/TripBooking/BookTrip';
 import EndTrip from '../components/TripBooking/EndTrip';
 import Register from '../components/Auth/Register';
-import Dashboard from '../components/Dashboard/DashBoard';
 import InsertDriver from '../components/Driver/InsertDriver';
 import ViewDriver from '../components/Driver/ViewDriver';
 import ViewAllDrivers from '../components/Driver/ViewAllDrivers';
 import ViewBestDrivers from '../components/Driver/ViewBestDrivers';
 import UpdateDriver from '../components/Driver/UpdateDriver';
-import ViewCustomer  from '../components/Customer/ViewCustomer';
+import ViewCustomer from '../components/Customer/ViewCustomer';
 import UpdateCustomer from "../components/Customer/UpdateCustomer";
 import ViewAllCustomers from '../components/Customer/ViewAllCustomers';
 
@@ -38,7 +37,7 @@ const Routes = () => {
                         <Switch>
 
                             <Route path="/register"><Register /></Route>
-                            
+
                             <Route exact path="/"><Home /></Route>
 
                             {/* <Route path="/register"><Register/></Route> */}

@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { setTripList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
-import "./BookTrip.css";
+import "../../styles/BookTrip.css";
 
 const Booktrip = () => {
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
@@ -23,11 +23,11 @@ const Booktrip = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (localStorage.getItem('loggedInUser')) {
-      setUser(JSON.parse(localStorage.getItem('loggedInUser')).role);
-      console.log(user)
+    if (localStorage.getItem("loggedInUser")) {
+      setUser(JSON.parse(localStorage.getItem("loggedInUser")).role);
+      console.log(user);
     }
-  })
+  }, []);
 
   const handleaddTripData = (e) => {
     console.log(e.target.value);
@@ -52,11 +52,11 @@ const Booktrip = () => {
           />
         </h5>
       </div>
-    )
-  }
+    );
+  };
 
   const addTrip = (e) => {
-    if (user === 'CUSTOMER') {
+    if (user === "CUSTOMER") {
       console.log(booktrip.cabType);
       e.preventDefault();
       let tripDetails = { ...booktrip };
@@ -66,7 +66,7 @@ const Booktrip = () => {
           dispatch(setTripList(response.data));
           // alert("Cab Booked Succesfully");
           // history.push("/");
-          window.location.reload(true)
+          window.location.reload(true);
         })
         .catch(() => {
           // alert("Invalid Inputs");
@@ -76,20 +76,22 @@ const Booktrip = () => {
             toLocation: "",
             cabType: "",
           });
-        })
-    }
-    else {
-      history.push('/login')
+        });
+    } else {
+      history.push("/login");
     }
   };
   return (
-
     <div className="container">
       <div id="block" className="row mx-auto">
-        <div id="BookTripBlock" className="card col-md-10 mx-auto shadow-lg" style={{ borderRadius: "10" }}>
+        <div
+          id="BookTripBlock"
+          className="card col-md-10 mx-auto shadow-lg"
+          style={{ borderRadius: "10" }}
+        >
           <div className="card-body">
             <form>
-              {(!error) ?
+              {!error ? (
                 <div className="form-inline">
                   <div className="col col-lg-3">
                     {/* <label className='card-title'>Pickup</label> */}
@@ -123,7 +125,9 @@ const Booktrip = () => {
                         name="cabType"
                         placeholder="CabType"
                       >
-                        <option value="" selected >Choose Cab Type...</option>
+                        <option value="" selected>
+                          Choose Cab Type...
+                        </option>
                         <option value="Mini">Mini</option>
                         <option value="Auto">Auto</option>
                         <option value="Luxury">Luxury</option>
@@ -141,7 +145,9 @@ const Booktrip = () => {
                     />
                   </div>
                 </div>
-                : errorBooking()}
+              ) : (
+                errorBooking()
+              )}
             </form>
           </div>
         </div>

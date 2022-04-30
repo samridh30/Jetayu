@@ -57,8 +57,8 @@ const Login = () => {
         }
         return (
                 <center>
-                        <div className="container justify-content-center" >
-                                <div className="mt-5 w-50 shadow bg-white" style={{ borderRadius: "10px" }} >
+                        <div className="container" >
+                                <div className="w-50 shadow bg-white" style={{ borderRadius: "10px" }} >
 
                                         <form className="p-3 justify-content-center mt-5 form form-group form-dark " onSubmit={submitAppUser}>
                                                 <h1 className="display-4 font-weight-lighter text-primary">Login</h1>
@@ -104,11 +104,11 @@ const Login = () => {
 
                                         </form>
                                         <p className="text-danger">{credentials}</p>
-                                        {/* <Link to="/register" className="btn btn-primary col-12">Not yet registered? Register</Link> */}
-                                        <p className='font-weight-lighter'>
-                                                Not a Member? <Link to="/register">Register</Link>
+                                        <p >
+                                                Not a Member? <Link to="/register"><strong style={{ fontWeight: 'bolder', color: 'blueviolet' }}>Register</strong></Link>
                                         </p>
                                 </div>
+                                {/* <Link to="/register" className="btn btn-primary col-12">Not yet registered? Register</Link> */}
                         </div >
                 </center >
         )
