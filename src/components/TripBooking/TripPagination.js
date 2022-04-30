@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import loaddash from "lodash";
-import './Trip.css'
+import '../../styles/Trip.css'
 
-const pagesize = 10;
+const pagesize = 30;
 
 const Pagination = () => {
   const allTripsListStore = useSelector((state) => state.Trip.AllTripsList);
@@ -40,8 +40,7 @@ const Pagination = () => {
   return (
     <div>
       {allTripsListStore.length >= 1 ? (
-        <div>
-          <div class="scrollit">
+        <div className="scrollit">
           <table className="table table-bordered table-warning table-striped m-auto ">
             <thead className="thead-dark">
               <tr>
@@ -57,7 +56,7 @@ const Pagination = () => {
             </thead>
 
             <tbody>
-              {paginatedPosts.map((e, index) => (
+              {allTripsListStore.map((e, index) => (
                 <tr key={index}>
                   <td>{e.tripBookingId}</td>
                   <td>{e.customer.customerId}</td>
@@ -71,23 +70,22 @@ const Pagination = () => {
               ))}
             </tbody>
           </table>
-          </div>
-          <nav className="d-flex justify-content-center mt-1">
-            <ul className="pagination">
-              {pages.map((page) => (
-                <li
-                  className={
-                    page === currentpage ? "page-item active" : "page-item"
-                  }
-                >
-                  <p className="page-link" onClick={() => pagination(page)}>
-                    {page}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </nav>
         </div>
+        /* <nav className="d-flex justify-content-center mt-1">
+      <ul className="pagination">
+        {pages.map((page) => (
+          <li
+            className={
+              page === currentpage ? "page-item active" : "page-item"
+            }
+          >
+            <p className="page-link" onClick={() => pagination(page)}>
+              {page}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </nav> */
       ) : (
         <div class="alert alert-success alert-dismissible">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">

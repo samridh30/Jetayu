@@ -1,12 +1,11 @@
-import Cabservicedto from "./Cabservicedto";
 import Cab from './Cab'
-class Driver{
+class Driver {
 
     driverId;
-    driverName='';
+    driverName = '';
     licenseNo;
     rating;
-    cab=new Cab();
+    cab = new Cab();
     status;
 
 }

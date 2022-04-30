@@ -2,6 +2,7 @@ import {
   viewTripService,
   endTripService,
   viewTripByIdService,
+  viewAllTripDataService
 } from "../../services/TripService";
 import { setAllTripsList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,6 +40,8 @@ const ViewTrips = (props) => {
     update: false,
     bookingdetails: false,
     endTrip: false,
+    viewCust: true,
+    updateCust: false
   });
 
   const [user, setUser] = useState();
@@ -141,12 +144,30 @@ const ViewTrips = (props) => {
     });
   };
 
+  const submitGetAllTrip = (evt) => {
+    setshow({
+      getTrip: true,
+      update: false,
+      endTrip: false,
+      bookingdetails: false,
+    });
+    evt.preventDefault();
+    viewAllTripDataService()
+      .then((response) => {
+        console.log(response.data);
+        dispatch(setAllTripsList(response.data));
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
   const logoutMethod = () => {
     // console.log(JSON.parse(localStorage.getItem("loggedInUser")))
     logoutService().then((response) => {
       alert(response.data)
       localStorage.removeItem('loggedInUser')
       dispatch(setTripList());
+      history.push("/")
       window.location.reload(true)
     }).then(
       props.logUser()
@@ -261,7 +282,7 @@ const ViewTrips = (props) => {
             </ul>
             <ul className="list-unstyled CTAs" style={{ marginTop: "-30px" }}>
               <li className="w-100">
-                <a className="download bg-danger text-light">Logout</a>
+                <a className="download bg-danger text-light" onClick={logoutMethod}>Logout</a>
               </li>
 
             </ul>
@@ -269,7 +290,7 @@ const ViewTrips = (props) => {
           </nav>
         ) : (
           <div>
-            {/* <input
+            <input
               type="text"
               className="form-control mb-3 mt-3  href=gettrips col-md-6 m-auto "
               value={CusId}
@@ -283,7 +304,17 @@ const ViewTrips = (props) => {
               className="btn-success col-md-3 px-2 py-1 w-100 m-auto mb-1"
               value="Get Trips"
               onClick={submitGetAllTripById}
-            /> */}
+            />
+            <input
+              type="submit"
+              className="form-control mb-3 mt-3 btn btn-primary  col-md-4 "
+              href="#AllTrips"
+              data-toggle="collapse"
+              data-target="#AllTrips"
+              value="Trips"
+              onClick={submitGetAllTrip}
+            />
+
           </div>
         )
         }
