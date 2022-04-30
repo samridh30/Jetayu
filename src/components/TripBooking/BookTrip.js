@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { setTripList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
-import "./BookTrip.css";
+import "../../styles/BookTrip.css";
 
 const Booktrip = () => {
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
@@ -27,7 +27,7 @@ const Booktrip = () => {
       setUser(JSON.parse(localStorage.getItem("loggedInUser")).role);
       console.log(user);
     }
-  },[]);
+  }, []);
 
   const handleaddTripData = (e) => {
     console.log(e.target.value);

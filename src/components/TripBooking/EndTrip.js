@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { setTripList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
-import "./BookTrip.css";
+import "../../styles/BookTrip.css";
 
 const EndTrip = () => {
   const dispatch = useDispatch();

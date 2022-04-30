@@ -3,6 +3,7 @@ import {
   endTripService,
   viewTripByIdService,
   viewAllTripDataService,
+
 } from "../../services/TripService";
 import { setAllTripsList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,8 +37,8 @@ const ViewTrips = (props) => {
     bookingdetails: false,
     endTrip: false,
     viewCust: true,
-    updateCust: false,
-  });
+    updateCust: false,})
+
 
   const [user, setUser] = useState();
   const [role, setRole] = useState();
@@ -166,7 +167,7 @@ const ViewTrips = (props) => {
         window.location.reload(true);
       })
       .then(props.logUser());
-    // props.logUser();
+
   };
 
   return (
@@ -316,12 +317,14 @@ const ViewTrips = (props) => {
             </ul>
             <ul className="list-unstyled CTAs" style={{ marginTop: "-30px" }}>
               <li className="w-100">
+
                 <a
                   className="download bg-danger text-light"
                   onClick={logoutMethod}
                 >
                   Logout
                 </a>
+
               </li>
             </ul>
           </nav>
@@ -351,6 +354,7 @@ const ViewTrips = (props) => {
               value="Trips"
               onClick={submitGetAllTrip}
             />
+
           </div>
         )}
         {show.getTrip && <TripPagination />}

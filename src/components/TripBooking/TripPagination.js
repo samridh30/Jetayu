@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import loaddash from "lodash";
-import './Trip.css'
+import '../../styles/Trip.css'
 
-const pagesize = 10;
+const pagesize = 30;
 
 const Pagination = () => {
   const allTripsListStore = useSelector((state) => state.Trip.AllTripsList);
@@ -42,6 +42,7 @@ const Pagination = () => {
       {allTripsListStore.length >= 1 ? (
         <div class="scrollit">
           <table className="table table-bordered table-warning table-striped m-auto  ">
+
             <thead className="thead-dark">
               <tr>
                 <th>tripBooking Id</th>
@@ -85,6 +86,7 @@ const Pagination = () => {
               ))}
             </ul>
           </nav> */} 
+
         </div>
       ) : (
         <div class="alert alert-success alert-dismissible">
