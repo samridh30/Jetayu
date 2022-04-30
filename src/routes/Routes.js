@@ -18,7 +18,7 @@ import ViewAllCustomers from '../components/Customer/ViewAllCustomers';
 
 import InsertCab from '../components/Cab/InsertCab';
 import UpdateCab from '../components/Cab/UpdateCab';
-// import ViewAllCabs from '../components/Cab/ViewAllCabs';
+import ViewAllCabs from '../components/Cab/ViewAllCabs';
 // import ViewCabsofType from '../components/Cab/ViewCabsofType';
 // import CountCabsofType from '../components/Cab/CountCabsOfType';
 
@@ -57,8 +57,8 @@ const Routes = () => {
 
                             <Route path="/insertCab"><InsertCab /></Route>
                             <Route path="/updateCab"><UpdateCab /></Route>
-                            {/* <Route path="/viewCabs"><ViewAllCabs /></Route>
-                            <Route path="/viewCabsOfType"><ViewCabsofType /></Route>
+                            <Route path="/viewAllCabs"><ViewAllCabs /></Route>
+                            {/* <Route path="/viewCabsOfType"><ViewCabsofType /></Route>
                             <Route path="/countCabsOfType"><CountCabsofType /></Route> */}
 
                             {/* <Route path="/view" ><ViewTrips /></Route> */}

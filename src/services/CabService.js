@@ -22,7 +22,10 @@ const deleteCab = () => {
 const viewCabsofType = (cabType) => {
     return axios.get(`${springBootAppUrl}/viewCabsOfType/${cabType}`);
 }
+const viewAllCabs = (Cab) => {
+    return axios.get(`${springBootAppUrl}/viewAll`,Cab);
+}
 // const countCabsofType = (cabType) => {
 //     return axios.get(`${springBootAppUrl}/countCabsOfType/${cabType}`);
 // }
-export {  insertCab, updateCab, deleteCab,viewCabsofType };
+export {  insertCab, updateCab, deleteCab,viewAllCabs, viewCabsofType };

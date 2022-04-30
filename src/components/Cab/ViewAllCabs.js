@@ -1,24 +1,41 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react"
 import {getAllCabs} from "../../redux/CabSlice";
 
 import { viewAllCabs } from "../../services/CabService";
 
+// const ViewAllCabs = () => {
+//   const allCabDataFromStore = useSelector(
+//     (state) => state.Cab.CabList
+//   );
+//   const dispatch = useDispatch();
+//   const submitViewAllCabs = (evt) => {
+//     evt.preventDefault();
+//     viewAllCabs()
+//       .then((response) => {
+//         dispatch(getAllCabs(response.data));
+//       })
+//       .catch((error) => {
+//         alert(error);
+//       });
+//   };
+
+
 const ViewAllCabs = () => {
-  const allCabDataFromStore = useSelector(
-    (state) => state.Cab.CabList
-  );
-  const dispatch = useDispatch();
-  const submitViewAllCabs = (evt) => {
-    evt.preventDefault();
-    viewAllCabs()
-      .then((response) => {
-        dispatch(getAllCabs(response.data));
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
+
+    const [AllCabs, setAllCabs] = useState([]);
+
+
+    const getAllCabs = (e) => {
+        viewAllCabs()
+            .then((response) => {
+                setAllCabs(response.data);
+            })
+            .catch(() => {
+                alert("Error Occured");
+            });
+    };
 
   return (
     <div className="container">
@@ -29,12 +46,12 @@ const ViewAllCabs = () => {
             type="button"
             className="btn btn-primary form-control mb-3 mt-3"
             value="View All Cabs"
-            onClick={submitViewAllCabs}
+            onClick={getAllCabs}
           />
         </div>
         <div>
           <div>
-            {(allCabDataFromStore.length !== 0) && (
+            {(AllCabs.length !==0) && (
               <div>
                 <p className="text-primary text-center font-weight-bold lead">
                   List of All Cabs
@@ -49,19 +66,19 @@ const ViewAllCabs = () => {
                         <th>status</th>
                       </tr>
                     </thead>
-                    {allCabDataFromStore.map((e => 
+                    {AllCabs.map((e => 
                       <tbody>
                         <tr>
                           <td>{e.cabId}</td>
                           <td>{e.carType}</td>
                           <td>{e.perKmRate}</td>
-                          <td>{e.status}</td>
+                          <td>{e.status.toString()}</td>
                           {(e.cab) && 
                             <>
                               <td>{e.cab.cabId}</td>
                               <td>{e.cab.carType}</td>
-                              <td>{e.cab.status}</td>
                               <td>{e.cab.perKmRate}</td>
+                              <td>{e.cab.status.toString()}</td>
                             </>
                           }
                         </tr>
