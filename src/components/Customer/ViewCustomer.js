@@ -11,7 +11,7 @@ const ViewCustomer = () => {
     return (
         <div className="w-100">
 
-            <div className='mx-auto bg-light  p-auto '>
+            <div className='card mt-3 ml-3 mb-10 bg-light col-lg-7 m-auto '>
                 <div className="text-left roundered col-md-auto ">
                     {/* <center> */}
                     <h4 className="card-header">
