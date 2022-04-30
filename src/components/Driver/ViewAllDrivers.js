@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {getAllDrivers} from "../../redux/DriverSlice";
+import { getAllDrivers } from "../../redux/DriverSlice";
 
 import { viewAllDrivers } from "../../services/DriverService";
 
@@ -34,7 +34,7 @@ const ViewAllDrivers = () => {
         </div>
         <div>
           <div>
-            {(allDriverDataFromStore.length !== 0) && (
+            {allDriverDataFromStore.length !== 0 && (
               <div>
                 <p className="text-primary text-center font-weight-bold lead">
                   List of All Drivers
@@ -52,20 +52,20 @@ const ViewAllDrivers = () => {
                         <th>Per Km Rate</th>
                       </tr>
                     </thead>
-                    {allDriverDataFromStore.map((e => 
+                    {allDriverDataFromStore.map((e) => (
                       <tbody>
                         <tr>
                           <td>{e.driverId}</td>
                           <td>{e.driverName}</td>
                           <td>{e.licenseNo}</td>
                           <td>{e.rating}</td>
-                          {(e.cab) && 
+                          {e.cab && (
                             <>
                               <td>{e.cab.cabId}</td>
                               <td>{e.cab.carType}</td>
                               <td>{e.cab.perKmRate}</td>
                             </>
-                          }
+                          )}
                         </tr>
                       </tbody>
                     ))}

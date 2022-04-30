@@ -1,41 +1,40 @@
 import { useState } from "react";
 import Customer from "../../Model/Customer";
-import { updateCustomerService } from "../../services/CustomerService"
+import { updateCustomerService } from "../../services/CustomerService";
 
 const UpdateCustomer = () => {
-
-  const [updatecustomerstate, setupdatecustomerstate] = useState(JSON.parse(localStorage.getItem("loggedInUser")));
+  const [updatecustomerstate, setupdatecustomerstate] = useState(
+    JSON.parse(localStorage.getItem("loggedInUser"))
+  );
 
   const handleUpdate = (e) => {
-    console.log(e.target.value)
+    console.log(e.target.value);
     setupdatecustomerstate({
       ...updatecustomerstate,
       [e.target.name]: e.target.value,
     });
-
-  }
+  };
 
   const UpdateCustomerMethod = (e) => {
     e.preventDefault();
-    console.log("Before Update")
-    console.log(updatecustomerstate)
+    console.log("Before Update");
+    console.log(updatecustomerstate);
     updateCustomerService(updatecustomerstate)
       .then((response) => {
         localStorage.setItem("loggedInUser", JSON.stringify(response.data));
-        console.log("After Update")
+        console.log("After Update");
         console.log(response.data);
         alert("Updated Succesfully");
         // history.push("/");
       })
       .catch(() => {
-        console.log('Catch')
+        console.log("Catch");
         alert("Error Occured");
       });
   };
 
-
   return (
-    <div className="w-100" >
+    <div className="w-100">
       <div className="card mt-3 ml-3 mb-10 bg-light col-lg-7 m-auto">
         <div className="card-body text-left  roundered col-md-auto mb-10">
           <div>
@@ -89,11 +88,10 @@ const UpdateCustomer = () => {
               value="Update"
               onClick={UpdateCustomerMethod}
             />
-
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 export default UpdateCustomer;

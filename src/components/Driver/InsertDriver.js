@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Driver from "../../Model/Driver";
 import Cab from "../../Model/Cab";
-import {insertDriver} from "../../services/DriverService";
+import { insertDriver } from "../../services/DriverService";
 
 const InsertDriver = () => {
   const [addDriver, setAddDriver] = useState(new Driver());
   const [cab, setCab] = useState(new Cab());
-    
+
   const handleAddDriver = (e) => {
     setAddDriver({
       ...addDriver,
@@ -21,7 +21,7 @@ const InsertDriver = () => {
     evt.preventDefault();
     let driverTemp = {
       ...addDriver,
-      cab
+      cab,
     };
     insertDriver(driverTemp)
       .then((response) => {

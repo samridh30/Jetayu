@@ -3,15 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateDriver } from "../../services/DriverService";
 import { setDriverList } from "../../redux/DriverSlice";
 
-
 const UpdateDriver = () => {
   const CurrentDriverListStore = useSelector(
     (state) => state.Driver.DriverData
   );
-  useEffect(()=>{
-    console.log(CurrentDriverListStore)
-
-  },[])
+  useEffect(() => {
+    console.log(CurrentDriverListStore);
+  }, []);
   const [driverUpdate, setDriverUpdate] = useState(CurrentDriverListStore);
   const dispatch = useDispatch();
 
@@ -24,7 +22,7 @@ const UpdateDriver = () => {
   };
   const submitUpdateDriver = (evt) => {
     evt.preventDefault();
-    console.log(driverUpdate)
+    console.log(driverUpdate);
     updateDriver(driverUpdate)
       .then((response) => {
         dispatch(setDriverList(response.data));
@@ -59,7 +57,7 @@ const UpdateDriver = () => {
               onChange={handleUpdate}
               value={driverUpdate.driverName}
             />
-            
+
             <label>License No</label>
             <input
               type="text"
@@ -68,7 +66,7 @@ const UpdateDriver = () => {
               onChange={handleUpdate}
               value={driverUpdate.licenseNo}
             />
-            
+
             <label>Rating</label>
             <input
               type="text"
@@ -77,15 +75,13 @@ const UpdateDriver = () => {
               onChange={handleUpdate}
               value={driverUpdate.rating}
             />
-            
-             
-              <input
-                type="submit"
-                className="btn btn-success form-control mt-3"
-                value="Update"
-                onClick={submitUpdateDriver}
-              />
-            
+
+            <input
+              type="submit"
+              className="btn btn-success form-control mt-3"
+              value="Update"
+              onClick={submitUpdateDriver}
+            />
           </div>
         </div>
       </div>
