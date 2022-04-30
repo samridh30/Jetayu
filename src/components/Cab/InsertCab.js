@@ -35,11 +35,14 @@ const InsertCab = () => {
   };
 
   return (
-    <div className="container">
-      <p className="display-4 text-primary">Cab Component</p>
-      <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
-        <p>Add New Cab</p>
-        <div className="form form-group">
+    <div>
+    <div className="card mt-3 ml-3">
+      <div className="card-body text-left roundered">
+        <div>
+          <h4 className="card-header">
+            <center>Insert Cab</center>
+          </h4>
+          <label>Cab Type</label>
           <input
             type="text"
             id="carType"
@@ -49,6 +52,7 @@ const InsertCab = () => {
             onChange={handleAddCab}
             placeholder="Enter cab type"
           />
+           <label>Per Km Rate</label>
           <input
             type="text"
             name="perKmRate"
@@ -58,6 +62,7 @@ const InsertCab = () => {
             onChange={handleAddCab}
             placeholder="Enter per km rate"
           />
+           <label>Cab Status</label>
           <input
             type="text"
             id="status"
@@ -69,12 +74,13 @@ const InsertCab = () => {
           />
            <input
             type="submit"
-            className="btn btn-primary form-control mb-3 mt-3"
+            className="btn btn-success form-control mt-3"
             value="Add Cab"
             onClick={submitAddCab}
           />
         </div>
       </div>
+    </div>
     </div>
   );
 };
