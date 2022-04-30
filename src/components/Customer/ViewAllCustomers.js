@@ -44,6 +44,7 @@ const ViewAllCustomers = () => {
                                         <th>mobileNumber</th>
                                         <th>email</th>
                                         <th>role</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,6 +57,7 @@ const ViewAllCustomers = () => {
                                             <td>{e.mobileNumber}</td>
                                             <td>{e.email}</td>
                                             <td>{e.role}</td>
+                                            <td className="btn">{e.status}</td>
                                         </tr>
                                     ))}
                                 </tbody>

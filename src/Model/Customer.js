@@ -6,5 +6,6 @@ class Customer{
     mobileNumber;
     email;
     role;
+    status;
 }
 export default Customer;
