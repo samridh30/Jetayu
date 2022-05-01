@@ -78,7 +78,10 @@ const Header = () => {
       </nav>
     </header>
   ) : (
-    <ViewTrips fun={logUser} />
+    <div>
+
+    </div>
+    // <ViewTrips fun={logUser} />
   );
   // <ViewTrips fun={logUser} />
 };
