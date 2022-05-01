@@ -60,6 +60,11 @@ const Routes = () => {
               </Route>
               {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
 
+
+                            <Route path="/Customer/Disable">< DisableCustomer /></Route>
+                            {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
+                            {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
+
               <Route path="/driver">
                 <ViewDriver />
               </Route>
@@ -81,6 +86,7 @@ const Routes = () => {
               <Route path="/book">
                 <Booktrip />
               </Route>
+
 
               <Route path="/insertCab">
                 <InsertCab />
