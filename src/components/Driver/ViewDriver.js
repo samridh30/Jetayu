@@ -4,41 +4,55 @@ import { getDriverById } from "../../redux/DriverSlice";
 import { updateDriver } from "../../services/DriverService";
 import { setDriverList } from "../../redux/DriverSlice";
 import { viewDriver } from "../../services/DriverService";
-const ViewDriver = () => {
+import { Link } from "react-router-dom";
+import Driver from "../../Model/Driver";
+
+const ViewDriver = (props) => {
+
+
   const DriverDataFromStore = useSelector((state) => state.Driver.DriverData);
   const [driverUpdate, setDriverUpdate] = useState(DriverDataFromStore);
+  const [drive, setDrive] = useState(new Driver());
+
   useEffect(() => {
-    setDriverUpdate(DriverDataFromStore);
-  }, [DriverDataFromStore]);
-  // setDriverUpdate(DriverDataFromStore)
-  const [driverId, setDriverId] = useState("");
-  const dispatch = useDispatch();
-  const handleViewDriver = (evt) => {
-    setDriverId(evt.target.value);
-  };
-  const submitViewDriver = (evt) => {
-    evt.preventDefault();
-    viewDriver(driverId)
+
+    console.log("AGAM: ", props.id.driverId)
+    viewDriver(props.id.driverId)
       .then((response) => {
         dispatch(getDriverById(response.data));
+        setDriverUpdate(DriverDataFromStore);
+        setDrive(response.data)
+        console.log("DATA: ", response.data)
       })
       .catch(() => {
-        alert(`Driver with Id ${driverId} not found`);
+        alert(`Driver with Id ${props.id.driverId} not found`);
       });
-    setDriverId("");
-  };
+    console.log("Sajal: ", DriverDataFromStore)
+  }, []);
+
+  // setDriverUpdate(DriverDataFromStore)
+  // const [driverId, setDriverId] = useState("");
+  const dispatch = useDispatch();
+  // const handleViewDriver = (evt) => {
+  //   // setDriverId(evt.target.value);
+  // };
+  // const submitViewDriver = (evt) => {
+  //   evt.preventDefault();
+
+  //   setDriverId("");
+  // };
   const handleUpdate = (e) => {
     e.preventDefault();
-    setDriverUpdate({
-      ...driverUpdate,
+    setDrive({
+      ...drive,
       [e.target.name]: e.target.value,
     });
   };
   const submitUpdateDriver = (evt) => {
     console.log(driverUpdate);
     evt.preventDefault();
-    console.log(driverUpdate);
-    updateDriver(driverUpdate)
+    console.log(drive);
+    updateDriver(drive)
       .then((response) => {
         dispatch(setDriverList(response.data));
         alert("Driver Updated");
@@ -50,72 +64,87 @@ const ViewDriver = () => {
 
   return (
     <div className="container">
-      <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
-        <p>Find a Driver</p>
-        <div>
-          <form className="form form-group">
-            <input
-              type="text"
-              className="form-control mb-3 mt-3"
-              id="driverId"
-              value={driverId}
-              placeholder="Enter Driver Id"
-              onChange={handleViewDriver}
-              autoFocus
-            />
-            <input
-              type="submit"
-              className="form-control mb-3 mt-3 btn btn-primary"
-              value="Get Driver"
-              onClick={submitViewDriver}
-            />
-          </form>
-        </div>
-        <div>
-          {DriverDataFromStore.driverId && (
-            <div>
-              <label >Driver Name</label>
+      <center>
+
+        <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
+          {/* <p>Find a Driver</p>
+          <div>
+            <form className="form form-group">
               <input
                 type="text"
-                name="driverName"
-                className="form-control"
-                onChange={handleUpdate}
-                value={driverUpdate.driverName}
+                className="form-control mb-3 mt-3"
+                id="driverId"
+                value={driverId}
+                placeholder="Enter Driver Id"
+                onChange={handleViewDriver}
+                autoFocus
               />
-              <label >License Number</label>
-              <input
-                type="text"
-                name="licenseNo"
-                className="form-control"
-                onChange={handleUpdate}
-                value={driverUpdate.licenseNo}
-              />
-              <label >Driver Rating</label>
-              <input
-                type="text"
-                name="rating"
-                className="form-control"
-                onChange={handleUpdate}
-                value={driverUpdate.rating}
-              />
-               <label >Cab Id</label>
-              <input
-                type="text"
-                name="rating"
-                className="form-control"
-                // onChange={handleUpdate}
-                value={driverUpdate.cab.cabId}
-                disabled
-              />
-              
               <input
                 type="submit"
-                className="btn btn-success form-control mt-3"
-                value="Update"
-                onClick={submitUpdateDriver}
+                className="form-control mb-3 mt-3 btn btn-primary"
+                value="Get Driver"
+                onClick={submitViewDriver}
               />
+            </form>
+          </div> */}
+          <div>
+            <div className="row">
+              <h1 className="text-muted">Update Driver</h1>
+            </div>
+            {drive.driverId && (
+              <div>
+                <label >Driver Name</label>
+                <input
+                  type="text"
+                  name="driverName"
+                  className="form-control"
+                  onChange={handleUpdate}
+                  value={drive.driverName}
+                />
+                <label >License Number</label>
+                <input
+                  type="text"
+                  name="licenseNo"
+                  className="form-control"
+                  onChange={handleUpdate}
+                  value={drive.licenseNo}
+                />
+                <label >Driver Rating</label>
+                <input
+                  type="text"
+                  name="rating"
+                  className="form-control"
+                  onChange={handleUpdate}
+                  value={drive.rating}
+                />
+                <label >Cab Id</label>
+                <input
+                  type="text"
+                  name="rating"
+                  className="form-control"
+                  // onChange={handleUpdate}
+                  value={drive.cab.cabId}
+                  disabled
+                />
 
-              {/* <p className="text-primary text-center font-weight-bold lead">
+                <div className="flex">
+                  <input
+                    type="submit"
+                    className="btn btn-success form-control mt-3"
+                    value="Update"
+                    onClick={submitUpdateDriver}
+                  />
+                  <input
+                    type="submit"
+                    className="btn btn-danger form-control mt-3"
+                    value="Cancel"
+                    onClick={props.back}
+                  />
+
+
+                </div>
+
+                {/* <p className="text-primary text-center font-weight-bold lead">
                 Driver Details
               </p>
               <p>Driver id: {DriverDataFromStore.driverId}</p>
@@ -144,11 +173,12 @@ const ViewDriver = () => {
                   </p>
                 </div>
               )} */}
-            </div>
-          )}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </div>
+      </center>
+    </div >
   );
 };
 

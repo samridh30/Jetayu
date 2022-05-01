@@ -33,8 +33,8 @@ const ViewCabsofType = () => {
           className="form-select col-md-3 px-2 w-100 m-auto mb-2"
           value={type}
           onChange={handletripTypeData}
-          name="cabType"
-          placeholder="CabType"
+          name="carType"
+          placeholder="carType"
         >
           <option value="" selected>
             Choose Cab Type...
@@ -68,6 +68,7 @@ const ViewCabsofType = () => {
                 <td>{e.carType}</td>
                 <td>{e.perKmRate}</td>
                 <td>{e.status.toString()}</td>
+                
               </tr>
             ))}
           </tbody>

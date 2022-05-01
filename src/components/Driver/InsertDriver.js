@@ -38,7 +38,6 @@ const InsertDriver = () => {
   return (
     <div className="container">
       <center>
-
         {/* <p className="display-4 text-primary">Driver Component</p> */}
         <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
           <p>Add New Driver</p>

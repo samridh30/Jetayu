@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Customer from "../../Model/Customer";
 import { updateCustomerService } from "../../services/CustomerService";
+import DisableCustomer from './DisableCustomer'
 
 const UpdateCustomer = () => {
   const [updatecustomerstate, setupdatecustomerstate] = useState(
@@ -39,7 +40,7 @@ const UpdateCustomer = () => {
         <div className="card-body text-left  roundered col-md-auto mb-10">
           <div>
             <h4 className="card-header">
-              <center>Update Details </center>
+              <center>View Details </center>
             </h4>
             {/* <label>Customer Id</label>
             <input
@@ -90,6 +91,7 @@ const UpdateCustomer = () => {
             />
           </div>
         </div>
+        <DisableCustomer />
       </div>
     </div>
   );

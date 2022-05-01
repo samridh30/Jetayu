@@ -14,12 +14,14 @@ import ViewBestDrivers from "../components/Driver/ViewBestDrivers";
 import UpdateDriver from "../components/Driver/UpdateDriver";
 import ViewCustomer from "../components/Customer/ViewCustomer";
 import UpdateCustomer from "../components/Customer/UpdateCustomer";
+
 import ViewAllCustomers from "../components/Customer/ViewAllCustomers";
 import DisableCustomer from "../components/Customer/DisableCustomer";
 import InsertCab from "../components/Cab/InsertCab";
 import UpdateCab from "../components/Cab/UpdateCab";
 // import ViewAllCabs from '../components/Cab/ViewAllCabs';
 import ViewCabsofType from "../components/Cab/ViewCabsofType";
+
 // import CountCabsofType from '../components/Cab/CountCabsOfType';
 
 // import ViewCabsofType from '../components/Cab/ViewCabsofType';
@@ -86,6 +88,7 @@ const Routes = () => {
               <Route path="/book">
                 <Booktrip />
               </Route>
+
 
 
               <Route path="/insertCab">
