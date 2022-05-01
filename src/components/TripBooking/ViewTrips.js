@@ -49,7 +49,8 @@ const ViewTrips = (props) => {
     viewDriver: false,
     updateDriver: false,
     addCab: false,
-    viewCab: false
+    viewCab: false,
+    viewType: false
   })
 
   // const [showAdmin, setShowAdmin] = useState({
@@ -630,6 +631,28 @@ const ViewTrips = (props) => {
                       View All Cab
                     </a>
                   </li>
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={() =>
+                        setshow({
+                          // getTrip: false,
+                          // update: false,
+                          // endTrip: false,
+                          // bookingdetails: false,
+                          // viewCust: false,
+                          // updateCust: false,
+                          // allTrips: false,
+                          // addDriver: false,
+                          viewType: true
+                        })
+                      }
+                    >
+                      View By Type
+                    </a>
+                  </li>
 
                 </ul>
               </li>
@@ -694,7 +717,8 @@ const ViewTrips = (props) => {
           })} />}
 
         {show.addCab && <InsertCab />}
-        {show.viewCab && <ViewCabsofType />}
+        {show.viewCab && <ViewAllCabs />}
+        {show.viewType && <ViewCabsofType />}
 
         {/* {show.getTrip && (
         <div className="col-lg-6">
