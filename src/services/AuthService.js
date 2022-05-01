@@ -1,28 +1,28 @@
-import axios from 'axios';
+import axios from "axios";
 
 const springBootAppUrl = `http://localhost:8088/`;
 
 const registerService = (appUser) => {
-        console.log(appUser);
-        return axios.post(`${springBootAppUrl}Customer/register`, appUser);
-}
+  console.log(appUser);
+  return axios.post(`${springBootAppUrl}Customer/register`, appUser);
+};
 
 const loginService = (appUser) => {
-        console.log(appUser);
-        let temp = axios.post(`${springBootAppUrl}Customer/login`, appUser);
-        console.log(temp)
-        return temp;
-}
+  console.log(appUser);
+  let temp = axios.post(`${springBootAppUrl}Customer/login`, appUser);
+  console.log(temp);
+  return temp;
+};
 
 const logoutService = () => {
-        return axios.get(`${springBootAppUrl}Customer/logout`);
-}
+  return axios.get(`${springBootAppUrl}Customer/logout`);
+};
 
 const viewCustomer = () => {
-        // console.log(appUser);
-        let temp = axios.get(`${springBootAppUrl}Customer/viewCustomer`);
-        console.log(temp)
-        return temp;
-}
+  // console.log(appUser);
+  let temp = axios.get(`${springBootAppUrl}Customer/viewCustomer`);
+  console.log(temp);
+  return temp;
+};
 
 export { registerService, loginService, logoutService, viewCustomer };

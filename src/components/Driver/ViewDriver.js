@@ -7,9 +7,9 @@ import { viewDriver } from "../../services/DriverService";
 const ViewDriver = () => {
   const DriverDataFromStore = useSelector((state) => state.Driver.DriverData);
   const [driverUpdate, setDriverUpdate] = useState(DriverDataFromStore);
-  useEffect(()=>{
-    setDriverUpdate(DriverDataFromStore)
-  },[DriverDataFromStore])
+  useEffect(() => {
+    setDriverUpdate(DriverDataFromStore);
+  }, [DriverDataFromStore]);
   // setDriverUpdate(DriverDataFromStore)
   const [driverId, setDriverId] = useState("");
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const ViewDriver = () => {
     });
   };
   const submitUpdateDriver = (evt) => {
-    console.log(driverUpdate)
+    console.log(driverUpdate);
     evt.preventDefault();
     console.log(driverUpdate);
     updateDriver(driverUpdate)
