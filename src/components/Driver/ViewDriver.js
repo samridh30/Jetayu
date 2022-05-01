@@ -60,6 +60,7 @@ const ViewDriver = (props) => {
       .catch(() => {
         alert("Driver cannot be updated ");
       });
+    props.back()
   };
 
   return (

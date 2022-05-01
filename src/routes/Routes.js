@@ -54,20 +54,20 @@ const Routes = () => {
                 <ViewAllCustomers />
               </Route>
 
-              <Route path="/Customer/Disable">
+              {/* <Route path="/Customer/Disable">
                 <DisableCustomer />
-              </Route>
+              </Route> */}
               <Route path="/cab/viewByType">
                 <ViewCabsofType />
               </Route>
               {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
 
 
-                            <Route path="/Customer/Disable">< DisableCustomer /></Route>
-                            {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
-                            {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
+              {/* <Route path="/Customer/Disable">< DisableCustomer /></Route> */}
+              {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
+              {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
 
-              <Route path="/driver">
+              {/* <Route path="/driver">
                 <ViewDriver />
               </Route>
               <Route path="/driver1">
@@ -81,27 +81,27 @@ const Routes = () => {
               </Route>
               <Route path="/driver4">
                 <UpdateDriver />
-              </Route>
+              </Route> */}
               <Route exact path="/login">
                 <Login />
               </Route>
-              <Route path="/book">
+              {/* <Route path="/book">
                 <Booktrip />
-              </Route>
+              </Route> */}
 
 
 
-              <Route path="/insertCab">
+              {/* <Route path="/insertCab">
                 <InsertCab />
               </Route>
               <Route path="/updateCab">
                 <UpdateCab />
-              </Route>
+              </Route> */}
               {/* <Route path="/viewCabs"><ViewAllCabs /></Route>
                             <Route path="/viewCabsOfType"><ViewCabsofType /></Route>
                             <Route path="/countCabsOfType"><CountCabsofType /></Route> */}
 
-              {/* <Route path="/view" ><ViewTrips /></Route> */}
+              <Route path="/dashboard" ><ViewTrips /></Route>
               {/* <Route path="/endTrip"><EndTrip /></Route> */}
               {/* <Route path="/dashboard"><Dashboard /></Route> */}
             </Switch>

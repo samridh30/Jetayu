@@ -28,6 +28,8 @@ import ViewDriver from "../Driver/ViewDriver";
 import InsertCab from "../Cab/InsertCab";
 import ViewAllCabs from '../Cab/ViewAllCabs';
 import ViewCabsofType from '../Cab/ViewCabsofType';
+import UpdateCab from '../Cab/UpdateCab';
+
 
 
 
@@ -50,7 +52,8 @@ const ViewTrips = (props) => {
     updateDriver: false,
     addCab: false,
     viewCab: false,
-    viewType: false
+    viewType: false,
+    ViewAllCust: false
   })
 
   // const [showAdmin, setShowAdmin] = useState({
@@ -159,6 +162,15 @@ const ViewTrips = (props) => {
     setDriverId(drive);
     setshow({
       updateDriver: true
+    })
+
+  }
+
+  const updateCab = (drive) => {
+    // console.log("Driver ID: ", drive)
+    setDriverId(drive);
+    setshow({
+      updateCab: true
     })
 
   }
@@ -444,18 +456,22 @@ const ViewTrips = (props) => {
               {/* <hr /> */}
               {/* <br /> */}
 
-              {/* <li style={{ marginTop: "-10px" }}>
+              <li style={{ marginTop: "-10px" }}>
                 <a
                   // type="submit"
                   // className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
                   data-toggle="collapse"
                   data-target="#gettrips"
                   value="Get Trips"
-                  onClick={submitGetAllTripById}
+                  onClick={() => {
+                    setshow({
+                      ViewAllCust: true
+                    })
+                  }}
                 >
-                  All Trips
+                  All Customers
                 </a>
-              </li> */}
+              </li>
               <center>
                 <hr className="w-75" />
               </center>
@@ -693,6 +709,7 @@ const ViewTrips = (props) => {
             </ul>
           </nav>
         )}
+        {show.ViewAllCust && <ViewAllCustomers />}
         {show.getTrip && <TripPagination />}
         {show.update && <UpdateTrip />}
         {show.bookingdetails && <BookingTripDetails />}
@@ -713,12 +730,24 @@ const ViewTrips = (props) => {
             // updateCust: false,
             // allTrips: false,
             // addDriver: false,
-            viewCab: true
+            viewDriver: true
           })} />}
 
         {show.addCab && <InsertCab />}
-        {show.viewCab && <ViewAllCabs />}
+        {show.viewCab && <ViewAllCabs dash={updateCab} />}
         {show.viewType && <ViewCabsofType />}
+        {show.updateCab && <UpdateCab id={driverId} back={() =>
+          setshow({
+            // getTrip: false,
+            // update: false,
+            // endTrip: false,
+            // bookingdetails: false,
+            // viewCust: false,
+            // updateCust: false,
+            // allTrips: false,
+            // addDriver: false,
+            viewCab: true
+          })} />}
 
         {/* {show.getTrip && (
         <div className="col-lg-6">

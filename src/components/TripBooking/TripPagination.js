@@ -5,7 +5,7 @@ import "../../styles/Trip.css";
 
 const pagesize = 30;
 
-const Pagination = () => {
+const Pagination = (props) => {
   const allTripsListStore = useSelector((state) => state.Trip.AllTripsList);
   // const [allTripsListStore, setAllTripsListStore] = useSelector((state) => state.Trip.AllTripsList)
   const [paginatedPosts, setpaginatedPosts] = useState([]);
@@ -52,6 +52,7 @@ const Pagination = () => {
                 <th>driver Name</th>
                 <th>driver rating</th>
                 <th>Cab Type</th>
+                <th>View By Id</th>
               </tr>
             </thead>
 
@@ -66,8 +67,10 @@ const Pagination = () => {
                   <td>{e.driver.driverName}</td>
                   <td>{e.driver.rating}</td>
                   <td>{e.driver.cab.carType}</td>
+                  <td><button onClick={() => props.dash} className="btn btn-danger py-0">View</button></td>
                 </tr>
               ))}
+
             </tbody>
           </table>
           {/* /* <nav className="d-flex justify-content-center mt-1">

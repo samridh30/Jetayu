@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cab from "../Model/Cab";
+
+
 const CabSlice = createSlice({
   name: "Cab",
   initialState: {

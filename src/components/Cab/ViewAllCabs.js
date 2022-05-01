@@ -24,7 +24,7 @@ import { viewAllCabs } from "../../services/CabService";
 //   };
 
 
-const ViewAllCabs = () => {
+const ViewAllCabs = (props) => {
 
   const [AllCabs, setAllCabs] = useState([]);
 
@@ -86,7 +86,7 @@ const ViewAllCabs = () => {
                               <td>{e.cab.status.toString()}</td>
                             </>
                           }
-                          <td></td>
+                          <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
                         </tr>
                       </tbody>
                     ))}

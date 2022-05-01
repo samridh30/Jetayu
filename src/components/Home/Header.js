@@ -64,7 +64,7 @@ const Header = () => {
             <div className="collapse navbar-collapse" id="navbarResponsive">
               <ul className="navbar-nav ml-auto">
                 <li>
-                  <Link className="nav-link" onClick={Dash}>
+                  <Link className="nav-link" to="/dashboard" onClick={Dash}>
                     Dashboard
                   </Link>
                 </li>

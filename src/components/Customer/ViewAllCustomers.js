@@ -3,11 +3,13 @@ import Customer from "../../Model/Customer";
 import { useDispatch, useSelector } from "react-redux";
 import { viewAllCustomersCustomerService } from "../../services/CustomerService";
 import "../../styles/Customer.css";
+import "../../styles/Trip.css"
+
 
 const ViewAllCustomers = () => {
   const [AllCustomers, setallCustomers] = useState([]);
 
-  const getAllCustomers = (e) => {
+  useEffect(() => {
     viewAllCustomersCustomerService()
       .then((response) => {
         setallCustomers(response.data);
@@ -15,24 +17,27 @@ const ViewAllCustomers = () => {
       .catch(() => {
         alert("Error Occured");
       });
-  };
+  }, [])
+
+  // const getAllCustomers = (e) => {
+  // };
 
   return (
     <div>
-      <input
+      {/* <input
         type="submit"
         className="btn btn-success mt-3"
         value="Customers"
         onClick={getAllCustomers}
-      />
+      /> */}
       <div className="">
         {AllCustomers.length > 1 && (
-          <div className="m-auto col-lg-10">
-            <label className="text-primary">
+          <div className="m-auto scrollit">
+            {/* <label className="text-primary">
               <h3>Customers </h3>
-            </label>
-            <div class="scrollit">
-              <table className="table table-bordered table-light table-striped overflow-auto">
+            </label> */}
+            <div class="">
+              <table className="table table-bordered table-light">
                 <thead className="thead-dark">
                   <tr>
                     <th>customerId</th>
@@ -55,7 +60,7 @@ const ViewAllCustomers = () => {
                       <td>{e.mobileNumber}</td>
                       <td>{e.email}</td>
                       <td>{e.role}</td>
-                      <td className="btn">{e.status}</td>
+                      <td className={`${e.status === "Active" ? "text-success" : "text-danger"}`}>{e.status}</td>
                     </tr>
                   ))}
                 </tbody>
