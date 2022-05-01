@@ -90,7 +90,7 @@ const ViewDriver = () => {
                 onChange={handleUpdate}
                 value={driverUpdate.licenseNo}
               />
-              <label >Driver Name</label>
+              <label >Driver Rating</label>
               <input
                 type="text"
                 name="rating"
@@ -98,6 +98,16 @@ const ViewDriver = () => {
                 onChange={handleUpdate}
                 value={driverUpdate.rating}
               />
+               <label >Cab Id</label>
+              <input
+                type="text"
+                name="rating"
+                className="form-control"
+                // onChange={handleUpdate}
+                value={driverUpdate.cab.cabId}
+                disabled
+              />
+              
               <input
                 type="submit"
                 className="btn btn-success form-control mt-3"
