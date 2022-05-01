@@ -19,6 +19,7 @@ import { useHistory } from "react-router-dom";
 import { logoutService } from "../../services/AuthService";
 import ViewCustomer from "../Customer/ViewCustomer";
 import UpdateCustomer from "../Customer/UpdateCustomer";
+import ViewAllCustomers from "../Customer/ViewAllCustomers";
 
 const ViewTrips = (props) => {
   useEffect(() => {
@@ -37,7 +38,12 @@ const ViewTrips = (props) => {
     bookingdetails: false,
     endTrip: false,
     viewCust: true,
-    updateCust: false,})
+    updateCust: false,
+  })
+
+  const [showAdmin, setShowAdmin] = useState({
+    allTrips: false
+  })
 
 
   const [user, setUser] = useState();
@@ -264,7 +270,26 @@ const ViewTrips = (props) => {
               <center>
                 <hr className="w-75" />
               </center>
-              <li class="active">
+              <li>
+                <a
+                  // type="submit"
+                  // className="form-control mb-3 mt-3 btn btn-primary"
+                  value="Booking details"
+                  onClick={() =>
+                    setshow({
+                      getTrip: false,
+                      update: false,
+                      endTrip: false,
+                      bookingdetails: false,
+                      viewCust: false,
+                      updateCust: true,
+                    })
+                  }
+                >
+                  Update
+                </a>
+              </li>
+              {/* <li class="active">
                 <a
                   href="#homeSubmenu"
                   data-toggle="collapse"
@@ -313,7 +338,7 @@ const ViewTrips = (props) => {
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
             <ul className="list-unstyled CTAs" style={{ marginTop: "-30px" }}>
               <li className="w-100">
@@ -329,39 +354,163 @@ const ViewTrips = (props) => {
             </ul>
           </nav>
         ) : (
-          <div>
-            <input
-              type="text"
-              className="form-control mb-3 mt-3  href=gettrips col-md-6 m-auto "
-              value={CusId}
-              placeholder="Customer Id"
-              onChange={handletripTypeByIdData}
-            />
+          // <div>
+          //   <input
+          //     type="text"
+          //     className="form-control mb-3 mt-3  href=gettrips col-md-6 m-auto "
+          //     value={CusId}
+          //     placeholder="Customer Id"
+          //     onChange={handletripTypeByIdData}
+          //   />
 
-            <input
-              type="submit"
-              placeholder="Get Trips"
-              className="btn-success col-md-3 px-2 py-1 w-100 m-auto mb-1"
-              value="Get Trips"
-              onClick={submitGetAllTripById}
-            />
-            <input
-              type="submit"
-              className="form-control mb-3 mt-3 btn btn-primary  col-md-4 "
-              href="#AllTrips"
-              data-toggle="collapse"
-              data-target="#AllTrips"
-              value="Trips"
-              onClick={submitGetAllTrip}
-            />
+          //   <input
+          //     type="submit"
+          //     placeholder="Get Trips"
+          //     className="btn-success col-md-3 px-2 py-1 w-100 m-auto mb-1"
+          //     value="Get Trips"
+          //     onClick={submitGetAllTripById}
+          //   />
+          //   <input
+          //     type="submit"
+          //     className="form-control mb-3 mt-3 btn btn-primary  col-md-4 "
+          //     href="#AllTrips"
+          //     data-toggle="collapse"
+          //     data-target="#AllTrips"
+          //     value="Trips"
+          //     onClick={submitGetAllTrip}
+          //   />
 
-          </div>
+          // </div>
+          <nav id="sidebar" className="">
+            <div className="sidebar-header">
+              <h3 onClick={() => props.fun}>JATAYU</h3>
+            </div>
+            <hr />
+
+            <ul
+              className="list-unstyled components"
+              style={{ marginTop: "-25px" }}
+            >
+              <div style={{ marginTop: "-10px" }}>
+                <p
+                  style={{ fontSize: "30px", fontWeight: "lighter" }}
+                  className="text-light "
+                >
+                  {/* {user.userName} */}ADIMIN
+                </p>
+                <p
+                  style={{ fontSize: "15px", marginTop: "-40px" }}
+                  className="font-weight-lighter"
+                >
+                  {/* {user.role} */}
+                </p>
+              </div>
+              {/* <hr /> */}
+              {/* <br /> */}
+
+              <li style={{ marginTop: "-10px" }}>
+                <a
+                  // type="submit"
+                  // className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
+                  data-toggle="collapse"
+                  data-target="#gettrips"
+                  value="Get Trips"
+                  onClick={submitGetAllTripById}
+                >
+                  All Trips
+                </a>
+              </li>
+              <center>
+                <hr className="w-75" />
+              </center>
+              <li>
+                <a
+                  href="#pageSubmenu"
+                  data-toggle="collapse"
+                  aria-expanded="false"
+                  class="dropdown-toggle"
+                >
+                  Current Trip
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={bookingdetails}
+                    >
+                      View
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={updateTrip}
+                    >
+                      Update
+                    </a>
+                  </li>
+                  <li className="p-3 text-light">
+                    <a
+                      className="bg-danger text-light CTAs"
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
+                      data-toggle="collapse"
+                      data-target="#gettrips"
+                      value="End Trip"
+                      onClick={endCab}
+                    >
+                      End
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <center>
+                <hr className="w-75" />
+              </center>
+              <li>
+                <a
+                  // type="submit"
+                  // className="form-control mb-3 mt-3 btn btn-primary"
+                  value="Booking details"
+                  onClick={() =>
+                    setshow({
+                      getTrip: false,
+                      update: false,
+                      endTrip: false,
+                      bookingdetails: false,
+                      viewCust: false,
+                      updateCust: true,
+                    })
+                  }
+                >
+                  Update
+                </a>
+              </li>
+            </ul>
+            <ul className="list-unstyled CTAs" style={{ marginTop: "-30px" }}>
+              <li className="w-100">
+
+                <a
+                  className="download bg-danger text-light"
+                  onClick={logoutMethod}
+                >
+                  Logout
+                </a>
+
+              </li>
+            </ul>
+          </nav>
         )}
         {show.getTrip && <TripPagination />}
         {show.update && <UpdateTrip />}
         {show.bookingdetails && <BookingTripDetails />}
         {show.viewCust && <ViewCustomer />}
         {show.updateCust && <UpdateCustomer />}
+        {showAdmin.allTrips && <ViewAllCustomers />}
 
         {/* {show.getTrip && (
         <div className="col-lg-6">
