@@ -40,12 +40,19 @@ const EndTrip = () => {
         >
           <h4 className="=card-title font-weight-lighter p-2">
             Booking Info
-            <img
-              className="float-right"
-              src={require(`./hamburger.png`)}
-              height="30"
-              width="30"
-            />
+            <button
+              style={{ border: 0 }}
+              className="float-right shadow-none"
+              href="#CabDetails"
+              data-toggle="collapse"
+            >
+              <img
+                className="float-right col-md-12"
+                src={require(`./hamburger.png`)}
+                height="30"
+                width="30"
+              />
+            </button>
           </h4>
           <div className="card-body">
             <form>
@@ -92,6 +99,14 @@ const EndTrip = () => {
           </div>
         </div>
       </div>
+      <div
+              className=" card collapse mt-3 col-md-6 m-auto "
+              id="CabDetails"
+            >
+              <p className=" text-warning">DriverName- <strong className="text-success">{CurrentTripListStore.driver.driverName}</strong></p>
+              <p className=" text-warning">CabType- <strong className="text-success">{CurrentTripListStore.driver.cab.carType}</strong> </p>
+              <p className="text-warning">Rate Driver- </p>
+            </div>
     </div>
   );
 };

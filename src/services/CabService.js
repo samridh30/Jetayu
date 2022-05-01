@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-// Create services for other components in this way. 
+// Create services for other components in this way.
 
 const springBootAppUrl = `http://localhost:8088/cab`;
 // const getCabByIdService= (cabId) => {
@@ -9,8 +9,8 @@ const springBootAppUrl = `http://localhost:8088/cab`;
 // }
 
 const insertCab = (Cab) => {
-    return axios.post(`${springBootAppUrl}/insert-cab`,Cab);
-}
+  return axios.post(`${springBootAppUrl}/insert-cab`, Cab);
+};
 const updateCab = (Cab) => {
     // console.log(`getCabByIdService`);
     return axios.put(`${springBootAppUrl}/update-cab`,Cab);
@@ -29,3 +29,4 @@ const viewAllCabs = (Cab) => {
 //     return axios.get(`${springBootAppUrl}/countCabsOfType/${cabType}`);
 // }
 export {  insertCab, updateCab, deleteCab,viewAllCabs, viewCabsofType };
+
