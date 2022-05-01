@@ -3,11 +3,12 @@ import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 // import AppUser from '../models/AppUser';
 import { registerService } from "../../services/AuthService";
+import Customer from "../../Model/Customer";
 
 const Register = () => {
   const history = useHistory();
 
-  const [appUser, setAppUser] = useState({});
+  const [appUser, setAppUser] = useState(new Customer());
   const [credentials, setCredentials] = useState("");
 
   const handleAppUser = (event) => {
@@ -74,7 +75,7 @@ const Register = () => {
 
               <input
                 type="number"
-                name="phone"
+                name="mobileNumber"
                 id="phone"
                 className="form-control mb-3"
                 placeholder="Enter Phone number"
@@ -83,7 +84,7 @@ const Register = () => {
               />
               <input
                 type="text"
-                name="Address"
+                name="address"
                 id="address"
                 className="form-control mb-3"
                 placeholder="Enter Address"

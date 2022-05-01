@@ -76,7 +76,7 @@ const ViewAllDrivers = (props) => {
                                 <td>{e.cab.perKmRate}</td>
                               </>
                             )}
-                            <td><button onClick={() => props.dash(e.driverId)} className="btn btn-danger py-0">Edit</button></td>
+                            <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
                           </tr>
                         </tbody>
                       ))}

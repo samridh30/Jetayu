@@ -13,11 +13,11 @@ const insertCab = (Cab) => {
 };
 const updateCab = (Cab) => {
   // console.log(`getCabByIdService`);
-  return axios.get(`${springBootAppUrl}update-cab`, Cab);
+  return axios.get(`${springBootAppUrl}/update-cab`, Cab);
 };
 const deleteCab = () => {
   // console.log(`getCabByIdService`);
-  return axios.get(`${springBootAppUrl}delete-cab`);
+  return axios.get(`${springBootAppUrl}/delete-cab`);
 };
 const viewCabsofType = (cabType) => {
   return axios.get(`${springBootAppUrl}/viewCabsOfType/${cabType}`);
