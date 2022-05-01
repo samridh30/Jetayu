@@ -47,7 +47,7 @@ const Routes = () => {
                             <Route path="/Customer/viewAll"><ViewAllCustomers /></Route>
 
                             <Route path="/Customer/Disable">< DisableCustomer /></Route>
-                            <Route path="/cab/viewByType"><ViewCabsofType /></Route>
+                            {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
                             {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
 
 

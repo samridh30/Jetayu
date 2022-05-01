@@ -74,6 +74,7 @@ const ViewDriver = () => {
         <div>
           {DriverDataFromStore.driverId && (
             <div>
+              <label >Driver Name</label>
               <input
                 type="text"
                 name="driverName"
@@ -81,6 +82,7 @@ const ViewDriver = () => {
                 onChange={handleUpdate}
                 value={driverUpdate.driverName}
               />
+              <label >License Number</label>
               <input
                 type="text"
                 name="licenseNo"
@@ -88,6 +90,7 @@ const ViewDriver = () => {
                 onChange={handleUpdate}
                 value={driverUpdate.licenseNo}
               />
+              <label >Driver Name</label>
               <input
                 type="text"
                 name="rating"
@@ -102,7 +105,7 @@ const ViewDriver = () => {
                 onClick={submitUpdateDriver}
               />
 
-              <p className="text-primary text-center font-weight-bold lead">
+              {/* <p className="text-primary text-center font-weight-bold lead">
                 Driver Details
               </p>
               <p>Driver id: {DriverDataFromStore.driverId}</p>
@@ -130,7 +133,7 @@ const ViewDriver = () => {
                     {DriverDataFromStore.cab.perKmRate}
                   </p>
                 </div>
-              )}
+              )} */}
             </div>
           )}
         </div>
