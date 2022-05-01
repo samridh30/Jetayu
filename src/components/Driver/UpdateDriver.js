@@ -3,15 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateDriver } from "../../services/DriverService";
 import { setDriverList } from "../../redux/DriverSlice";
 
-const UpdateDriver = () => {
+const UpdateDriver = (props) => {
   const CurrentDriverListStore = useSelector(
     (state) => state.Driver.DriverData
   );
+  const [driverUpdate, setDriverUpdate] = useState(props.driverId);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     console.log(CurrentDriverListStore);
+
   }, []);
-  const [driverUpdate, setDriverUpdate] = useState(CurrentDriverListStore);
-  const dispatch = useDispatch();
 
   const handleUpdate = (e) => {
     e.preventDefault();

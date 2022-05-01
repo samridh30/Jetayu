@@ -16,18 +16,24 @@ import { Link } from "react-router-dom";
 import "../../styles/sideNav.css";
 import { useHistory } from "react-router-dom";
 import { logoutService } from "../../services/AuthService";
+
 import ViewCustomer from "../Customer/ViewCustomer";
 import UpdateCustomer from "../Customer/UpdateCustomer";
+import ViewAllCustomers from "../Customer/ViewAllCustomers";
+
+import ViewAllDrivers from "../Driver/ViewAllDrivers";
+import InsertDriver from "../Driver/InsertDriver";
+import ViewDriver from "../Driver/ViewDriver";
+
+import InsertCab from "../Cab/InsertCab";
+import ViewAllCabs from '../Cab/ViewAllCabs';
+
+
+
+
+
 
 const ViewTrips = (props) => {
-  useEffect(() => {
-    if (!JSON.parse(localStorage.getItem("loggedInUser"))) {
-      history.push("/");
-    } else {
-      setRole(JSON.parse(localStorage.getItem("loggedInUser")).role);
-      setUser(JSON.parse(localStorage.getItem("loggedInUser")));
-    }
-  }, []);
   const history = useHistory();
 
   const [show, setshow] = useState({
@@ -37,13 +43,37 @@ const ViewTrips = (props) => {
     endTrip: false,
     viewCust: true,
     updateCust: false,
-  });
+    allTrips: false,
+    addDriver: false,
+    viewDriver: false,
+    updateDriver: false,
+    addCab: false,
+    viewCab: false
+  })
+
+  // const [showAdmin, setShowAdmin] = useState({
+  //   allTrips: false,
+  //   addDriver: false
+  // })
+
 
   const [user, setUser] = useState();
   const [role, setRole] = useState();
   const [CusId, setCusId] = useState("");
+  const [driverId, setDriverId] = useState();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(JSON.parse(localStorage.getItem('loggedInUser')))
+    setRole(JSON.parse(localStorage.getItem("loggedInUser")).role);
+    setUser(JSON.parse(localStorage.getItem("loggedInUser")));
+    console.log(user, role)
+    // if (JSON.parse(localStorage.getItem("loggedInUser")).role !== null) {
+    // } else {
+    //   history.push("/");
+    // }
+  }, []);
 
   const handletripTypeByIdData = (e) => {
     console.log(e.target.value);
@@ -80,14 +110,20 @@ const ViewTrips = (props) => {
     });
     evt.preventDefault();
     console.log(CusId);
-    viewTripByIdService(CusId)
-      .then((response) => {
-        console.log(response.data);
-        dispatch(setAllTripsList(response.data));
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    if (CusId) {
+      viewTripByIdService(CusId)
+        .then((response) => {
+          console.log(response.data);
+          dispatch(setAllTripsList(response.data));
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }
+    else {
+      alert("Enter Customer ID to get Trips")
+    }
+
   };
 
   const endCab = (e) => {
@@ -115,6 +151,24 @@ const ViewTrips = (props) => {
         alert("No trips to end");
       });
   };
+
+  const updateDriver = (drive) => {
+    console.log("Driver ID: ", drive)
+    setDriverId(drive);
+    setshow({
+      getTrip: false,
+      update: false,
+      bookingdetails: false,
+      endTrip: false,
+      viewCust: false,
+      updateCust: false,
+      allTrips: false,
+      addDriver: false,
+      viewDriver: false,
+      updateDriver: true
+    })
+
+  }
 
   const updateTrip = (s) => {
     setshow({
@@ -262,7 +316,26 @@ const ViewTrips = (props) => {
               <center>
                 <hr className="w-75" />
               </center>
-              <li class="active">
+              <li>
+                <a
+                  // type="submit"
+                  // className="form-control mb-3 mt-3 btn btn-primary"
+                  value="Booking details"
+                  onClick={() =>
+                    setshow({
+                      getTrip: false,
+                      update: false,
+                      endTrip: false,
+                      bookingdetails: false,
+                      viewCust: false,
+                      updateCust: true,
+                    })
+                  }
+                >
+                  Update
+                </a>
+              </li>
+              {/* <li class="active">
                 <a
                   href="#homeSubmenu"
                   data-toggle="collapse"
@@ -311,7 +384,7 @@ const ViewTrips = (props) => {
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
             <ul className="list-unstyled CTAs" style={{ marginTop: "-30px" }}>
               <li className="w-100">
@@ -325,38 +398,300 @@ const ViewTrips = (props) => {
             </ul>
           </nav>
         ) : (
-          <div>
-            <input
-              type="text"
-              className="form-control mb-3 mt-3  href=gettrips col-md-6 m-auto "
-              value={CusId}
-              placeholder="Customer Id"
-              onChange={handletripTypeByIdData}
-            />
+          // <div>
+          // <input
+          //   type="text"
+          //   className="form-control mb-3 mt-3  href=gettrips col-md-6 m-auto "
+          //   value={CusId}
+          //   placeholder="Customer Id"
+          //   onChange={handletripTypeByIdData}
+          // />
+          // <input
+          //   type="submit"
+          //   placeholder="Get Trips"
+          //   className="btn-success col-md-3 px-2 py-1 w-100 m-auto mb-1"
+          //   value="Get Trips"
+          //   onClick={submitGetAllTripById}
+          // />
+          //   <input
+          //     type="submit"
+          //     className="form-control mb-3 mt-3 btn btn-primary  col-md-4 "
+          //     href="#AllTrips"
+          //     data-toggle="collapse"
+          //     data-target="#AllTrips"
+          //     value="Trips"
+          //     onClick={submitGetAllTrip}
+          //   />
 
-            <input
-              type="submit"
-              placeholder="Get Trips"
-              className="btn-success col-md-3 px-2 py-1 w-100 m-auto mb-1"
-              value="Get Trips"
-              onClick={submitGetAllTripById}
-            />
-            <input
-              type="submit"
-              className="form-control mb-3 mt-3 btn btn-primary  col-md-4 "
-              href="#AllTrips"
-              data-toggle="collapse"
-              data-target="#AllTrips"
-              value="Trips"
-              onClick={submitGetAllTrip}
-            />
-          </div>
+          // </div>
+          <nav id="sidebar" className="">
+            <div className="sidebar-header">
+              <h3 onClick={() => props.fun}>JATAYU</h3>
+            </div>
+            <hr />
+
+            <ul
+              className="list-unstyled components"
+              style={{ marginTop: "-25px" }}
+            >
+              <div style={{ marginTop: "-10px" }}>
+                <p
+                  style={{ fontSize: "30px", fontWeight: "lighter" }}
+                  className="text-light "
+                >
+                  {/* {user.userName} */}
+                </p>
+                <p
+                  style={{ fontSize: "15px", marginTop: "-40px" }}
+                  className="font-weight-lighter"
+                >
+                  {/* {user.role} */}
+                </p>
+              </div>
+              {/* <hr /> */}
+              {/* <br /> */}
+
+              {/* <li style={{ marginTop: "-10px" }}>
+                <a
+                  // type="submit"
+                  // className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
+                  data-toggle="collapse"
+                  data-target="#gettrips"
+                  value="Get Trips"
+                  onClick={submitGetAllTripById}
+                >
+                  All Trips
+                </a>
+              </li> */}
+              <center>
+                <hr className="w-75" />
+              </center>
+              <li>
+                <a
+                  href="#pageSubmenu"
+                  data-toggle="collapse"
+                  aria-expanded="false"
+                  class="dropdown-toggle"
+                >
+                  Trips
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+
+                  <li>
+                    <input
+                      type="text"
+                      className="form-control mb-3 mt-3 w-75  href=gettrips col-md-6 m-auto "
+                      value={CusId}
+                      placeholder="Customer Id"
+                      onChange={handletripTypeByIdData}
+                    />
+                    <a
+                      // type="submit"
+                      // placeholder="Get Trips"
+                      // className="btn-success col-md-3 px-2 py-1 w-100 m-auto mb-1"
+                      value="Get Trips"
+                      onClick={submitGetAllTripById}
+                    >Get Trips</a>
+                  </li>
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Get All Trips"
+                      onClick={submitGetAllTrip}
+                    >
+                      All Trips
+                    </a>
+                  </li>
+                  {/* <li className="p-3 text-light">
+                    <a
+                      className="bg-danger text-light CTAs"
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
+                      data-toggle="collapse"
+                      data-target="#gettrips"
+                      value="End Trip"
+                      onClick={endCab}
+                    >
+                      End
+                    </a>
+                  </li> */}
+                </ul>
+              </li>
+              <center>
+                <hr className="w-75" />
+              </center>
+
+
+
+              <li class="active">
+                <a
+                  href="#homeSubmenu"
+                  data-toggle="collapse"
+                  aria-expanded="true"
+                  class="dropdown-toggle"
+                >
+                  Driver
+                </a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={() => {
+                        setshow({
+                          getTrip: false,
+                          update: false,
+                          endTrip: false,
+                          bookingdetails: false,
+                          viewCust: false,
+                          updateCust: false,
+                          allTrips: false,
+                          addDriver: true
+                        })
+                      }
+                      }
+                    >
+                      Add Driver
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={() =>
+                        setshow({
+                          // getTrip: false,
+                          // update: false,
+                          // endTrip: false,
+                          // bookingdetails: false,
+                          // viewCust: false,
+                          // updateCust: false,
+                          // allTrips: false,
+                          // addDriver: false,
+                          viewDriver: true
+                        })
+                      }
+                    >
+                      View All Driver
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+
+
+
+              <li class="active">
+                <a
+                  href="#Submenu"
+                  data-toggle="collapse"
+                  aria-expanded="true"
+                  class="dropdown-toggle"
+                >
+                  Cab
+                </a>
+                <ul class="collapse list-unstyled" id="Submenu">
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={() => {
+                        setshow({
+                          // getTrip: false,
+                          // update: false,
+                          // endTrip: false,
+                          // bookingdetails: false,
+                          // viewCust: false,
+                          // updateCust: false,
+                          // allTrips: false,
+                          addCab: true
+                        })
+                      }
+                      }
+                    >
+                      Add Cab
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      // type="submit"
+                      // className="form-control mb-3 mt-3 btn btn-primary"
+                      value="Booking details"
+                      onClick={() =>
+                        setshow({
+                          // getTrip: false,
+                          // update: false,
+                          // endTrip: false,
+                          // bookingdetails: false,
+                          // viewCust: false,
+                          // updateCust: false,
+                          // allTrips: false,
+                          // addDriver: false,
+                          viewCab: true
+                        })
+                      }
+                    >
+                      View All Cab
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+
+
+
+              <li>
+                <a
+                  // type="submit"
+                  // className="form-control mb-3 mt-3 btn btn-primary"
+                  value="Booking details"
+                  onClick={() =>
+                    setshow({
+                      getTrip: false,
+                      update: false,
+                      endTrip: false,
+                      bookingdetails: false,
+                      viewCust: false,
+                      updateCust: true,
+                    })
+                  }
+                >
+                  Profile
+                </a>
+              </li>
+            </ul>
+            <ul className="list-unstyled CTAs" style={{ marginTop: "-30px" }}>
+              <li className="w-100">
+
+                <a
+                  className="download bg-danger text-light"
+                  onClick={logoutMethod}
+                >
+                  Logout
+                </a>
+
+              </li>
+            </ul>
+          </nav>
         )}
         {show.getTrip && <TripPagination />}
         {show.update && <UpdateTrip />}
         {show.bookingdetails && <BookingTripDetails />}
         {show.viewCust && <ViewCustomer />}
         {show.updateCust && <UpdateCustomer />}
+
+
+        {show.allTrips && <ViewAllCustomers />}
+        {show.addDriver && <InsertDriver />}
+        {show.viewDriver && <ViewAllDrivers test={user} dash={updateDriver} />}
+        {show.updateDriver && <ViewDriver id={driverId} />}
+
+        {show.addCab && <InsertCab />}
+        {show.viewCab && <ViewAllCabs />}
 
         {/* {show.getTrip && (
         <div className="col-lg-6">
