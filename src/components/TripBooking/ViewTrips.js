@@ -27,6 +27,7 @@ import ViewDriver from "../Driver/ViewDriver";
 
 import InsertCab from "../Cab/InsertCab";
 import ViewAllCabs from '../Cab/ViewAllCabs';
+import ViewCabsofType from '../Cab/ViewCabsofType';
 
 
 
@@ -153,18 +154,9 @@ const ViewTrips = (props) => {
   };
 
   const updateDriver = (drive) => {
-    console.log("Driver ID: ", drive)
+    // console.log("Driver ID: ", drive)
     setDriverId(drive);
     setshow({
-      getTrip: false,
-      update: false,
-      bookingdetails: false,
-      endTrip: false,
-      viewCust: false,
-      updateCust: false,
-      allTrips: false,
-      addDriver: false,
-      viewDriver: false,
       updateDriver: true
     })
 
@@ -247,7 +239,7 @@ const ViewTrips = (props) => {
                   style={{ fontSize: "15px", marginTop: "-40px" }}
                   className="font-weight-lighter"
                 >
-                  {user.role}
+                  {/* {user.role} */}
                 </p>
               </div>
               {/* <hr /> */}
@@ -332,7 +324,7 @@ const ViewTrips = (props) => {
                     })
                   }
                 >
-                  Update
+                  Profile
                 </a>
               </li>
               {/* <li class="active">
@@ -688,10 +680,21 @@ const ViewTrips = (props) => {
         {show.allTrips && <ViewAllCustomers />}
         {show.addDriver && <InsertDriver />}
         {show.viewDriver && <ViewAllDrivers test={user} dash={updateDriver} />}
-        {show.updateDriver && <ViewDriver id={driverId} />}
+        {show.updateDriver && <ViewDriver id={driverId} back={() =>
+          setshow({
+            // getTrip: false,
+            // update: false,
+            // endTrip: false,
+            // bookingdetails: false,
+            // viewCust: false,
+            // updateCust: false,
+            // allTrips: false,
+            // addDriver: false,
+            viewCab: true
+          })} />}
 
         {show.addCab && <InsertCab />}
-        {show.viewCab && <ViewAllCabs />}
+        {show.viewCab && <ViewCabsofType />}
 
         {/* {show.getTrip && (
         <div className="col-lg-6">

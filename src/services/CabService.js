@@ -12,6 +12,7 @@ const insertCab = (Cab) => {
   return axios.post(`${springBootAppUrl}/insert-cab`, Cab);
 };
 const updateCab = (Cab) => {
+
     // console.log(`getCabByIdService`);
     return axios.put(`${springBootAppUrl}/update-cab`,Cab);
 }
@@ -19,6 +20,7 @@ const deleteCab = () => {
     // console.log(`getCabByIdService`);
     return axios.get(`${springBootAppUrl}/delete-cab`);
 }
+
 const viewCabsofType = (cabType) => {
     return axios.get(`${springBootAppUrl}/viewCabsOfType/${cabType}`);
 }

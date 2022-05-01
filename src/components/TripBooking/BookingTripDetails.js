@@ -5,7 +5,7 @@ const BookingTripDetails = () => {
 
   return (
     <div id="bookingdetails" className="w-100">
-      {CurrentTripListStore.status ? (
+      {CurrentTripListStore ? (
         <div className="card mt-3 ml-3 mb-10 bg-light col-lg-7 m-auto">
           <div class="card-body text-left roundered">
             <div>

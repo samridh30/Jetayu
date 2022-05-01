@@ -1,9 +1,11 @@
+
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
 import {getAllCabs} from "../../redux/CabSlice";
 
-import { viewAllCabs } from "../../services/CabService";
+
+// import { viewAllCabs } from "../../services/CabService";
 
 // const ViewAllCabs = () => {
 //   const allCabDataFromStore = useSelector(
@@ -95,4 +97,5 @@ const ViewAllCabs = () => {
   );
 };
 
-export default ViewAllCabs;
+
+// export default ViewAllCabs;
