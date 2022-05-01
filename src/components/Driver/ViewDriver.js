@@ -79,7 +79,6 @@ const ViewDriver = (props) => {
           <div>
             {DriverDataFromStore.driverId && (
               <div>
-
                 <input
                   type="text"
                   name="driverName"
@@ -142,7 +141,7 @@ const ViewDriver = (props) => {
           </div>
         </div>
       </center>
-    </div>
+    </div >
   );
 };
 
