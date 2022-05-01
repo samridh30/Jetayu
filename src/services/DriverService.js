@@ -7,6 +7,10 @@ const updateDriver = (Driver) => {
   return axios.put(`${springBootAppUrl}/update-driver`, Driver);
 };
 
+const rateDriver = (Ratedto) => {
+  return axios.put(`${springBootAppUrl}/rate-driver`, Ratedto);
+};
+
 const viewAllDrivers = () => {
   return axios.get(`${springBootAppUrl}/view-all-drivers`);
 };
@@ -23,4 +27,5 @@ export {
   viewAllDrivers,
   viewBestDrivers,
   viewDriver,
+  rateDriver,
 };

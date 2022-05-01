@@ -96,17 +96,17 @@ const EndTrip = () => {
                 </div>
               </div>
             </form>
-            <div
-              className=" card collapse mt-3 col-md-6 m-auto "
-              id="CabDetails"
-            >
-              <p>DriverName- {CurrentTripListStore.driver.driverName}</p>
-              <p>CabType- {CurrentTripListStore.driver.cab.carType}</p>
-              <p>Rate Driver- </p>
-            </div>
           </div>
         </div>
       </div>
+      <div
+              className=" card collapse mt-3 col-md-6 m-auto "
+              id="CabDetails"
+            >
+              <p className=" text-warning">DriverName- <strong className="text-success">{CurrentTripListStore.driver.driverName}</strong></p>
+              <p className=" text-warning">CabType- <strong className="text-success">{CurrentTripListStore.driver.cab.carType}</strong> </p>
+              <p className="text-warning">Rate Driver- </p>
+            </div>
     </div>
   );
 };
