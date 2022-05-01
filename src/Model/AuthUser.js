@@ -1,7 +1,6 @@
-
 class AuthUser {
-        email;
-        password;
-        role;
+  email;
+  password;
+  role;
 }
 export default AuthUser;
