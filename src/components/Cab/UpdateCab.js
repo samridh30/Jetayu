@@ -39,14 +39,15 @@ import { updateCab} from "../../services/CabService";
 //         });
 //     };
 const UpdateCab = () => {
-  const CurrentCabListStore = useSelector(
-    (state) => state.Cab.CabData
-  );
+  // const CurrentCabListStore = useSelector(
+  //   (state) => state.Cab.CabData
+  // );
   useEffect(()=>{
-    console.log(CurrentCabListStore)
+    
+    // console.log()
 
   },[])
-  const [cabUpdate, setCabUpdate] = useState(CurrentCabListStore);
+  const [cabUpdate, setCabUpdate] = useState({});
   const dispatch = useDispatch();
 
   const handleUpdate = (e) => {
@@ -76,17 +77,27 @@ const UpdateCab = () => {
                <h4 className="card-header">
                 <center>Update Cab </center>
               </h4>
+
+              <label>Cab Id</label>
+              <input
+                type="text"
+                name="cabId"
+                className="form-control"
+                onChange={handleUpdate}
+                value={cabUpdate.cabId}
+              />
               
               
               <label>Cab type</label>
               <input
                 type="text"
-                name="Car Type"
+                name="carType"
                 className="form-control"
                 onChange={handleUpdate}
                 value={cabUpdate.carType}
               />
               
+
               <label>Per Km Rate</label>
               <input
                 type="text"
