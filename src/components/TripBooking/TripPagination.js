@@ -38,10 +38,11 @@ const Pagination = (props) => {
   };
 
   return (
-    <div className="">
+    <div className=" container bg-white ">
       {allTripsListStore.length >= 1 ? (
         <div class="scrollit">
-          <table className="table table-bordered table-warning table-striped m-auto w-auto  ">
+          
+          <table className="table table-bordered">
             <thead className="thead-dark">
               <tr>
                 <th>tripBooking Id</th>
@@ -98,7 +99,9 @@ const Pagination = (props) => {
           <strong>Info!</strong> No Trips To Show.
         </div>
       )}
+      
     </div>
+    
   );
 };
 export default Pagination;
