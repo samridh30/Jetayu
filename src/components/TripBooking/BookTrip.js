@@ -115,6 +115,7 @@ const Booktrip = () => {
                       onChange={handleaddTripData}
                     />
                   </div>
+                  
                   <div className="col-lg-3">
                     <div>
                       {/* <label className='card-title'>Select Cab Type</label> */}
@@ -145,6 +146,7 @@ const Booktrip = () => {
                     />
                   </div>
                 </div>
+                
               ) : (
                 errorBooking()
               )}

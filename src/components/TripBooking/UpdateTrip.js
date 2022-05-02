@@ -11,12 +11,15 @@ const UpdateTrip = () => {
 
   const dispatch = useDispatch();
 
+  
+
   const handleUpdate = (e) => {
     e.preventDefault();
     setcurrenttripupdate({
       ...currenttripupdate,
       [e.target.name]: e.target.value,
     });
+    
     console.log(currenttripupdate.fromLocation);
     console.log(currenttripupdate.toLocation);
   };
@@ -50,6 +53,7 @@ const UpdateTrip = () => {
                 className="form-control"
                 onChange={handleUpdate}
                 value={currenttripupdate.fromLocation}
+                disabled
               />
               <label>To Location</label>
               <input
@@ -59,12 +63,16 @@ const UpdateTrip = () => {
                 onChange={handleUpdate}
                 value={currenttripupdate.toLocation}
               />
-              {CurrentTripListStore.status && (
+              {currenttripupdate.fromLocation===currenttripupdate.toLocation&&<div className='text-danger'>From Location and To Location Should Not be Same</div>}
+              {currenttripupdate.toLocation==='' &&<div className="text-danger"> To Location Should Not Be Empty</div>}
+
+              {(CurrentTripListStore.status)&&(
                 <input
                   type="submit"
                   className="btn btn-success form-control mt-3"
                   value="Update"
                   onClick={update}
+
                 />
               )}
             </div>
