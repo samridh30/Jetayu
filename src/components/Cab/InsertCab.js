@@ -49,29 +49,27 @@ const InsertCab = () => {
 
   return (
     <div>
-      <center>
-
-        <div>
-          <div class="text-center">
-            <label className="text-drak">
-              <h3>Choose Cab Type</h3>
-            </label>
-            <select
-              className="form-select col-lg-12 px-2 w-100 m-auto mb-2"
-              value={addCab.carType}
-              onChange={handletripTypeData}
-              name="carType"
-              placeholder="carType"
-            >
-              <option value="" selected>
-                Choose Cab Type...
-              </option>
-              <option value="Mini">Mini</option>
-              <option value="Auto">Auto</option>
-              <option value="Luxury">Luxury</option>
-            </select>
-          </div>
-          {/* <div className="card mt-3 ml-3">
+      <div>
+        <div class ="text-center">
+        <label className="text-drak">
+          <h3>Choose Cab Type</h3>
+        </label>
+        <select
+          className="form-select col-lg-12 px-2 w-100 m-auto mb-2"
+          value={type}
+          onChange={handletripTypeData}
+          name="carType"
+          placeholder="carType"
+        >
+          <option value="" selected>
+            Choose Cab Type...
+          </option>
+          <option value="Mini">Mini</option>
+          <option value="Auto">Auto</option>
+          <option value="Luxury">Luxury</option>
+        </select>
+        </div>
+    {/* <div className="card mt-3 ml-3">
       <div className="card-body text-left roundered">
         <div>
           <h4 className="card-header">
@@ -106,19 +104,19 @@ const InsertCab = () => {
           <option value="Auto">Auto</option>
           <option value="Luxury">Luxury</option>
         </select> */}
-          <div class="text-center">
-            <label>Per Km Rate</label>
-            <input
-              type="text"
-              name="perKmRate"
-              id="perKmRate"
-              className="form-control mb-3 mt-3"
-              value={addCab.perKmRate}
-              onChange={handleAddCab}
-              placeholder="Enter per km rate"
-            />
+            <div class ="text-center">
+           <label>Per Km Rate</label>
+          <input
+            type="text"
+            name="perKmRate"
+            id="perKmRate"
+            className="form-control mb-3 mt-3"
+            value={addCab.perKmRate}
+            onChange={handleAddCab}
+            placeholder="Enter per km rate"
+          />
           </div>
-          {/* <label>Cab Status</label> */}
+           {/* <label>Cab Status</label> */}
           {/* <input
             type="text"
             id="status"
@@ -136,10 +134,9 @@ const InsertCab = () => {
             onClick={submitAddCab}
           />
         </div>
-      </center>
-    </div>
-
-
+      </div>
+    
+    
   );
 };
 
