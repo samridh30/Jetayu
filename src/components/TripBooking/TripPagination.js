@@ -41,7 +41,7 @@ const Pagination = (props) => {
     <div className="">
       {allTripsListStore.length >= 1 ? (
         <div class="scrollit">
-          <table className="table table-bordered table-warning table-striped m-auto w-auto  ">
+          <table className="table table-bordered table-warning table-striped m-auto w-100  ">
             <thead className="thead-dark">
               <tr>
                 <th>tripBooking Id</th>

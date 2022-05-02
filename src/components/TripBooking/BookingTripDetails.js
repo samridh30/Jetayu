@@ -41,7 +41,7 @@ const BookingTripDetails = (props) => {
       }
     }
     // setStore(CurrentTripListStore)
-  }, [rate])
+  }, [])
 
 
   return (
@@ -62,7 +62,7 @@ const BookingTripDetails = (props) => {
                     <span key={i}>&#11088;</span>
                   )
                 })}
-                
+
               </strong></p>
               <p className=" text-warning">Vehicle- <strong className="text-success">{CurrentTripListStore.driver.cab.carType}</strong></p>
               {/* <p>FromLocation- {CurrentTripListStore.fromLocation}</p>

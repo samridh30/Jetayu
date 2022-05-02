@@ -59,6 +59,7 @@ const ViewAllDrivers = (props) => {
                           <th>Cab Id</th>
                           <th>Cab Type</th>
                           <th>Per Km Rate</th>
+                          <th>Status</th>
                           <th>Edit</th>
                         </tr>
                       </thead>
@@ -76,6 +77,7 @@ const ViewAllDrivers = (props) => {
                                 <td>{e.cab.perKmRate}</td>
                               </>
                             )}
+                            <td>{e.status.toString()}</td>
                             <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
                           </tr>
                         </tbody>

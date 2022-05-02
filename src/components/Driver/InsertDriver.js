@@ -36,6 +36,7 @@ const InsertDriver = () => {
   const handleAddDriver = (e) => {
     setAddDriver({
       ...addDriver,
+      status: false,
       [e.target.name]: e.target.value,
     });
     setCab({
@@ -49,6 +50,7 @@ const InsertDriver = () => {
       ...addDriver,
       cab,
     };
+
     console.log(driverTemp)
     insertDriver(driverTemp)
       .then((response) => {

@@ -17,7 +17,7 @@ const EndTrip = () => {
     e.preventDefault();
     setcurrenttripupdate.status = false;
     console.log(currenttripupdate.status);
-    // history.push("/driver5")
+    history.push("/driver5")
 
   };
 

@@ -72,7 +72,7 @@ const ViewTrips = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(CurrentTripListStore.status)
+    // console.log(CurrentTripListStore.status)
     if (JSON.parse(localStorage.getItem("loggedInUser")).role !== null) {
       console.log(JSON.parse(localStorage.getItem('loggedInUser')))
       setRole(JSON.parse(localStorage.getItem("loggedInUser")).role);
