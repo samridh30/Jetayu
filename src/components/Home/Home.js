@@ -41,6 +41,11 @@ const Home = () => {
         // window.location.reload(true)
         // console.log(CurrentTripListStore)
       }
+      else {
+
+        // history.push("/dashboard")
+
+      }
     }
     console.log(tmp);
   }, []);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { viewCabsofType } from "../../services/CabService";
 
-const ViewCabsofType = () => {
+const ViewCabsofType = (props) => {
   const [type, settype] = useState("");
   const [cabTypeData, setcabTypeData] = useState([]);
 
@@ -19,7 +19,7 @@ const ViewCabsofType = () => {
         setcabTypeData(response.data);
       })
       .catch((error) => {
-        alert(error);
+        alert("Select a Cab Type");
       });
   };
 
@@ -70,11 +70,23 @@ const ViewCabsofType = () => {
                 <td>{e.status.toString()}</td>
                 
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+            </thead>
+            <tbody>
+              {cabTypeData.map((e, index) => (
+                <tr key={index}>
+                  <td>{e.cabId}</td>
+                  <td>{e.carType}</td>
+                  <td>{e.perKmRate}</td>
+                  <td>{e.status.toString()}</td>
+                  <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
+
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </center>
   );
 };
 export default ViewCabsofType;

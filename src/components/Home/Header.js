@@ -17,8 +17,17 @@ const Header = () => {
     // logUser()
     if (localStorage.getItem("loggedInUser")) {
       setUser(JSON.parse(localStorage.getItem("loggedInUser")).role);
+      // if (user === "ADMIN") {
+      //   Dash();
+      //   // history.push("/dashboard")
+      // }
+      // else {
+      //   setUser(JSON.parse(localStorage.getItem("loggedInUser")).role);
+
+      // }
       console.log(user);
     }
+
   }, []);
 
   const Dash = () => {
@@ -32,7 +41,7 @@ const Header = () => {
     // window.location.reload(true);
   };
 
-  return !role ? (
+  return (!role) ? (
     <header className="header sticky-top">
       <nav className="navbar navbar-fixed-top navbar-expand-sm navbar-dark bg-dark">
         <div className="container">

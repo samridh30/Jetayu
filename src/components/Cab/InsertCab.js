@@ -126,7 +126,7 @@ const InsertCab = () => {
             onChange={handleAddCab}
             placeholder="Enter cab status"
           /> */}
-           <input
+          <input
 
             type="submit"
             className="btn btn-success form-control mt-3"

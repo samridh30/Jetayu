@@ -23,11 +23,11 @@ const ViewBestDrivers = () => {
   return (
     <div className="container">
       <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-8">
-        <p>Get Best Drivers</p>
+        <p className="text-dark">Get Best Drivers</p>
         <div className="form form-group">
           <input
             type="button"
-            className="btn btn-primary form-control mb-3 mt-3"
+            className=" text-dark btn btn-primary form-control mb-3 mt-3"
             value="Get Best Drivers"
             onClick={submitViewBestDrivers}
           />
@@ -36,12 +36,12 @@ const ViewBestDrivers = () => {
           <div>
             {allDriverDataFromStore.length !== 0 && (
               <div>
-                <p className="text-primary text-center font-weight-bold lead">
+                <p className="text-dark text-center font-weight-bold lead">
                   List of Best Drivers
                 </p>
                 {
-                  <table className="table">
-                    <thead>
+                  <table className="table ">
+                    <thead className="thead-dark">
                       <tr>
                         <th>Driver Id</th>
                         <th>Driver Name</th>

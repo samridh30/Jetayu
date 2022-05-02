@@ -61,7 +61,7 @@ const ViewAllCustomers = () => {
                       <td>{e.mobileNumber}</td>
                       <td className="text-truncate">{e.email}</td>
                       <td>{e.role}</td>
-                      <td className={`${e.status === "Active" ? "text-success" : "text-danger"}`}>{e.status}</td>
+                      <td className={`text-light`} style={e.status === "Active" ? { backgroundColor: '#198754' } : { backgroundColor: '#dc3545' }}>{e.status}</td>
                     </tr>
                   ))}
                 </tbody>
