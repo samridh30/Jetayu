@@ -21,6 +21,7 @@ import InsertCab from "../components/Cab/InsertCab";
 import UpdateCab from "../components/Cab/UpdateCab";
 // import ViewAllCabs from '../components/Cab/ViewAllCabs';
 import ViewCabsofType from "../components/Cab/ViewCabsofType";
+import RateDriver from "../components/Driver/RateDriver";
 
 // import CountCabsofType from '../components/Cab/CountCabsOfType';
 
@@ -66,6 +67,10 @@ const Routes = () => {
               {/* <Route path="/Customer/Disable">< DisableCustomer /></Route> */}
               {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
               {/* <Route path="/cab/viewByType"><ViewCabsofType /></Route> */}
+               <Route path="/driver5">
+                <RateDriver />
+              </Route>
+
 
               {/* <Route path="/driver">
                 <ViewDriver />

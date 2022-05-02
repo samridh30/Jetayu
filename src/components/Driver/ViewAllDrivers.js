@@ -45,12 +45,12 @@ const ViewAllDrivers = (props) => {
             <div>
               {allDriverDataFromStore.length !== 0 && (
                 <div>
-                  <p className="text-primary text-center font-weight-bold lead">
+                  <p className="text-dark text-center font-weight-bold lead">
                     List of All Drivers
                   </p>
                   {
                     <table className="table">
-                      <thead>
+                      <thead className="thead-dark">
                         <tr>
                           <th>Driver Id</th>
                           <th>Driver Name</th>
