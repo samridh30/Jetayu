@@ -41,7 +41,7 @@ const Pagination = (props) => {
     <div className="">
       {allTripsListStore.length >= 1 ? (
         <div class="scrollit">
-          <table className="table table-bordered table-warning table-striped m-auto  ">
+          <table className="table table-bordered table-warning table-striped m-auto w-auto  ">
             <thead className="thead-dark">
               <tr>
                 <th>tripBooking Id</th>
@@ -52,7 +52,7 @@ const Pagination = (props) => {
                 <th>driver Name</th>
                 <th>driver rating</th>
                 <th>Cab Type</th>
-                {/* <th>View By Id</th> */}
+                <th>DateTime</th>
               </tr>
             </thead>
 
@@ -67,6 +67,7 @@ const Pagination = (props) => {
                   <td>{e.driver.driverName}</td>
                   <td>{e.driver.rating}</td>
                   <td>{e.driver.cab.carType}</td>
+                  <td>{e.fromDateTime}</td>
                   {/* <td><button onClick={() => props.dash} className="btn btn-danger py-0">View</button></td> */}
                 </tr>
               ))}
