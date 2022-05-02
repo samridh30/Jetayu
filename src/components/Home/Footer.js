@@ -3,10 +3,10 @@ import React, { Component } from "react";
 export default class FooterComponent extends Component {
   render() {
     return (
-      // <footer className="bg-dark fixed-bottom text-muted">
-      //   <span className='fixed-bottom'> &#169; Jatayu, 2022 </span>
+      <span className='fixed-bottom bg-dark text-light'> &#169; Jatayu, 2022 </span>
+      //   <footer className="bg-dark fixed-bottom text-muted">
       // </footer>
-      <div></div>
+      // <div></div>
     );
   }
 }

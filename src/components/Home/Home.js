@@ -19,8 +19,8 @@ const Home = () => {
   const history = useHistory();
 
   const variants = {
-    hidden: { opacity: 0, x: 1000 },
-    visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, z: 1000 },
+    visible: { opacity: 1, z: 0 },
   }
 
   useEffect(() => {
@@ -50,7 +50,13 @@ const Home = () => {
       <motion.div initial="hidden"
         animate="visible"
         variants={variants}
-        transition={{ delay: 2 }}>
+        transition={{ delay: 1 }}
+        exit={{
+          opacity: 0,
+          transition: {
+            delay: 1
+          }
+        }}>
         <img
           className=""
           height="20%"
@@ -58,12 +64,18 @@ const Home = () => {
           src={require("./HomePageImg.png")}
           alt="image"
         />
+        <h3 className="font-weight-lighter uppercase">
+          Travel to your Destinsation now
+        </h3>
       </motion.div>
-      <h3 className="font-weight-lighter uppercase">
-        Travel to your Destinsation now
-      </h3>
       {/* <br /> */}
-      <div className="mt-2">{tmp.status ? <EndTrip /> : <Booktrip />}</div>
+      <motion.div initial="hidden"
+        animate="visible"
+        variants={variants}
+        transition={{ delay: 2 }} >
+
+        <div className="mt-2">{tmp.status ? <EndTrip /> : <Booktrip />}</div>
+      </motion.div>
     </div>
   );
 };

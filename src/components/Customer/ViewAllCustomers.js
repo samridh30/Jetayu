@@ -42,7 +42,7 @@ const ViewAllCustomers = () => {
                   <tr>
                     <th>customerId</th>
                     <th>userName</th>
-                    <th>password</th>
+                    {/* <th>password</th> */}
                     <th>address</th>
                     <th>mobileNumber</th>
                     <th>email</th>
@@ -55,10 +55,10 @@ const ViewAllCustomers = () => {
                     <tr key={index}>
                       <td>{e.customerId}</td>
                       <td>{e.userName}</td>
-                      <td>{e.password}</td>
+                      {/* <td>{e.password}</td> */}
                       <td>{e.address}</td>
                       <td>{e.mobileNumber}</td>
-                      <td>{e.email}</td>
+                      <td className="text-truncate">{e.email}</td>
                       <td>{e.role}</td>
                       <td className={`${e.status === "Active" ? "text-success" : "text-danger"}`}>{e.status}</td>
                     </tr>

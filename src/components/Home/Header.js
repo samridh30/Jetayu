@@ -11,6 +11,10 @@ const Header = () => {
   const history = useHistory();
 
   useEffect(() => {
+    // setUser();
+    // history.push("/");
+    // window.location.r
+    // logUser()
     if (localStorage.getItem("loggedInUser")) {
       setUser(JSON.parse(localStorage.getItem("loggedInUser")).role);
       console.log(user);
@@ -25,7 +29,7 @@ const Header = () => {
     setUser();
     setRole();
     history.push("/");
-    window.location.reload(true);
+    // window.location.reload(true);
   };
 
   return !role ? (
@@ -80,8 +84,8 @@ const Header = () => {
   ) : (
     <div>
 
+      {/* <ViewTrips fun={logUser} style={{ display: 'hidden' }} /> */}
     </div>
-    // <ViewTrips fun={logUser} />
   );
   // <ViewTrips fun={logUser} />
 };

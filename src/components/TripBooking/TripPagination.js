@@ -38,7 +38,7 @@ const Pagination = (props) => {
   };
 
   return (
-    <div>
+    <div className="">
       {allTripsListStore.length >= 1 ? (
         <div class="scrollit">
           <table className="table table-bordered table-warning table-striped m-auto  ">
@@ -52,7 +52,7 @@ const Pagination = (props) => {
                 <th>driver Name</th>
                 <th>driver rating</th>
                 <th>Cab Type</th>
-                <th>View By Id</th>
+                {/* <th>View By Id</th> */}
               </tr>
             </thead>
 
@@ -67,7 +67,7 @@ const Pagination = (props) => {
                   <td>{e.driver.driverName}</td>
                   <td>{e.driver.rating}</td>
                   <td>{e.driver.cab.carType}</td>
-                  <td><button onClick={() => props.dash} className="btn btn-danger py-0">View</button></td>
+                  {/* <td><button onClick={() => props.dash} className="btn btn-danger py-0">View</button></td> */}
                 </tr>
               ))}
 

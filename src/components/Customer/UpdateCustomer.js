@@ -89,9 +89,9 @@ const UpdateCustomer = () => {
               value="Update"
               onClick={UpdateCustomerMethod}
             />
+            <DisableCustomer />
           </div>
         </div>
-        <DisableCustomer />
       </div>
     </div>
   );

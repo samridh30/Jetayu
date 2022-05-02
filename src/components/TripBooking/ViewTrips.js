@@ -70,14 +70,14 @@ const ViewTrips = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(JSON.parse(localStorage.getItem('loggedInUser')))
-    setRole(JSON.parse(localStorage.getItem("loggedInUser")).role);
-    setUser(JSON.parse(localStorage.getItem("loggedInUser")));
-    console.log(user, role)
-    // if (JSON.parse(localStorage.getItem("loggedInUser")).role !== null) {
-    // } else {
-    //   history.push("/");
-    // }
+    if (JSON.parse(localStorage.getItem("loggedInUser")).role !== null) {
+      console.log(JSON.parse(localStorage.getItem('loggedInUser')))
+      setRole(JSON.parse(localStorage.getItem("loggedInUser")).role);
+      setUser(JSON.parse(localStorage.getItem("loggedInUser")));
+      console.log(user, role)
+    } else {
+      history.push("/");
+    }
   }, []);
 
   const handletripTypeByIdData = (e) => {
@@ -236,6 +236,7 @@ const ViewTrips = (props) => {
               <h3 onClick={() => props.fun}>JATAYU</h3>
             </div>
             <hr />
+
 
             <ul
               className="list-unstyled components"
@@ -431,7 +432,7 @@ const ViewTrips = (props) => {
           // </div>
           <nav id="sidebar" className="">
             <div className="sidebar-header">
-              <h3 onClick={() => props.fun}>JATAYU</h3>
+              <h3 onClick={() => history.push("/")}>JATAYU</h3>
             </div>
             <hr />
 
@@ -591,7 +592,9 @@ const ViewTrips = (props) => {
                 </ul>
               </li>
 
-
+              <center>
+                <hr className="w-75" />
+              </center>
 
               <li class="active">
                 <a
@@ -673,6 +676,9 @@ const ViewTrips = (props) => {
                 </ul>
               </li>
 
+              <center>
+                <hr className="w-75" />
+              </center>
 
 
               <li>
@@ -765,7 +771,7 @@ const ViewTrips = (props) => {
         </div>
       )} */}
       </div>
-    </div>
+    </div >
   );
 };
 export default ViewTrips;
