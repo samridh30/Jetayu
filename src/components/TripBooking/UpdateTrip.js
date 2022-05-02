@@ -36,7 +36,7 @@ const UpdateTrip = () => {
 
   return (
     <div className="w-100">
-      {CurrentTripListStore ? (
+      {CurrentTripListStore.status ? (
         <div className="card mt-3 ml-3 mb-10 bg-light col-lg-7 m-auto ">
           <div className="card-body text-left roundered">
             <div>
@@ -50,6 +50,7 @@ const UpdateTrip = () => {
                 className="form-control"
                 onChange={handleUpdate}
                 value={currenttripupdate.fromLocation}
+                disabled
               />
               <label>To Location</label>
               <input
