@@ -59,7 +59,7 @@ const Home = () => {
         exit={{
           opacity: 0,
           transition: {
-            delay: 1
+            delay: 0.5
           }
         }}>
         <img
@@ -77,7 +77,7 @@ const Home = () => {
       <motion.div initial="hidden"
         animate="visible"
         variants={variants}
-        transition={{ delay: 2 }} >
+        transition={{ delay: 1 }} >
 
         <div className="mt-2">{tmp.status ? <EndTrip /> : <Booktrip />}</div>
       </motion.div>

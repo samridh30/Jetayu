@@ -28,62 +28,53 @@ const ViewAllDrivers = (props) => {
   // };
 
   return (
-    <div className="container">
+    <div className="container p-1">
       <center>
 
-        <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3">
-          {/* <p>Get All Drivers</p>
-        <div className="form form-group">
-          <input
-            type="button"
-            className="btn btn-primary form-control mb-3 mt-3"
-            value="Get All Drivers"
-            onClick={submitViewAllDrivers}
-          />
-        </div> */}
-          <div>
+        <div className="scrollit" >
+          <div className="bg-white shadow shadow-regular mx-3 my-3">
             <div>
               {allDriverDataFromStore.length !== 0 && (
-                <div>
+                <div className="p-1">
                   <p className="text-dark text-center font-weight-bold lead">
                     List of All Drivers
                   </p>
-                  {
-                    <table className="table">
-                      <thead className="thead-dark">
+
+                  <table className="table border border-dark">
+                    <thead className="thead-dark">
+                      <tr>
+                        <th>Driver Id</th>
+                        <th>Driver Name</th>
+                        <th>License No</th>
+                        <th>Rating</th>
+                        <th>Cab Id</th>
+                        <th>Cab Type</th>
+                        <th>Per Km Rate</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                      </tr>
+                    </thead>
+                    {allDriverDataFromStore.map((e) => (
+                      <tbody>
                         <tr>
-                          <th>Driver Id</th>
-                          <th>Driver Name</th>
-                          <th>License No</th>
-                          <th>Rating</th>
-                          <th>Cab Id</th>
-                          <th>Cab Type</th>
-                          <th>Per Km Rate</th>
-                          <th>Status</th>
-                          <th>Edit</th>
+                          <td>{e.driverId}</td>
+                          <td>{e.driverName}</td>
+                          <td>{e.licenseNo}</td>
+                          <td>{e.rating}</td>
+                          {e.cab && (
+                            <>
+                              <td>{e.cab.cabId}</td>
+                              <td>{e.cab.carType}</td>
+                              <td>{e.cab.perKmRate}</td>
+                            </>
+                          )}
+                          <td>{e.status.toString()}</td>
+                          <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
                         </tr>
-                      </thead>
-                      {allDriverDataFromStore.map((e) => (
-                        <tbody>
-                          <tr>
-                            <td>{e.driverId}</td>
-                            <td>{e.driverName}</td>
-                            <td>{e.licenseNo}</td>
-                            <td>{e.rating}</td>
-                            {e.cab && (
-                              <>
-                                <td>{e.cab.cabId}</td>
-                                <td>{e.cab.carType}</td>
-                                <td>{e.cab.perKmRate}</td>
-                              </>
-                            )}
-                            <td>{e.status.toString()}</td>
-                            <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
-                          </tr>
-                        </tbody>
-                      ))}
-                    </table>
-                  }
+                      </tbody>
+                    ))}
+                  </table>
+
                 </div>
               )}
             </div>

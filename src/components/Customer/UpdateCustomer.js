@@ -2,6 +2,8 @@ import { useState } from "react";
 import Customer from "../../Model/Customer";
 import { updateCustomerService } from "../../services/CustomerService";
 import DisableCustomer from './DisableCustomer'
+import validator from 'validator';
+
 
 const UpdateCustomer = () => {
   const [updatecustomerstate, setupdatecustomerstate] = useState(
@@ -16,40 +18,58 @@ const UpdateCustomer = () => {
     });
   };
 
+
+  const [dis, setDis] = useState({
+    email: false,
+    password: false,
+    mobile: false
+  });
+
   const UpdateCustomerMethod = (e) => {
     e.preventDefault();
     console.log("Before Update");
     console.log(updatecustomerstate);
-    updateCustomerService(updatecustomerstate)
-      .then((response) => {
-        localStorage.setItem("loggedInUser", JSON.stringify(response.data));
-        console.log("After Update");
-        console.log(response.data);
-        alert("Updated Succesfully");
-        // history.push("/");
-      })
-      .catch(() => {
-        console.log("Catch");
-        alert("Error Occured");
-      });
+    if (validator.isEmail(updatecustomerstate.email)) {
+      if (validator.isStrongPassword(updatecustomerstate.password)) {
+        if (validator.isMobilePhone(updatecustomerstate.mobileNumber.toString())) {
+          updateCustomerService(updatecustomerstate)
+            .then((response) => {
+              localStorage.setItem("loggedInUser", JSON.stringify(response.data));
+              console.log("After Update");
+              console.log(response.data);
+              alert("Updated Succesfully");
+              // history.push("/");
+            })
+            .catch(() => {
+              console.log("Catch");
+              alert("Error Occured");
+            });
+        }
+        else {
+          setDis({
+            mobile: true
+          })
+        }
+      }
+      else {
+        // alert("Password Should contain atleast one uppercase, one small case, one numeric value and one special character")
+        setDis({ password: true })
+      }
+    }
+    else {
+      // alert("Email not Valid")
+      setDis({ email: true })
+    }
   };
 
   return (
-    <div className="w-100">
+    <div className="w-100" style={{ marginTop: '100px' }}>
       <div className="card mt-3 ml-3 mb-10 bg-light col-lg-7 m-auto">
         <div className="card-body text-left  roundered col-md-auto mb-10">
           <div>
             <h4 className="card-header">
               <center>View Details </center>
             </h4>
-            {/* <label>Customer Id</label>
-            <input
-              type="text"
-              name="customerId"
-              className="form-control "
-              onChange={handleUpdate}
-              value={updatecustomerstate.customerId}
-            /> */}
             <label className="text-primary">UserName</label>
             <input
               type="text"
@@ -68,12 +88,26 @@ const UpdateCustomer = () => {
             />
             <label className="text-primary">MobileNumber</label>
             <input
-              type="text"
+              type="number"
               name="mobileNumber"
               className="form-control"
               onChange={handleUpdate}
               value={updatecustomerstate.mobileNumber}
             />
+            {(dis.mobile) && <div className="text-danger">
+              invalid Mobile Number
+            </div>}
+            <label className="text-primary">Password</label>
+            <input
+              type="text"
+              name="password"
+              className="form-control"
+              onChange={handleUpdate}
+              value={updatecustomerstate.password}
+            />
+            {(dis.password) && <div className="text-danger">
+              Password Should contain atleast one uppercase, one small case, one numeric value and one special character
+            </div>}
             <label className="text-primary">Email</label>
             <input
               type="text"
@@ -82,6 +116,9 @@ const UpdateCustomer = () => {
               onChange={handleUpdate}
               value={updatecustomerstate.email}
             />
+            {(dis.email) && <div className="text-danger">
+              invalid Email Address
+            </div>}
 
             <input
               type="submit"

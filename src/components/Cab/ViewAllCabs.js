@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
 import { getAllCabs } from "../../redux/CabSlice";
+import '../../styles/Trip.css';
 
 
 import { viewAllCabs } from "../../services/CabService";
@@ -43,10 +44,10 @@ const ViewAllCabs = (props) => {
   // };
 
   return (
-    <center>
 
-      <div className="p-3">
-        <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3">
+    <center>
+      <div className="scrollit">
+        <div className="bg-white shadow shadow-regular mx-3 my-3">
           {/* <p>View All Cabs</p> */}
           {/* <div className="form form-group">
           <input
@@ -59,13 +60,13 @@ const ViewAllCabs = (props) => {
           <div>
             <div>
               {(AllCabs.length !== 0) && (
-                <div>
-                  <p className="text-primary text-center font-weight-bold lead">
+                <div className="p-1">
+                  <p className="text-dark text-center font-weight-bold lead">
                     List of All Cabs
                   </p>
                   {
-                    <table className="table">
-                      <thead>
+                    <table className="table border border-dark">
+                      <thead className="thead-dark">
                         <tr>
                           <th>Cab Id</th>
                           <th>Cab type</th>

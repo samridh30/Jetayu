@@ -60,23 +60,31 @@ const Booktrip = () => {
       console.log(booktrip.cabType);
       e.preventDefault();
       let tripDetails = { ...booktrip };
-
-      bookCabService(tripDetails)
-        .then((response) => {
-          dispatch(setTripList(response.data));
-          // alert("Cab Booked Succesfully");
-          // history.push("/");
-          window.location.reload(true);
-        })
-        .catch(() => {
-          // alert("Invalid Inputs");
-          setError(true);
-          setBookTrip({
-            fromLocation: "",
-            toLocation: "",
-            cabType: "",
-          });
-        });
+      if (tripDetails.fromLocation !== "" && tripDetails.toLocation !== "") {
+        if (tripDetails.fromLocation !== tripDetails.toLocation) {
+          bookCabService(tripDetails)
+            .then((response) => {
+              dispatch(setTripList(response.data));
+              // alert("Cab Booked Succesfully");
+              // history.push("/");
+              window.location.reload(true);
+            })
+            .catch(() => {
+              // alert("Invalid Inputs");
+              setError(true);
+              setBookTrip({
+                fromLocation: "",
+                toLocation: "",
+                cabType: "",
+              });
+            });
+        } else {
+          alert("Destination cannot be same as Pickup point")
+        }
+      }
+      else {
+        alert("Empty Fields Not Allowed")
+      }
     } else {
       history.push("/login");
     }
@@ -115,6 +123,7 @@ const Booktrip = () => {
                       onChange={handleaddTripData}
                     />
                   </div>
+
                   <div className="col-lg-3">
                     <div>
                       {/* <label className='card-title'>Select Cab Type</label> */}
@@ -145,6 +154,7 @@ const Booktrip = () => {
                     />
                   </div>
                 </div>
+
               ) : (
                 errorBooking()
               )}

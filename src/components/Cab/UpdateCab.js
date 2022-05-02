@@ -47,15 +47,15 @@ const UpdateCab = (props) => {
     props.back()
   };
   return (
-    <center>
-      <div className="w-100 m-auto">
+    <div className="container m-auto col-sm-6">
+      <center>
 
         <div className="card mt-3 ml-3">
           <div className="card-body text-left">
             <div>
-              <h4 className="card-header">
-                <center>Update Cab </center>
-              </h4>
+              <p className="text-dark text-center font-weight-bold lead">
+                Update Cab
+              </p>
 
               <label>Cab Id</label>
               <input
@@ -127,8 +127,8 @@ const UpdateCab = (props) => {
             </div>
           </div>
         </div>
-      </div >
-    </center>
+      </center>
+    </div >
   );
 };
 

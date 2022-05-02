@@ -65,12 +65,14 @@ const InsertDriver = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container m-auto col-sm-8">
 
       <center>
         {/* <p className="display-4 text-primary">Driver Component</p> */}
-        <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
-          <p>Add New Driver</p>
+        <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6" style={{ borderRadius: "10px" }}>
+          <p className="text-dark text-center font-weight-bold lead">
+            Add New Driver
+          </p>
           <div className="form form-group">
             <input
               type="text"

@@ -2,17 +2,27 @@ import React, { useState } from "react";
 import { viewCabsofType } from "../../services/CabService";
 
 const ViewCabsofType = (props) => {
-  const [type, settype] = useState("");
+  const [type, setType] = useState("");
   const [cabTypeData, setcabTypeData] = useState([]);
+  const [head, setHead] = useState();
 
   const handletripTypeData = (e) => {
     console.log(e.target.value);
-    settype(e.target.value);
+    setType(e.target.value);
+    // viewCabsofType(type)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     setcabTypeData(response.data);
+    //   })
+    //   .catch((error) => {
+    //     alert("Select a Cab Type");
+    //   });
   };
 
   const GetCabsByType = (evt) => {
-    console.log(type);
     evt.preventDefault();
+    console.log(type);
+    setHead(type)
     viewCabsofType(type)
       .then((response) => {
         console.log(response.data);
@@ -24,9 +34,9 @@ const ViewCabsofType = (props) => {
   };
 
   return (
-    <center>
 
-      <div className="">
+    <div className="container m-auto col-sm-6">
+      <center>
         <div className="">
           {/* <label className="text-drak">
             <h3>Enter Cab Type</h3>
@@ -53,33 +63,38 @@ const ViewCabsofType = (props) => {
             onClick={GetCabsByType}
           />
         </div>
-        {cabTypeData.length >= 1 && (
-          <table className="table table-bordered table-light table-striped col-lg-6 m-auto">
-            <thead className="thead-dark">
-              <tr>
-                <th>cabId</th>
-                <th>carType</th>
-                <th>perKmRate</th>
-                <th>status</th>
-                <th>Edit</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cabTypeData.map((e, index) => (
-                <tr key={index}>
-                  <td>{e.cabId}</td>
-                  <td>{e.carType}</td>
-                  <td>{e.perKmRate}</td>
-                  <td>{e.status.toString()}</td>
-                  <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
-
+        <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3">
+          <p className="text-dark text-center font-weight-bold lead">
+            {head}
+          </p>
+          {cabTypeData.length >= 1 && (
+            <table className="table">
+              <thead className="thead-dark">
+                <tr>
+                  <th>cabId</th>
+                  <th>carType</th>
+                  <th>perKmRate</th>
+                  <th>status</th>
+                  <th>Edit</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
-    </center>
+              </thead>
+              <tbody>
+                {cabTypeData.map((e, index) => (
+                  <tr key={index}>
+                    <td>{e.cabId}</td>
+                    <td>{e.carType}</td>
+                    <td>{e.perKmRate}</td>
+                    <td>{e.status.toString()}</td>
+                    <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
+
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </center >
+    </div>
   );
 };
 

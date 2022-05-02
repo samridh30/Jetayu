@@ -30,15 +30,16 @@ const ViewAllCustomers = () => {
         value="Customers"
         onClick={getAllCustomers}
       /> */}
-      <div className="">
+      <div className="container">
         {AllCustomers.length > 1 && (
-          <div className="m-auto scrollit">
+          <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3">
             {/* <label className="text-primary">
               <h3>Customers </h3>
             </label> */}
             <div class="">
-              <table className="table table-bordered table-light">
-                <thead className="thead-dark">
+              <table className="table">
+                {/* <table class="table table-light"> */}
+                <thead>
                   <tr>
                     <th>customerId</th>
                     <th>userName</th>
@@ -65,6 +66,7 @@ const ViewAllCustomers = () => {
                   ))}
                 </tbody>
               </table>
+
             </div>
           </div>
         )}
