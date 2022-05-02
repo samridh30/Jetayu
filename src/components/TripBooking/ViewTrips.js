@@ -38,6 +38,7 @@ import UpdateCab from '../Cab/UpdateCab';
 
 const ViewTrips = (props) => {
   const history = useHistory();
+  const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
 
   const [show, setshow] = useState({
     getTrip: false,
@@ -53,7 +54,8 @@ const ViewTrips = (props) => {
     addCab: false,
     viewCab: false,
     viewType: false,
-    ViewAllCust: false
+    ViewAllCust: false,
+    bestDriver: false
   })
 
   // const [showAdmin, setShowAdmin] = useState({
@@ -70,6 +72,7 @@ const ViewTrips = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(CurrentTripListStore.status)
     if (JSON.parse(localStorage.getItem("loggedInUser")).role !== null) {
       console.log(JSON.parse(localStorage.getItem('loggedInUser')))
       setRole(JSON.parse(localStorage.getItem("loggedInUser")).role);
@@ -140,21 +143,23 @@ const ViewTrips = (props) => {
       viewCust: false,
       updateCust: false,
     });
-    e.preventDefault();
-    endTripService()
-      .then((response) => {
-        dispatch(setTripList(new Trip()));
-        alert(response.data.customer.userName + " Your Trip Ended ");
-      })
-      .catch(() => {
-        <div className="alert alert-success alert-dismissible">
-          <a href="#" className="close" data-dismiss="alert" aria-label="close">
-            &times;
-          </a>
-          <strong>Info!</strong> No Trips To end.
-        </div>;
-        alert("No trips to end");
-      });
+    history.push("/driver5")
+
+    // e.preventDefault();
+    // endTripService()
+    //   .then((response) => {
+    //     // dispatch(setTripList(new Trip()));
+    //     // alert(response.data.customer.userName + " Your Trip Ended ");
+    //   })
+    //   .catch(() => {
+    //     <div className="alert alert-success alert-dismissible">
+    //       <a href="#" className="close" data-dismiss="alert" aria-label="close">
+    //         &times;
+    //       </a>
+    //       <strong>Info!</strong> No Trips To end.
+    //     </div>;
+    //     alert("No trips to end");
+    //   });
   };
 
   const updateDriver = (drive) => {
@@ -304,19 +309,22 @@ const ViewTrips = (props) => {
                       Update
                     </a>
                   </li>
-                  <li className="p-3 text-light">
-                    <a
-                      className="bg-danger text-light CTAs"
-                      // type="submit"
-                      // className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
-                      data-toggle="collapse"
-                      data-target="#gettrips"
-                      value="End Trip"
-                      onClick={endCab}
-                    >
-                      End
-                    </a>
-                  </li>
+                  {
+                    (CurrentTripListStore.status) ?
+                      <li className="p-3 text-light">
+                        <a
+                          className="bg-danger text-light CTAs"
+                          // type="submit"
+                          // className="form-control mb-3 mt-3 btn btn-primary href=gettrips "
+                          data-toggle="collapse"
+                          data-target="#gettrips"
+                          value="End Trip"
+                          onClick={endCab}
+                        >
+                          End
+                        </a>
+                      </li> : <li></li>
+                  }
                 </ul>
               </li>
               <center>
@@ -738,22 +746,25 @@ const ViewTrips = (props) => {
             // addDriver: false,
             viewDriver: true
           })} />}
+        { }
 
         {show.addCab && <InsertCab />}
         {show.viewCab && <ViewAllCabs dash={updateCab} />}
-        {show.viewType && <ViewCabsofType />}
-        {show.updateCab && <UpdateCab id={driverId} back={() =>
-          setshow({
-            // getTrip: false,
-            // update: false,
-            // endTrip: false,
-            // bookingdetails: false,
-            // viewCust: false,
-            // updateCust: false,
-            // allTrips: false,
-            // addDriver: false,
-            viewCab: true
-          })} />}
+        {show.viewType && <ViewCabsofType dash={updateCab} />}
+        {
+          show.updateCab && <UpdateCab id={driverId} back={() =>
+            setshow({
+              // getTrip: false,
+              // update: false,
+              // endTrip: false,
+              // bookingdetails: false,
+              // viewCust: false,
+              // updateCust: false,
+              // allTrips: false,
+              // addDriver: false,
+              viewCab: true
+            })} />
+        }
 
         {/* {show.getTrip && (
         <div className="col-lg-6">

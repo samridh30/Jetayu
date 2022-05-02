@@ -1,15 +1,46 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { viewTripService } from "../../services/TripService";
+import { setAllTripsList, setTripList } from "../../redux/TripSlice";
+import { useDispatch } from "react-redux";
+
+
+
+
 const BookingTripDetails = (props) => {
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
-  const [store, setStore] = useState();
+  const [tmp, setTmp] = useState(CurrentTripListStore);
+
+  // const [store, setStore] = useState();
   const [rate, setRate] = useState([]);
 
+  const dispatch = useDispatch();
+
+
   useEffect(() => {
-    for (var i = 0; i < CurrentTripListStore.driver.rating; i++) {
-      rate.push("*");
+
+    if (JSON.parse(localStorage.getItem("loggedInUser"))) {
+      const role = JSON.parse(localStorage.getItem("loggedInUser")).role;
+      if (role === "CUSTOMER") {
+        viewTripService()
+          .then((response) => {
+            setTmp(CurrentTripListStore);
+            dispatch(setTripList(response.data[0]));
+            // window.location.reload(true)
+          })
+          .catch((error) => {
+            alert(error);
+          });
+        for (var i = 0; i < tmp.driver.rating; i++) {
+          rate.push("*");
+        }
+        setTmp(CurrentTripListStore);
+        // history.push("/")
+        // window.location.reload(true)
+        // console.log(CurrentTripListStore)
+      }
     }
-    setStore(CurrentTripListStore)
+    // setStore(CurrentTripListStore)
   }, [rate])
 
 
@@ -31,6 +62,7 @@ const BookingTripDetails = (props) => {
                     <span key={i}>&#11088;</span>
                   )
                 })}
+                
               </strong></p>
               <p className=" text-warning">Vehicle- <strong className="text-success">{CurrentTripListStore.driver.cab.carType}</strong></p>
               {/* <p>FromLocation- {CurrentTripListStore.fromLocation}</p>

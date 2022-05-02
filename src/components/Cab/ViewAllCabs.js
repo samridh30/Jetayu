@@ -36,7 +36,7 @@ const ViewAllCabs = (props) => {
       .catch(() => {
         alert("Error Occured");
       });
-  }, [])
+  }, [AllCabs])
 
   // const getAllCabs = (e) => {
 

@@ -69,13 +69,27 @@ const UpdateCab = (props) => {
 
 
               <label>Cab type</label>
-              <input
+              {/* <input
                 type="text"
                 name="carType"
                 className="form-control"
                 onChange={handleUpdate}
                 value={cabUpdate.carType}
-              />
+              /> */}
+              <select
+                className="form-select col-lg-12 px-2 w-100 m-auto mb-2"
+                value={cabUpdate.carType}
+                onChange={handleUpdate}
+                name="carType"
+                placeholder="carType"
+              >
+                <option value="" selected>
+                  Choose Cab Type...
+                </option>
+                <option value="Mini">Mini</option>
+                <option value="Auto">Auto</option>
+                <option value="Luxury">Luxury</option>
+              </select>
 
 
               <label>Per Km Rate</label>

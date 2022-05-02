@@ -1,8 +1,6 @@
-import { endTripService } from "../../services/TripService";
 import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
-import { setTripList } from "../../redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "../../styles/BookTrip.css";
 import BookingTripDetails from "./BookingTripDetails";
@@ -19,17 +17,8 @@ const EndTrip = () => {
     e.preventDefault();
     setcurrenttripupdate.status = false;
     console.log(currenttripupdate.status);
-    endTripService()
-      .then((response) => {
-        console.log(response);
-        console.log(response.data.customer.userName);
-        dispatch(setTripList({}));
-        alert(response.data.customer.userName + " Your Trip Ended ");
-        window.location.reload(true);
-      })
-      .catch(() => {
-        alert("No Trips to End");
-      });
+    // history.push("/driver5")
+
   };
 
   return (

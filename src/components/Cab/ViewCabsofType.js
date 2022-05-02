@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { viewCabsofType } from "../../services/CabService";
 
-const ViewCabsofType = () => {
+const ViewCabsofType = (props) => {
   const [type, settype] = useState("");
   const [cabTypeData, setcabTypeData] = useState([]);
 
@@ -61,6 +61,7 @@ const ViewCabsofType = () => {
                 <th>carType</th>
                 <th>perKmRate</th>
                 <th>status</th>
+                <th>Edit</th>
               </tr>
             </thead>
             <tbody>
@@ -70,6 +71,7 @@ const ViewCabsofType = () => {
                   <td>{e.carType}</td>
                   <td>{e.perKmRate}</td>
                   <td>{e.status.toString()}</td>
+                  <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
 
                 </tr>
               ))}

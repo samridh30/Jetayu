@@ -1,52 +1,96 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Driver from '../../Model/Driver'
+import { Rating } from 'react-simple-star-rating'
+import { curryRight } from 'lodash';
+import { driverRating } from '../../services/DriverService';
+import { endTripService } from "../../services/TripService";
+import { setTripList } from "../../redux/TripSlice";
+import { useHistory } from 'react-router-dom';
 
-const RateDriver = () => {
-    const CurrentDriverListStore = useSelector(
+
+const RateDriver = (props) => {
+    const currentDriverListStore = useSelector(
         (state) => state.Trip.TripList
-      );
-    const [rateDriver,setRateDriver]= useState({
-        driverId: CurrentDriverListStore.driver.driverId,
-        rating:""
-    });
-    useEffect(()=>{
-        console.log(CurrentDriverListStore.driver.driverId)
-    },[]);
-    const handleRateDriver = (e)=>{
-        setRateDriver(
-            {
-                ...rateDriver,
-                [e.target.name]: e.target.value
-            }
-        );
-    };
+    );
+    // const [rating, setRating] = useState(0)
 
-    const submitRateDriver = (evt)=>{
-        evt.preventDefault();
-        rateDriver(rateDriver)
-        .then((response)=>{
-            console.log(response)
+    const temp = currentDriverListStore.driver.rating
+    const [rateDriver, setRateDriver] = useState({
+        driverId: currentDriverListStore.driver.driverId,
+        rating: ""
+    });
+
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    useEffect(() => {
+        // console.log(currentDriverListStore.driver.driverId)
+    }, []);
+
+
+    const handleRateDriver = (e) => {
+        setRateDriver({
+            driverId: currentDriverListStore.driver.driverId,
+            rating: e / 20
         })
+        console.log(rateDriver)
+    }
+
+    const submitRateDriver = (evt) => {
+        evt.preventDefault();
+        console.log(rateDriver)
+        driverRating(rateDriver)
+            .then((response) => {
+                console.log(response.data)
+
+            });
+        endTripService()
+            .then((response) => {
+                console.log(response);
+                console.log(response.data.customer.userName);
+                dispatch(setTripList({}));
+                alert(response.data.customer.userName + " Your Trip Ended ");
+                window.location.reload(true);
+            })
+            .catch(() => {
+                alert("No Trips to End");
+            });
+        history.push("/")
+
 
     }
 
+    return (
+        <center>
+            <div className="card mt-3 ml-3 mb-10 bg-light col-lg-7 m-auto">
+                <div class="card-body text-left roundered">
+                    <div className=''>
+                        <div className='App'>
+                            <h4>Rate Driver</h4>
+                            <Rating
+                                name="rating"
+                                initialValue={temp}
+                                // onChange={rateDriver.driver.rating}
+                                onClick={handleRateDriver}
+                                // ratingValue={}
+                                size={50}
+                                label
+                                transition
+                                fillColor='yellow'
+                                emptyColor='gray'
+                                className='foo' // Will remove the inline style if applied
+                            />
+                            {/* Use rating value */}
+                            <input type="submit" onClick={submitRateDriver} />
+                        </div>
 
 
-
-
-
-
-  return (
-    <div>
-        <div className='conatiner'>
-            <h4>Rate Driver</h4>
-            
-
-        </div>
-      
-    </div>
-  )
+                    </div>
+                </div>
+            </div>
+        </center>
+    )
 }
 
 export default RateDriver
