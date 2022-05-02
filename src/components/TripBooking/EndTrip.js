@@ -35,7 +35,7 @@ const EndTrip = () => {
   return (
     <div className="">
       {(details) ?
-        <div className="row" style={{ marginTop: "-100px" }}>
+        <div className="row" style={{ marginTop: "-350px" }}>
           <BookingTripDetails close={() => setDetails(false)} />
         </div> :
         < div id="block" className="row mx-auto" >
