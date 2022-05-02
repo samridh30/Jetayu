@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Cab from "../../Model/Cab";
 import { insertCab } from "../../services/CabService";
+import { viewCabsofType } from "../../services/CabService";
 
 const InsertCab = () => {
   const [addCab, setAddCab] = useState(new Cab());
@@ -39,10 +40,38 @@ const InsertCab = () => {
         cabTemp = "";
       });
   };
+  const [type, settype] = useState("");
+  const [cabTypeData, setcabTypeData] = useState([]);
+  const handletripTypeData = (e) => {
+    console.log(e.target.value);
+    settype(e.target.value);
+  };
 
   return (
     <div>
-    <div className="card mt-3 ml-3">
+      <center>
+
+        <div>
+          <div class="text-center">
+            <label className="text-drak">
+              <h3>Choose Cab Type</h3>
+            </label>
+            <select
+              className="form-select col-lg-12 px-2 w-100 m-auto mb-2"
+              value={addCab.carType}
+              onChange={handletripTypeData}
+              name="carType"
+              placeholder="carType"
+            >
+              <option value="" selected>
+                Choose Cab Type...
+              </option>
+              <option value="Mini">Mini</option>
+              <option value="Auto">Auto</option>
+              <option value="Luxury">Luxury</option>
+            </select>
+          </div>
+          {/* <div className="card mt-3 ml-3">
       <div className="card-body text-left roundered">
         <div>
           <h4 className="card-header">
@@ -59,7 +88,7 @@ const InsertCab = () => {
             onChange={handleAddCab}
             value={addCab.carType}
             placeholder="Enter cab type"
-          />
+          /> */}
           {/* <label className="text-drak">
           <h3>Enter Cab Type</h3>
         </label>
@@ -77,17 +106,19 @@ const InsertCab = () => {
           <option value="Auto">Auto</option>
           <option value="Luxury">Luxury</option>
         </select> */}
-           <label>Per Km Rate</label>
-          <input
-            type="text"
-            name="perKmRate"
-            id="perKmRate"
-            className="form-control mb-3 mt-3"
-            value={addCab.perKmRate}
-            onChange={handleAddCab}
-            placeholder="Enter per km rate"
-          />
-           {/* <label>Cab Status</label> */}
+          <div class="text-center">
+            <label>Per Km Rate</label>
+            <input
+              type="text"
+              name="perKmRate"
+              id="perKmRate"
+              className="form-control mb-3 mt-3"
+              value={addCab.perKmRate}
+              onChange={handleAddCab}
+              placeholder="Enter per km rate"
+            />
+          </div>
+          {/* <label>Cab Status</label> */}
           {/* <input
             type="text"
             id="status"
@@ -97,7 +128,7 @@ const InsertCab = () => {
             onChange={handleAddCab}
             placeholder="Enter cab status"
           /> */}
-           <input
+          <input
 
             type="submit"
             className="btn btn-success form-control mt-3"
@@ -105,9 +136,10 @@ const InsertCab = () => {
             onClick={submitAddCab}
           />
         </div>
-      </div>
+      </center>
     </div>
-    </div>
+
+
   );
 };
 

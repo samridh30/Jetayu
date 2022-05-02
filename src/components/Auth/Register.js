@@ -4,6 +4,7 @@ import { useState } from "react";
 // import AppUser from '../models/AppUser';
 import { registerService } from "../../services/AuthService";
 import Customer from "../../Model/Customer";
+import validator from 'validator';
 
 const Register = () => {
   const history = useHistory();
@@ -11,9 +12,15 @@ const Register = () => {
   const [appUser, setAppUser] = useState(new Customer());
   const [credentials, setCredentials] = useState("");
 
+  const [dis, setDis] = useState({
+    email: false,
+    password: false,
+    mobile: false
+  });
+
   const handleAppUser = (event) => {
-    console.log(event.target.name);
-    console.log(event.target.value);
+    // console.log(event.target.name);
+    // console.log(event.target.value);
     setAppUser({
       ...appUser,
       [event.target.name]: event.target.value,
@@ -21,17 +28,36 @@ const Register = () => {
   };
 
   const submitAppUser = (event) => {
-    registerService(appUser)
-      .then((response) => {
-        console.log(response.data);
-        alert("You are registered successfully. Please login now.");
-        history.push("/login"); // check this method to navigate
-      })
-      .catch((error) => {
-        console.log(error.response);
-        setCredentials("Enter proper credentials.");
-      });
     event.preventDefault();
+    if (validator.isEmail(appUser.email)) {
+      if (validator.isStrongPassword(appUser.password)) {
+        if (validator.isMobilePhone(appUser.mobileNumber)) {
+          registerService(appUser)
+            .then((response) => {
+              console.log(response.data);
+              alert("You are registered successfully. Please login now.");
+              history.push("/login"); // check this method to navigate
+            })
+            .catch((error) => {
+              console.log(error.response);
+              setCredentials("Enter proper credentials.");
+            });
+        }
+        else {
+          setDis({
+            mobile: true
+          })
+        }
+      }
+      else {
+        // alert("Password Should contain atleast one uppercase, one small case, one numeric value and one special character")
+        setDis({ password: true })
+      }
+    }
+    else {
+      // alert("Email not Valid")
+      setDis({ email: true })
+    }
   };
   return (
     <center>
@@ -63,6 +89,11 @@ const Register = () => {
                 value={appUser.email}
                 onChange={handleAppUser}
               />
+
+
+              {(dis.email) && <div className="text-danger">
+                invalid Email Address
+              </div>}
               <input
                 type="password"
                 name="password"
@@ -73,6 +104,9 @@ const Register = () => {
                 onChange={handleAppUser}
               />
 
+              {(dis.password) && <div className="text-danger">
+                Password Should contain atleast one uppercase, one small case, one numeric value and one special character
+              </div>}
               <input
                 type="number"
                 name="mobileNumber"
@@ -82,6 +116,9 @@ const Register = () => {
                 value={appUser.mobileNumber}
                 onChange={handleAppUser}
               />
+              {(dis.mobile) && <div className="text-danger">
+                invalid Mobile Number
+              </div>}
               <input
                 type="text"
                 name="address"

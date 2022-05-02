@@ -31,5 +31,9 @@ const viewAllCabs = (Cab) => {
 const fetchCabById = (cabId) => {
     return axios.get(`${springBootAppUrl}/getCabById/${cabId}`);
 }
-export { insertCab, updateCab, deleteCab, viewAllCabs, viewCabsofType, fetchCabById };
+
+const fetchAvailableCabs = () => {
+    return axios.get(`${springBootAppUrl}/availableCabs`);
+}
+export { insertCab, updateCab, deleteCab, viewAllCabs, viewCabsofType, fetchCabById, fetchAvailableCabs };
 

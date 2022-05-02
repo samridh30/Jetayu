@@ -36,17 +36,19 @@ const ViewAllCabs = (props) => {
       .catch(() => {
         alert("Error Occured");
       });
-  }, [])
+  }, [AllCabs])
 
   // const getAllCabs = (e) => {
 
   // };
 
   return (
-    <div className="container">
-      <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-8">
-        {/* <p>View All Cabs</p> */}
-        {/* <div className="form form-group">
+    <center>
+
+      <div className="p-3">
+        <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3">
+          {/* <p>View All Cabs</p> */}
+          {/* <div className="form form-group">
           <input
             type="button"
             className="btn btn-primary form-control mb-3 mt-3"
@@ -54,50 +56,52 @@ const ViewAllCabs = (props) => {
             onClick={getAllCabs}
           />
         </div> */}
-        <div>
           <div>
-            {(AllCabs.length !== 0) && (
-              <div>
-                <p className="text-primary text-center font-weight-bold lead">
-                  List of All Cabs
-                </p>
-                {
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th>Cab Id</th>
-                        <th>Cab type</th>
-                        <th>per km rate</th>
-                        <th>status</th>
-                      </tr>
-                    </thead>
-                    {AllCabs.map((e =>
-                      <tbody>
+            <div>
+              {(AllCabs.length !== 0) && (
+                <div>
+                  <p className="text-primary text-center font-weight-bold lead">
+                    List of All Cabs
+                  </p>
+                  {
+                    <table className="table">
+                      <thead>
                         <tr>
-                          <td>{e.cabId}</td>
-                          <td>{e.carType}</td>
-                          <td>{e.perKmRate}</td>
-                          <td>{e.status.toString()}</td>
-                          {(e.cab) &&
-                            <>
-                              <td>{e.cab.cabId}</td>
-                              <td>{e.cab.carType}</td>
-                              <td>{e.cab.perKmRate}</td>
-                              <td>{e.cab.status.toString()}</td>
-                            </>
-                          }
-                          <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
+                          <th>Cab Id</th>
+                          <th>Cab type</th>
+                          <th>per km rate</th>
+                          <th>status</th>
+                          <th>Edit</th>
                         </tr>
-                      </tbody>
-                    ))}
-                  </table>
-                }
-              </div>
-            )}
+                      </thead>
+                      {AllCabs.map((e =>
+                        <tbody>
+                          <tr>
+                            <td>{e.cabId}</td>
+                            <td>{e.carType}</td>
+                            <td>{e.perKmRate}</td>
+                            <td>{e.status.toString()}</td>
+                            {(e.cab) &&
+                              <>
+                                <td>{e.cab.cabId}</td>
+                                <td>{e.cab.carType}</td>
+                                <td>{e.cab.perKmRate}</td>
+                                <td>{e.cab.status.toString()}</td>
+                              </>
+                            }
+                            <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
+                          </tr>
+                        </tbody>
+                      ))}
+                    </table>
+                  }
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </center>
   );
 };
 
