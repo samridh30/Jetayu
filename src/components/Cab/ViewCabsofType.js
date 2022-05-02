@@ -30,7 +30,7 @@ const ViewCabsofType = () => {
           <h3>Enter Cab Type</h3>
         </label>
         <select
-          className="form-select col-md-3 px-2 w-100 m-auto mb-2"
+          className="form-select col-md-12 px-2 w-100 m-auto mb-2"
           value={type}
           onChange={handletripTypeData}
           name="carType"
@@ -46,7 +46,7 @@ const ViewCabsofType = () => {
         <input
           type="submit"
           placeholder="Get Cabs"
-          className="btn-success col-md-3 px-2 w-100 m-auto mb-3"
+          className="btn-success col-md-12 px-2 w-100 m-auto mb-3"
           value="Get Cab"
           onClick={GetCabsByType}
         />
@@ -77,5 +77,4 @@ const ViewCabsofType = () => {
     </div>
   );
 };
-
 export default ViewCabsofType;

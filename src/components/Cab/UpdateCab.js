@@ -47,45 +47,61 @@ const UpdateCab = (props) => {
     props.back()
   };
   return (
-    <div>
-      <div className="card mt-3 ml-3">
-        <div className="card-body text-left roundered">
-          <div>
-            <h4 className="card-header">
-              <center>Update Cab </center>
-            </h4>
+    <center>
+      <div className="w-100 m-auto">
 
-            <label>Cab Id</label>
-            <input
-              type="text"
-              name="cabId"
-              className="form-control"
-              onChange={handleUpdate}
-              value={cabUpdate.cabId}
-              disabled
-            />
+        <div className="card mt-3 ml-3">
+          <div className="card-body text-left">
+            <div>
+              <h4 className="card-header">
+                <center>Update Cab </center>
+              </h4>
 
-
-            <label>Cab type</label>
-            <input
-              type="text"
-              name="carType"
-              className="form-control"
-              onChange={handleUpdate}
-              value={cabUpdate.carType}
-            />
+              <label>Cab Id</label>
+              <input
+                type="text"
+                name="cabId"
+                className="form-control"
+                onChange={handleUpdate}
+                value={cabUpdate.cabId}
+                disabled
+              />
 
 
-            <label>Per Km Rate</label>
-            <input
-              type="text"
-              name="perKmRate"
-              className="form-control"
-              onChange={handleUpdate}
-              value={cabUpdate.perKmRate}
-            />
+              <label>Cab type</label>
+              {/* <input
+                type="text"
+                name="carType"
+                className="form-control"
+                onChange={handleUpdate}
+                value={cabUpdate.carType}
+              /> */}
+              <select
+                className="form-select col-lg-12 px-2 w-100 m-auto mb-2"
+                value={cabUpdate.carType}
+                onChange={handleUpdate}
+                name="carType"
+                placeholder="carType"
+              >
+                <option value="" selected>
+                  Choose Cab Type...
+                </option>
+                <option value="Mini">Mini</option>
+                <option value="Auto">Auto</option>
+                <option value="Luxury">Luxury</option>
+              </select>
 
-            {/* <label>Status</label>
+
+              <label>Per Km Rate</label>
+              <input
+                type="text"
+                name="perKmRate"
+                className="form-control"
+                onChange={handleUpdate}
+                value={cabUpdate.perKmRate}
+              />
+
+              {/* <label>Status</label>
             <input
               type="text"
               name="status"
@@ -95,23 +111,24 @@ const UpdateCab = (props) => {
             /> */}
 
 
-            <input
-              type="submit"
-              className="btn btn-success form-control mt-3"
-              value="Update"
-              onClick={submitUpdateCab}
-            />
-            <input
-              type="submit"
-              className="btn btn-danger form-control mt-3"
-              value="Cancel"
-              onClick={props.back}
-            />
+              <input
+                type="submit"
+                className="btn btn-success form-control mt-3"
+                value="Update"
+                onClick={submitUpdateCab}
+              />
+              <input
+                type="submit"
+                className="btn btn-danger form-control mt-3"
+                value="Cancel"
+                onClick={props.back}
+              />
 
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </center>
   );
 };
 
