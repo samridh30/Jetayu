@@ -47,23 +47,28 @@ const InsertDriver = () => {
     };
 
     console.log(driverTemp)
-    insertDriver(driverTemp)
-      .then((response) => {
-        console.log(response.data);
-        alert(`Driver added successfully`);
-      })
-      .catch(() => {
-        alert("Driver could not be added");
+    if (driverTemp.driverName !== "" && driverTemp.licenseNo !== "" && driverTemp.rating !== "" && driverTemp.status === false) {
+      insertDriver(driverTemp)
+        .then((response) => {
+          console.log(response.data);
+          alert(`Driver added successfully`);
+        })
+        .catch(() => {
+          alert("Driver could not be added");
+        });
+      setAddDriver({
+        driverName: "",
+        licenseNo: "",
+        rating: ""
       });
-    setAddDriver({
-      driverName: "",
-      licenseNo: "",
-      rating: ""
-    });
-    setCab({
-      cabId: ''
-    })
-    driverTemp = "";
+      setCab({
+        cabId: ''
+      })
+      driverTemp = "";
+    }
+    else {
+      alert("Enter Details")
+    }
   };
 
   return (

@@ -18,16 +18,20 @@ const InsertCab = () => {
     evt.preventDefault();
 
     console.log(addCab)
-    insertCab(addCab)
-      .then((response) => {
-        console.log(response.data);
-        alert(`Cab added successfully`);
-      })
-      .catch(() => {
-        alert("Cab could not be added");
-        setAddCab(new Cab());
-
-      });
+    if (addCab.perKmRate !== "" && addCab.carType !== "") {
+      insertCab(addCab)
+        .then((response) => {
+          console.log(response.data);
+          alert(`Cab added successfully`);
+        })
+        .catch(() => {
+          alert("Cab could not be added");
+          setAddCab(new Cab());
+        });
+    }
+    else {
+      alert("Enter Details")
+    }
   }
 
   return (
