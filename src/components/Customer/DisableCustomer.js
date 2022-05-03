@@ -3,7 +3,9 @@ import { useHistory } from "react-router-dom";
 const DisableCustomer = () => {
   const history = useHistory();
   const DisableCustomerAccount = (e) => {
-    var proceed = window.confirm("Your Account will be permenantly deleted. Are you sure you want to proceed?");
+    var proceed = window.confirm(
+      "Your Account will be permenantly deleted. Are you sure you want to proceed?"
+    );
     if (proceed) {
       deleteCustomerService()
         .then((response) => {
@@ -17,7 +19,6 @@ const DisableCustomer = () => {
         });
     } else {
     }
-
   };
 
   return (

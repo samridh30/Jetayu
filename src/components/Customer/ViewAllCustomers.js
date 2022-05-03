@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import Customer from "../../Model/Customer";
-import { useDispatch, useSelector } from "react-redux";
 import { viewAllCustomersCustomerService } from "../../services/CustomerService";
 import "../../styles/Customer.css";
 import "../../styles/Trip.css"
@@ -19,18 +17,10 @@ const ViewAllCustomers = () => {
       });
   }, [])
 
-  // const getAllCustomers = (e) => {
-  // };
 
   return (
     <div>
-      {/* <input
-        type="submit"
-        className="btn btn-success mt-3"
-        value="Customers"
-        onClick={getAllCustomers}
-      /> */}
-      <div className="container">
+      <div className="container" data-testid="ViewAllCust">
         {AllCustomers.length > 1 && (
           <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 scrollit">
             <p className="text-dark text-center font-weight-bold lead">
@@ -38,12 +28,10 @@ const ViewAllCustomers = () => {
             </p>
             <div class="p-1">
               <table className="table border border-dark">
-                {/* <table class="table table-light"> */}
                 <thead className="thead-dark">
                   <tr>
                     <th>customerId</th>
                     <th>userName</th>
-                    {/* <th>password</th> */}
                     <th>address</th>
                     <th>mobileNumber</th>
                     <th>email</th>
@@ -56,7 +44,6 @@ const ViewAllCustomers = () => {
                     <tr key={index}>
                       <td>{e.customerId}</td>
                       <td>{e.userName}</td>
-                      {/* <td>{e.password}</td> */}
                       <td>{e.address}</td>
                       <td>{e.mobileNumber}</td>
                       <td className="text-truncate">{e.email}</td>

@@ -4,30 +4,22 @@ import { viewTripService } from "../../services/TripService";
 import { setAllTripsList, setTripList } from "../../redux/TripSlice";
 import { useDispatch } from "react-redux";
 
-
-
-
+/* Component To Show Current Trip Booking Details */
 const BookingTripDetails = (props) => {
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
   const [tmp, setTmp] = useState(CurrentTripListStore);
-
-  // const [store, setStore] = useState();
   const [rate, setRate] = useState([]);
 
   const dispatch = useDispatch();
 
-
   useEffect(() => {
-
     if (JSON.parse(localStorage.getItem("loggedInUser"))) {
       const role = JSON.parse(localStorage.getItem("loggedInUser")).role;
       if (role === "CUSTOMER") {
-        /*Methods to fetch Trip History of a Customer */
         viewTripService()
           .then((response) => {
             setTmp(CurrentTripListStore);
             dispatch(setTripList(response.data[0]));
-            // window.location.reload(true)
           })
           .catch((error) => {
             alert(error);
@@ -36,14 +28,9 @@ const BookingTripDetails = (props) => {
           rate.push("*");
         }
         setTmp(CurrentTripListStore);
-        // history.push("/")
-        // window.location.reload(true)
-        // console.log(CurrentTripListStore)
       }
     }
-    // setStore(CurrentTripListStore)
-  }, [])
-
+  }, []);
 
   return (
     <div id="bookingdetails" className="w-100">
@@ -51,27 +38,54 @@ const BookingTripDetails = (props) => {
         <div className="card mt-3 ml-3 mb-10 bg-light col-lg-7 m-auto">
           <div class="card-body text-left roundered">
             <div>
-              <h4 className="text-center">Booking Details<input type="submit" value="X" style={{ float: 'right', fontSize: '15px' }} className="py-1 btn btn-danger text-light" onClick={props.close} /></h4>
-              <p className=" text-warning">Pick Up- <strong className="text-success">{CurrentTripListStore.fromLocation}</strong></p>
-              <p className=" text-warning">Destination- <strong className="text-success">{CurrentTripListStore.toLocation}</strong></p>
-              <p className=" text-warning">Bill- <strong className="text-success">{CurrentTripListStore.bill}</strong></p>
-              <p className=" text-warning">DriverName- <strong className="text-success">{CurrentTripListStore.driver.driverName}</strong></p>
-              <p className=" text-warning">Rating- <strong className="text-success">
-                {rate.map((item, i) => {
-                  return (
-
-                    <span key={i}>&#11088;</span>
-                  )
-                })}
-
-              </strong></p>
-              <p className=" text-warning">Vehicle- <strong className="text-success">{CurrentTripListStore.driver.cab.carType}</strong></p>
-              {/* <p>FromLocation- {CurrentTripListStore.fromLocation}</p>
-              <p>ToLocation- {CurrentTripListStore.toLocation}</p>
-              <p>Bill- {CurrentTripListStore.bill}</p>
-              <p>DriverName- {CurrentTripListStore.driver.driverName}</p>
-              <p>DriverRating- {CurrentTripListStore.driver.rating}</p>
-              <p>CabType- {CurrentTripListStore.driver.cab.carType}</p> */}
+              <h4 className="text-center">
+                Booking Details
+                <input
+                  type="submit"
+                  value="X"
+                  style={{ float: "right", fontSize: "15px" }}
+                  className="py-1 btn btn-danger text-light"
+                  onClick={props.close}
+                />
+              </h4>
+              <p className=" text-warning">
+                Pick Up-{" "}
+                <strong className="text-success">
+                  {CurrentTripListStore.fromLocation}
+                </strong>
+              </p>
+              <p className=" text-warning">
+                Destination-{" "}
+                <strong className="text-success">
+                  {CurrentTripListStore.toLocation}
+                </strong>
+              </p>
+              <p className=" text-warning">
+                Bill-{" "}
+                <strong className="text-success">
+                  {CurrentTripListStore.bill}
+                </strong>
+              </p>
+              <p className=" text-warning">
+                DriverName-{" "}
+                <strong className="text-success">
+                  {CurrentTripListStore.driver.driverName}
+                </strong>
+              </p>
+              <p className=" text-warning">
+                Rating-{" "}
+                <strong className="text-success">
+                  {rate.map((item, i) => {
+                    return <span key={i}>&#11088;</span>;
+                  })}
+                </strong>
+              </p>
+              <p className=" text-warning">
+                Vehicle-{" "}
+                <strong className="text-success">
+                  {CurrentTripListStore.driver.cab.carType}
+                </strong>
+              </p>
             </div>
           </div>
         </div>
