@@ -14,7 +14,7 @@ import ViewBestDrivers from "../components/Driver/ViewBestDrivers";
 import UpdateDriver from "../components/Driver/UpdateDriver";
 import ViewCustomer from "../components/Customer/ViewCustomer";
 import UpdateCustomer from "../components/Customer/UpdateCustomer";
-
+import Page404 from "../components/Page404";
 import ViewAllCustomers from "../components/Customer/ViewAllCustomers";
 import DisableCustomer from "../components/Customer/DisableCustomer";
 import InsertCab from "../components/Cab/InsertCab";
@@ -109,6 +109,7 @@ const Routes = () => {
               <Route path="/dashboard" ><ViewTrips /></Route>
               {/* <Route path="/endTrip"><EndTrip /></Route> */}
               {/* <Route path="/dashboard"><Dashboard /></Route> */}
+              <Route path="/*"> <Page404 /> </Route>
             </Switch>
           </div>
           <Footer />

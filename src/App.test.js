@@ -1,14 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import ViewCustomer from './components/Home/Home';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
 
-test('renders Add New Loan Application', () => {
-  render(<LoanApp />);
-  const linkElement = screen.getByText("Add New Loan Application");
-  expect(linkElement).toBeInTheDocument();
-});
+test("test2", () => {
+  render(<ViewCustomer />)
+  const child = screen.getByLabelText("Travel to your Destinsation now");
+  expect(child).toBeInTheDocument();
+})
