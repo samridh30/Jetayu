@@ -5,6 +5,7 @@ import { loginService } from "../../services/AuthService";
 import { useDispatch, useSelector } from "react-redux";
 import { getAppUser } from "../../redux/AppUserSlice";
 import { Link } from "react-router-dom";
+import Customer from "../../Model/Customer";
 
 // import AuthUser from '../../models/AuthUser';
 

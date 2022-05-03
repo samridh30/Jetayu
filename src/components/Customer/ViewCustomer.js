@@ -10,7 +10,7 @@ const ViewCustomer = () => {
   }, [localStorage.getItem("loggedInUser")]);
 
   return (
-    <div className="conatiner m-auto col-sm-8 p-2">
+    <div className="conatiner m-auto col-sm-8 p-2" data-testid="ViewCust">
       <div className="card p-3">
         <div className="text-left roundered col-md-auto ">
           {/* <center> */}
