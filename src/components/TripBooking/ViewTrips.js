@@ -32,6 +32,7 @@ import InsertCab from "../Cab/InsertCab";
 import ViewAllCabs from "../Cab/ViewAllCabs";
 import ViewCabsofType from "../Cab/ViewCabsofType";
 import UpdateCab from "../Cab/UpdateCab";
+import ViewBestDrivers from "../Driver/ViewBestDrivers";
 
 const ViewTrips = (props) => {
   const history = useHistory();
@@ -511,6 +512,28 @@ const ViewTrips = (props) => {
                         View All Driver
                       </a>
                     </li>
+                    <li>
+                      <a
+                        // type="submit"
+                        // className="form-control mb-3 mt-3 btn btn-primary"
+                        value="Best Drivers"
+                        onClick={() =>
+                          setshow({
+                            // getTrip: false,
+                            // update: false,
+                            // endTrip: false,
+                            // bookingdetails: false,
+                            // viewCust: false,
+                            // updateCust: false,
+                            // allTrips: false,
+                            // addDriver: false,
+                            bestDriver: true,
+                          })
+                        }
+                      >
+                        View Best Driver
+                      </a>
+                    </li>
                   </ul>
                 </li>
 
@@ -661,7 +684,7 @@ const ViewTrips = (props) => {
             }
           />
         )}
-        { }
+        {show.bestDriver && <ViewBestDrivers />}
 
         {show.addCab && <InsertCab />}
         {show.viewCab && <ViewAllCabs dash={updateCab} />}

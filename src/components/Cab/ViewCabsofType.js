@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../../styles/Trip.css'
 import { viewCabsofType } from "../../services/CabService";
 
 const ViewCabsofType = (props) => {
@@ -63,7 +64,7 @@ const ViewCabsofType = (props) => {
             onClick={GetCabsByType}
           />
         </div>
-        <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3">
+        <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 scrollit-nav">
           <p className="text-dark text-center font-weight-bold lead">
             {head}
           </p>

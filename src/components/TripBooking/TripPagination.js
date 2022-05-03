@@ -38,11 +38,11 @@ const Pagination = (props) => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="container">
       <center className="scrollit p-1">
 
         {allTripsListStore.length >= 1 ? (
-          <div class="">
+          <div class="bg-white">
             <p className="text-dark text-center font-weight-bold lead">
               List of All Trips
             </p>
