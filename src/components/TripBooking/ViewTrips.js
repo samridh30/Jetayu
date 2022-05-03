@@ -121,6 +121,8 @@ const ViewTrips = (props) => {
     }
   };
 
+  /* End Cab Funciton */
+
   const endCab = (e) => {
     setshow({
       getTrip: false,
@@ -131,22 +133,6 @@ const ViewTrips = (props) => {
       updateCust: false,
     });
     history.push("/driver5");
-
-    // e.preventDefault();
-    // endTripService()
-    //   .then((response) => {
-    //     // dispatch(setTripList(new Trip()));
-    //     // alert(response.data.customer.userName + " Your Trip Ended ");
-    //   })
-    //   .catch(() => {
-    //     <div className="alert alert-success alert-dismissible">
-    //       <a href="#" className="close" data-dismiss="alert" aria-label="close">
-    //         &times;
-    //       </a>
-    //       <strong>Info!</strong> No Trips To end.
-    //     </div>;
-    //     alert("No trips to end");
-    //   });
   };
 
   const updateDriver = (drive) => {
@@ -231,7 +217,6 @@ const ViewTrips = (props) => {
 
             </div>
             <hr />
-
             <ul
               className="list-unstyled components"
               style={{ marginTop: "-25px" }}
