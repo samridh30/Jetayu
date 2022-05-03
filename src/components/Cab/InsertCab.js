@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Cab from "../../Model/Cab";
-import { insertCab } from "../../services/CabService";
-import { viewCabsofType } from "../../services/CabService";
+import { insertCab } from "../../Services/CabService";
+import { viewCabsofType } from "../../Services/CabService";
 
 const InsertCab = () => {
   const [addCab, setAddCab] = useState(new Cab());

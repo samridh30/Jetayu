@@ -1,4 +1,4 @@
-import { deleteCustomerService } from "../../services/CustomerService";
+import { deleteCustomerService } from "../../Services/CustomerService";
 import { useHistory } from "react-router-dom";
 
 /* Component To Disable Customer Account */

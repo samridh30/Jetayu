@@ -1,10 +1,10 @@
-import { bookCabService } from "../../services/TripService";
+import { bookCabService } from "../../Services/TripService";
 import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
-import { setTripList } from "../../redux/TripSlice";
+import { setTripList } from "../../Redux/TripSlice";
 import { useDispatch} from "react-redux";
-import "../../styles/BookTrip.css";
+import "../../Styles/BookTrip.css";
 
 /* Component To book A Trip */
 const Booktrip = () => {

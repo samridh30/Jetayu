@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import '../../styles/Trip.css'
-import { viewCabsofType } from "../../services/CabService";
+import '../../Styles/Trip.css'
+import { viewCabsofType } from "../../Services/CabService";
 
 const ViewCabsofType = (props) => {
   const [type, setType] = useState("");

@@ -1,22 +1,21 @@
 import {
   viewTripService,
-  endTripService,
   viewTripByIdService,
   viewAllTripDataService,
-} from "../../services/TripService";
-import { setAllTripsList } from "../../redux/TripSlice";
+} from "../../Services/TripService";
+import { setAllTripsList } from "../../Redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { setTripList } from "../../redux/TripSlice";
+import { setTripList } from "../../Redux/TripSlice";
 import UpdateTrip from "./UpdateTrip";
 import BookingTripDetails from "./BookingTripDetails";
 import TripPagination from "./TripPagination";
 
-import "../../styles/sideNav.css";
-import '../../styles/Trip.css';
+import "../../Styles/sideNav.css";
+import '../../Styles/Trip.css';
 
 import { useHistory } from "react-router-dom";
-import { logoutService } from "../../services/AuthService";
+import { logoutService } from "../../Services/AuthService";
 
 import ViewCustomer from "../Customer/ViewCustomer";
 import UpdateCustomer from "../Customer/UpdateCustomer";

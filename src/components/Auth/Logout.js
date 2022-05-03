@@ -1,8 +1,8 @@
 import { useHistory } from "react-router-dom";
-import { logoutService } from "../../services/AuthService";
+import { logoutService } from "../../Services/AuthService";
 import { useDispatch, useSelector } from "react-redux";
 import Trip from "../../Model/Trip";
-import { setTripList } from "../../redux/TripSlice";
+import { setTripList } from "../../Redux/TripSlice";
 
 const Logout = (props) => {
   // const temp = useSelector((state) => state.appUser.loggedInUser);

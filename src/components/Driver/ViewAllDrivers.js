@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDrivers } from "../../redux/DriverSlice";
+import { getAllDrivers } from "../../Redux/DriverSlice";
 
-import { viewAllDrivers } from "../../services/DriverService";
+import { viewAllDrivers } from "../../Services/DriverService";
 
 const ViewAllDrivers = (props) => {
   const allDriverDataFromStore = useSelector(

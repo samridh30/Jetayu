@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateCustomerService } from "../../services/CustomerService";
+import { updateCustomerService } from "../../Services/CustomerService";
 import DisableCustomer from "./DisableCustomer";
 import validator from "validator";
 

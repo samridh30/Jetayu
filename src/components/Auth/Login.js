@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import { loginService } from "../../services/AuthService";
+import { loginService } from "../../Services/AuthService";
 import { useDispatch, useSelector } from "react-redux";
-import { getAppUser } from "../../redux/AppUserSlice";
+import { getAppUser } from "../../Redux/AppUserSlice";
 import { Link } from "react-router-dom";
 import Customer from "../../Model/Customer";
 

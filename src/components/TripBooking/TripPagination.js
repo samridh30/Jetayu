@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import "../../styles/Trip.css";
+import "../../Styles/Trip.css";
 
 const Pagination = (props) => {
   const allTripsListStore = useSelector((state) => state.Trip.AllTripsList);

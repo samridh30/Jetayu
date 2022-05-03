@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 // import AppUser from '../models/AppUser';
-import { registerService } from "../../services/AuthService";
+import { registerService } from "../../Services/AuthService";
 import Customer from "../../Model/Customer";
 import validator from 'validator';
 
