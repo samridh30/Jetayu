@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { viewAllCustomersCustomerService } from "../../services/CustomerService";
-import "../../styles/Customer.css";
-import "../../styles/Trip.css"
+import { viewAllCustomersCustomerService } from "../../Services/CustomerService";
+import "../../Styles/Customer.css";
+import "../../Styles/Trip.css"
 
 /* Component To Show All Registered Customers */
 const ViewAllCustomers = () => {

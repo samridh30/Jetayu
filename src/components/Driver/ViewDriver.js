@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDriverById } from "../../redux/DriverSlice";
-import { updateDriver } from "../../services/DriverService";
-import { setDriverList } from "../../redux/DriverSlice";
-import { viewDriver } from "../../services/DriverService";
+import { getDriverById } from "../../Redux/DriverSlice";
+import { updateDriver } from "../../Services/DriverService";
+import { setDriverList } from "../../Redux/DriverSlice";
+import { viewDriver } from "../../Services/DriverService";
 import { Link } from "react-router-dom";
 import Driver from "../../Model/Driver";
 

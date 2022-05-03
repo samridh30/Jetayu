@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { viewTripService } from "../../services/TripService";
-import { setTripList } from "../../redux/TripSlice";
+import { viewTripService } from "../../Services/TripService";
+import { setTripList } from "../../Redux/TripSlice";
 import { useDispatch } from "react-redux";
 
 /* Component To Show Current Trip Booking Details */

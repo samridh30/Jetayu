@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import "../../styles/BookTrip.css";
+import "../../Styles/BookTrip.css";
 import BookingTripDetails from "./BookingTripDetails";
 
 /* To End Trip */

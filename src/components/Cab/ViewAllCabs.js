@@ -2,11 +2,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
-import { getAllCabs } from "../../redux/CabSlice";
-import '../../styles/Trip.css';
+import { getAllCabs } from "../../Redux/CabSlice";
+import '../../Styles/Trip.css';
 
 
-import { viewAllCabs } from "../../services/CabService";
+import { viewAllCabs } from "../../Services/CabService";
 
 // const ViewAllCabs = () => {
 //   const allCabDataFromStore = useSelector(

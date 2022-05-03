@@ -1,7 +1,7 @@
-import { updateTripService } from "../../services/TripService";
+import { updateTripService } from "../../Services/TripService";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTripList } from "../../redux/TripSlice";
+import { setTripList } from "../../Redux/TripSlice";
 
 /* Update Current Trip Booking Details */
 const UpdateTrip = () => {
