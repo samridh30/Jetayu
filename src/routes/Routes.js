@@ -7,7 +7,6 @@ import ViewTrips from "../components/TripBooking/ViewTrips";
 import Register from "../components/Auth/Register";
 import Page404 from "../components/Home/Page404";
 import RateDriver from "../components/Driver/RateDriver";
-import ViewBestDrivers from "../components/Driver/ViewBestDrivers";
 
 const Routes = () => {
   return (

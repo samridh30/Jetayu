@@ -1,7 +1,6 @@
 import { render as rtlRender, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from '../redux/store'
-import UpdateCustomer from '../components/Customer/UpdateCustomer';
 import ViewCustomer from '../components/Customer/ViewCustomer';
 
 

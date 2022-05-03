@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+/* Component To View Customer Details */
 const ViewCustomer = () => {
   const [Updatecustomerstate, setUpdatecustomerstate] = useState(
     JSON.parse(localStorage.getItem("loggedInUser"))

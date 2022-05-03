@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Customer from "../../Model/Customer";
 import { updateCustomerService } from "../../services/CustomerService";
 import DisableCustomer from "./DisableCustomer";
 import validator from "validator";
 
+/* Component To Update Customer Details */
 const UpdateCustomer = () => {
   const [updatecustomerstate, setupdatecustomerstate] = useState(
     JSON.parse(localStorage.getItem("loggedInUser"))

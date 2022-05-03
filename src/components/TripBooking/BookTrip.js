@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { setTripList } from "../../redux/TripSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import "../../styles/BookTrip.css";
 
 /* Component To book A Trip */
