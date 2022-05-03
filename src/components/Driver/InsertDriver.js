@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Driver from "../../Model/Driver";
 import Cab from "../../Model/Cab";
-import { insertDriver } from "../../services/DriverService";
-import { viewAllDrivers } from "../../services/DriverService";
-import { getAllDrivers } from "../../redux/DriverSlice";
+import { insertDriver } from "../../Services/DriverService";
+import { viewAllDrivers } from "../../Services/DriverService";
+import { getAllDrivers } from "../../Redux/DriverSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAvailableCabs, viewAllCabs } from "../../services/CabService";
+import { fetchAvailableCabs, viewAllCabs } from "../../Services/CabService";
 
 
 

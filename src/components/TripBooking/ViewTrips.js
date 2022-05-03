@@ -1,24 +1,21 @@
 import {
   viewTripService,
-  endTripService,
   viewTripByIdService,
   viewAllTripDataService,
-} from "../../services/TripService";
-import { setAllTripsList } from "../../redux/TripSlice";
+} from "../../Services/TripService";
+import { setAllTripsList } from "../../Redux/TripSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { setTripList } from "../../redux/TripSlice";
+import { setTripList } from "../../Redux/TripSlice";
 import UpdateTrip from "./UpdateTrip";
 import BookingTripDetails from "./BookingTripDetails";
 import TripPagination from "./TripPagination";
-import Trip from "../../Model/Trip";
-import { Link } from "react-router-dom";
 
-import "../../styles/sideNav.css";
-import '../../styles/Trip.css';
+import "../../Styles/sideNav.css";
+import '../../Styles/Trip.css';
 
 import { useHistory } from "react-router-dom";
-import { logoutService } from "../../services/AuthService";
+import { logoutService } from "../../Services/AuthService";
 
 import ViewCustomer from "../Customer/ViewCustomer";
 import UpdateCustomer from "../Customer/UpdateCustomer";
@@ -265,11 +262,13 @@ const ViewTrips = (props) => {
                     href="#pageSubmenu"
                     data-toggle="collapse"
                     aria-expanded="false"
-                    class="dropdown-toggle"
+                    className="dropdown-toggle text-light"
+                    style={{ textDecoration: 'none' }}
+
                   >
                     Current Trip
                   </a>
-                  <ul class="collapse list-unstyled" id="pageSubmenu">
+                  <ul className="collapse list-unstyled" id="pageSubmenu">
                     <li>
                       <a
                         // type="submit"
@@ -408,11 +407,13 @@ const ViewTrips = (props) => {
                     href="#pageSubmenu"
                     data-toggle="collapse"
                     aria-expanded="false"
-                    class="dropdown-toggle"
+                    className="dropdown-toggle text-light"
+                    style={{ textDecoration: 'none' }}
+
                   >
                     Trips
                   </a>
-                  <ul class="collapse list-unstyled" id="pageSubmenu">
+                  <ul className="collapse list-unstyled" id="pageSubmenu">
                     <li>
                       <input
                         type="text"
@@ -460,16 +461,17 @@ const ViewTrips = (props) => {
                   <hr className="w-75" />
                 </center>
 
-                <li class="active">
+                <li className="active">
                   <a
                     href="#homeSubmenu"
                     data-toggle="collapse"
                     aria-expanded="true"
-                    class="dropdown-toggle"
+                    className="dropdown-toggle"
+                    style={{ textDecoration: 'none' }}
                   >
                     Driver
                   </a>
-                  <ul class="collapse list-unstyled" id="homeSubmenu">
+                  <ul className="collapse list-unstyled" id="homeSubmenu">
                     <li>
                       <a
                         // type="submit"
@@ -542,16 +544,18 @@ const ViewTrips = (props) => {
                   <hr className="w-75" />
                 </center>
 
-                <li class="active">
+                <li className="active">
                   <a
                     href="#Submenu"
                     data-toggle="collapse"
                     aria-expanded="true"
-                    class="dropdown-toggle"
+                    className="dropdown-toggle"
+                    style={{ textDecoration: 'none' }}
+
                   >
                     Cab
                   </a>
-                  <ul class="collapse list-unstyled" id="Submenu">
+                  <ul className="collapse list-unstyled" id="Submenu">
                     <li>
                       <a
                         // type="submit"

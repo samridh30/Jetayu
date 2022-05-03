@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
-import Customer from "../../Model/Customer";
-import { useDispatch, useSelector } from "react-redux";
-import { viewAllCustomersCustomerService } from "../../services/CustomerService";
-import "../../styles/Customer.css";
-import "../../styles/Trip.css"
-import { deleteCustomerService } from "../../services/CustomerService";
-import { useHistory } from "react-router";
-import DisableCustomer from "./DisableCustomer";
+import { viewAllCustomersCustomerService } from "../../Services/CustomerService";
+import "../../Styles/Customer.css";
+import "../../Styles/Trip.css"
 
-
+/* Component To Show All Registered Customers */
 const ViewAllCustomers = () => {
   const [AllCustomers, setallCustomers] = useState([]);
   const [id, setId] = useState();
@@ -23,51 +18,21 @@ const ViewAllCustomers = () => {
       });
   }, [])
 
-  const test = (id) => {
-    setId(id)
-    console.log(id)
-  }
-  const DisableCustomerAccount = (id) => {
-    // var proceed = window.confirm("Your Account will be permenantly deleted. Are you sure you want to proceed?");
-    if (id) {
-      console.log("deleted", id)
-      // deleteCustomerService(id)
-      //   .then((response) => {
-      //     console.log(response.data);
-      //     // localStorage.removeItem("loggedInUser");
-      //     // // history.push("/");
-      //     // window.location.reload(true);
-      //   })
-      //   .catch(() => {
-      //     alert("Error Occured");
-      //   });
-    } else {
-      console.log("Cancelled")
-    }
-  }
 
   return (
     <div>
-      {/* <input
-        type="submit"
-        className="btn btn-success mt-3"
-        value="Customers"
-        onClick={getAllCustomers}
-      /> */}
-      <div className="container">
-        <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 scrollit">
-          <p className="text-dark text-center font-weight-bold lead">
-            List of All Customers
-          </p>
-          {AllCustomers.length > 1 && (
+      <div className="container" data-testid="ViewAllCust">
+        {AllCustomers.length > 1 && (
+          <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 scrollit">
+            <p className="text-dark text-center font-weight-bold lead">
+              List of All Customers
+            </p>
             <div class="p-1">
               <table className="table border border-dark">
-                {/* <table class="table table-light"> */}
                 <thead className="thead-dark">
                   <tr>
                     <th>customerId</th>
                     <th>userName</th>
-                    {/* <th>password</th> */}
                     <th>address</th>
                     <th>mobileNumber</th>
                     <th>email</th>
@@ -80,7 +45,6 @@ const ViewAllCustomers = () => {
                     <tr key={index}>
                       <td>{e.customerId}</td>
                       <td>{e.userName}</td>
-                      {/* <td>{e.password}</td> */}
                       <td>{e.address}</td>
                       <td>{e.mobileNumber}</td>
                       <td className="text-truncate">{e.email}</td>
@@ -99,8 +63,8 @@ const ViewAllCustomers = () => {
               </table>
 
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div >
   );

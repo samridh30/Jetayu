@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Driver from '../../Model/Driver'
 import { Rating } from 'react-simple-star-rating'
 import { curryRight } from 'lodash';
-import { driverRating } from '../../services/DriverService';
-import { endTripService } from "../../services/TripService";
-import { setTripList } from "../../redux/TripSlice";
+import { driverRating } from '../../Services/DriverService';
+import { endTripService } from "../../Services/TripService";
+import { setTripList } from "../../Redux/TripSlice";
 import { useHistory } from 'react-router-dom';
 
 

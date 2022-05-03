@@ -1,15 +1,15 @@
 import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "../../styles/BookTrip.css";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import "../../Styles/BookTrip.css";
 import BookingTripDetails from "./BookingTripDetails";
 
+/* To End Trip */
 const EndTrip = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
-  const [details, setDetails] = useState(false)
+  const [details, setDetails] = useState(false);
   const [currenttripupdate, setcurrenttripupdate] =
     useState(CurrentTripListStore);
 
@@ -17,24 +17,22 @@ const EndTrip = () => {
     e.preventDefault();
     setcurrenttripupdate.status = false;
     console.log(currenttripupdate.status);
-    history.push("/driver5")
-
+    history.push("/driver5");
   };
 
   return (
     <div className="">
-      {(details) ?
+      {details ? (
         <div className="row" style={{ marginTop: "-350px" }}>
           <BookingTripDetails close={() => setDetails(false)} />
-        </div> :
-        < div id="block" className="row mx-auto" >
-
+        </div>
+      ) : (
+        <div id="block" className="row mx-auto">
           <div
             id="BookTripBlock"
             className="card col-md-10 mx-auto shadow-lg"
             style={{ borderRadius: "10" }}
           >
-
             <h4 className="=card-title font-weight-lighter p-2">
               Booking Info
               <button
@@ -65,7 +63,6 @@ const EndTrip = () => {
                       value={CurrentTripListStore.fromLocation}
                     />
                   </div>
-                  {/* <div><p className="glyphicon glyphicon-arrow-right"></p></div> */}
                   <img className="" src={require(`./arrow.png`)} />
                   <div className=" col col-lg-3">
                     <input
@@ -96,21 +93,9 @@ const EndTrip = () => {
               </form>
             </div>
           </div>
-        </div >
-      }
-      {/* <div
-        style={{ position: "", float: "center" }}
-        className=" collapse w-100"
-        id="CabDetails"
-      >
-        <p className=" text-warning">DriverName- <strong className="text-success">{CurrentTripListStore.driver.driverName}</strong></p>
-        <p className=" text-warning">CabType- <strong className="text-success">{CurrentTripListStore.driver.cab.carType}</strong> </p>
-        <p className="text-warning">Rate Driver- <strong className="text-success">{CurrentTripListStore.driver.rating}</strong></p>
-
-      </div> */}
-
-
-    </div >
+        </div>
+      )}
+    </div>
   );
 };
 

@@ -3,8 +3,8 @@ import Logout from "../Auth/Logout";
 import Booktrip from "../TripBooking/BookTrip";
 import EndTrip from "../TripBooking/EndTrip";
 import { useDispatch, useSelector } from "react-redux";
-import { viewTripService } from "../../services/TripService";
-import { setAllTripsList, setTripList } from "../../redux/TripSlice";
+import { viewTripService } from "../../Services/TripService";
+import { setAllTripsList, setTripList } from "../../Redux/TripSlice";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion"
 
@@ -70,7 +70,7 @@ const Home = () => {
           alt="image"
         />
         <h3 className="font-weight-lighter uppercase">
-          Travel to your Destinsation now
+          Travel to your Destination now
         </h3>
       </motion.div>
       {/* <br /> */}

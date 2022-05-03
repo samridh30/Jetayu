@@ -1,9 +1,10 @@
 import { render as rtlRender, screen } from '@testing-library/react';
-import Home from '../components/Home/Home';
 import { Provider } from 'react-redux';
 import TripPagination from '../components/TripBooking/TripPagination'
 import store from '../redux/store'
 import Booktrip from '../components/TripBooking/BookTrip';
+import UpdateTrip from '../components/TripBooking/UpdateTrip';
+import BookingTripDetails from '../components/TripBooking/BookingTripDetails';
 
 
 const render = (component) => rtlRender(
@@ -24,3 +25,27 @@ test('Trip Pagination', () => {
         const linkElement = screen.getByText("No Trips To Show.");
         expect(linkElement).toBeInTheDocument();
 });
+
+test('Update Trip', () => {
+        render(<UpdateTrip />)
+        const linkElement = screen.getByText("No Trip To update");
+        expect(linkElement).toBeInTheDocument();
+});
+
+test('Update Trip', () => {
+        render(<UpdateTrip />)
+        const linkElement = screen.getByTestId("Update-trip");
+        expect(linkElement).toBeInTheDocument();
+});
+
+test('Update Trip', () => {
+        render(<UpdateTrip />)
+        const linkElement = screen.getByTestId("Update-trip-a");
+        expect(linkElement).toBeInTheDocument();
+});
+test('Booking Details', () => {
+        render(<BookingTripDetails />)
+        const linkElement = screen.getByText("No Live Trip To Show Details.");
+        expect(linkElement).toBeInTheDocument();
+});
+
