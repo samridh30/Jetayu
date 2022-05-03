@@ -51,7 +51,7 @@ const Home = () => {
   }, []);
   return (
     <div className="p-3">
-      <h1 className="mt-3 display-3 font-weight-lighter">JATAYU</h1>
+      <h1 id="jatayu" className="mt-3 display-3 font-weight-lighter">JETAYU</h1>
       <motion.div initial="hidden"
         animate="visible"
         variants={variants}

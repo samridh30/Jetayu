@@ -137,6 +137,7 @@ const ViewTrips = (props) => {
       updateCust: false,
     });
     history.push("/driver5");
+    window.location.reload(true)
   };
 
   const updateDriver = (drive) => {

@@ -82,14 +82,6 @@ const ViewAllCabs = (props) => {
                             <td>{e.carType}</td>
                             <td>{e.perKmRate}</td>
                             <td>{e.status.toString()}</td>
-                            {(e.cab) &&
-                              <>
-                                <td>{e.cab.cabId}</td>
-                                <td>{e.cab.carType}</td>
-                                <td>{e.cab.perKmRate}</td>
-                                <td>{e.cab.status.toString()}</td>
-                              </>
-                            }
                             <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
                           </tr>
                         </tbody>

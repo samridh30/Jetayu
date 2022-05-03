@@ -4,8 +4,9 @@ const DisableCustomer = () => {
   const history = useHistory();
   const DisableCustomerAccount = (e) => {
     var proceed = window.confirm("Your Account will be permenantly deleted. Are you sure you want to proceed?");
+    // console.log(JSON.parse(localStorage.getItem('loggedInUser')).customerId)
     if (proceed) {
-      deleteCustomerService()
+      deleteCustomerService(JSON.parse(localStorage.getItem('loggedInUser')).customerId)
         .then((response) => {
           console.log(response.data);
           localStorage.removeItem("loggedInUser");

@@ -3,6 +3,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import TripReducer from "./TripSlice";
 import appUserReducer from "./AppUserSlice";
 import DriverReducer from "./DriverSlice";
+import CabReducer from "./CabSlice";
+
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -20,10 +22,9 @@ const persitConfig = {
 const store = configureStore({
   reducer: {
     Trip: persistReducer(persitConfig, TripReducer),
-    appUser: appUserReducer,
+    AppUser: appUserReducer,
     Driver: DriverReducer,
-    // parent: parentReducer
-    // , more reducers
+    Cab: CabReducer,
   },
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   middleware: [ReduxThunk],

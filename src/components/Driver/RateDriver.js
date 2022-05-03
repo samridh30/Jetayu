@@ -26,6 +26,7 @@ const RateDriver = (props) => {
 
     useEffect(() => {
         // console.log(currentDriverListStore.driver.driverId)
+        
     }, []);
 
 
@@ -62,34 +63,37 @@ const RateDriver = (props) => {
     }
 
     return (
-        <center>
-            <div className="card mt-3 ml-3 mb-10 bg-light col-lg-7 m-auto">
-                <div class="card-body text-left roundered">
-                    <div className=''>
-                        <div className='App'>
-                            <h4>Rate Driver</h4>
-                            <Rating
-                                name="rating"
-                                initialValue={temp}
-                                // onChange={rateDriver.driver.rating}
-                                onClick={handleRateDriver}
-                                // ratingValue={}
-                                size={50}
-                                label
-                                transition
-                                fillColor='yellow'
-                                emptyColor='gray'
-                                className='foo' // Will remove the inline style if applied
-                            />
-                            {/* Use rating value */}
-                            <input type="submit" onClick={submitRateDriver} />
+        <div style={{ marginTop: '200px' }}>
+
+            <center>
+                <div className="card mt-3 ml-3 mb-10 bg-light col-lg-7" >
+                    <div class="card-body text-left roundered">
+                        <div className=''>
+                            <div className='App'>
+                                <h4>Rate Driver</h4>
+                                <Rating
+                                    name="rating"
+                                    initialValue={temp}
+                                    // onChange={rateDriver.driver.rating}
+                                    onClick={handleRateDriver}
+                                    // ratingValue={}
+                                    size={50}
+                                    label
+                                    transition
+                                    fillColor='yellow'
+                                    emptyColor='gray'
+                                    className='foo' // Will remove the inline style if applied
+                                />
+                                {/* Use rating value */}
+                                <input type="submit" onClick={submitRateDriver} />
+                            </div>
+
+
                         </div>
-
-
                     </div>
                 </div>
-            </div>
-        </center>
+            </center>
+        </div>
     )
 }
 

@@ -10,8 +10,8 @@ const updateCustomerService = (customer) => {
   return axios.put(`${springBootAppUrl}/update`, customer);
 };
 
-const deleteCustomerService = () => {
-  return axios.delete(`${springBootAppUrl}/delete`);
+const deleteCustomerService = (customerId) => {
+  return axios.delete(`${springBootAppUrl}/delete/${customerId}`);
 };
 
 const loginCustomerService = (appUser) => {
