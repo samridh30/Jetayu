@@ -11,8 +11,6 @@ import { setTripList } from "../../redux/TripSlice";
 import UpdateTrip from "./UpdateTrip";
 import BookingTripDetails from "./BookingTripDetails";
 import TripPagination from "./TripPagination";
-import Trip from "../../Model/Trip";
-import { Link } from "react-router-dom";
 
 import "../../styles/sideNav.css";
 import '../../styles/Trip.css';

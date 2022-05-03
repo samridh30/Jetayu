@@ -3,7 +3,7 @@ import { viewAllCustomersCustomerService } from "../../services/CustomerService"
 import "../../styles/Customer.css";
 import "../../styles/Trip.css"
 
-
+/* Component To Show All Registered Customers */
 const ViewAllCustomers = () => {
   const [AllCustomers, setallCustomers] = useState([]);
 
