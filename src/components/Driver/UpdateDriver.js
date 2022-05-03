@@ -41,7 +41,7 @@ const UpdateDriver = (props) => {
         <div className="card-body text-left roundered">
           <div>
             <h4 className="card-header">
-              <center>Update Driver </center>
+              <center> Update Driver </center>
             </h4>
             <label>Driver Id</label>
             <input
