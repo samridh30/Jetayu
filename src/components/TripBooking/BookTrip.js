@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "../../styles/BookTrip.css";
 
 const Booktrip = () => {
-  const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
 
   const [booktrip, setBookTrip] = useState({
     fromLocation: "",

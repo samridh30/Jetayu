@@ -22,6 +22,7 @@ const BookingTripDetails = (props) => {
     if (JSON.parse(localStorage.getItem("loggedInUser"))) {
       const role = JSON.parse(localStorage.getItem("loggedInUser")).role;
       if (role === "CUSTOMER") {
+        /*Methods to fetch Trip History of a Customer */
         viewTripService()
           .then((response) => {
             setTmp(CurrentTripListStore);
