@@ -1,46 +1,11 @@
 import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import loaddash from "lodash";
-import "../../styles/Trip.css";
-
-const pagesize = 30;
+import "../../Styles/Trip.css";
 
 const Pagination = (props) => {
   const allTripsListStore = useSelector((state) => state.Trip.AllTripsList);
-  // const [allTripsListStore, setAllTripsListStore] = useSelector((state) => state.Trip.AllTripsList)
-  const [paginatedPosts, setpaginatedPosts] = useState([]);
-  const [currentpage, setcurrentpage] = useState(1);
-
-  useEffect(() => {
-    // console.log(AllTripsListStore)
-    setpaginatedPosts(
-      loaddash(allTripsListStore).slice(0).take(pagesize).value()
-    );
-  }, [allTripsListStore]);
-
-  const pageCount = allTripsListStore
-    ? Math.ceil(allTripsListStore.length / pagesize)
-    : 0;
-
-  // if (pageCount === 1) {
-  //   return null;
-  // }
-  const pages = loaddash.range(1, pageCount + 1);
-
-  const pagination = (pageNo) => {
-    setcurrentpage(pageNo);
-    const startIndex = (pageNo - 1) * pagesize;
-    const paginatedPost = loaddash(allTripsListStore)
-      .slice(startIndex)
-      .take(pagesize)
-      .value();
-    setpaginatedPosts(paginatedPost);
-  };
-
   return (
     <div className="container">
       <center className="scrollit p-1">
-
         {allTripsListStore.length >= 1 ? (
           <div class="bg-white">
             <p className="text-dark text-center font-weight-bold lead">
@@ -73,15 +38,13 @@ const Pagination = (props) => {
                     <td>{e.driver.rating}</td>
                     <td>{e.driver.cab.carType}</td>
                     <td>{e.fromDateTime}</td>
-                    {/* <td><button onClick={() => props.dash} className="btn btn-danger py-0">View</button></td> */}
                   </tr>
                 ))}
-
               </tbody>
             </table>
-
           </div>
         ) : (
+          /* Show Popup Message If No PastHistory Trips */
           <div class="alert alert-success alert-dismissible">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">
               &times;
@@ -90,9 +53,7 @@ const Pagination = (props) => {
           </div>
         )}
       </center>
-
     </div>
-
   );
 };
 export default Pagination;

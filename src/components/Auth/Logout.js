@@ -1,8 +1,8 @@
 import { useHistory } from "react-router-dom";
-import { logoutService } from "../../services/AuthService";
+import { logoutService } from "../../Services/AuthService";
 import { useDispatch, useSelector } from "react-redux";
-import Trip from "../../Model/Trip";
-import { setTripList } from "../../redux/TripSlice";
+import { setTripList } from "../../Redux/TripSlice";
+import '../../Styles/sideNav.css'
 
 const Logout = (props) => {
   // const temp = useSelector((state) => state.appUser.loggedInUser);
@@ -23,14 +23,24 @@ const Logout = (props) => {
     // props.logUser();
   };
   return (
-    <div className="">
-      <input
-        className="bg-danger btn-outline-none btn btn-primary"
-        type="submit"
-        value="Logout"
-        onClick={method}
-      />
-    </div>
+
+    // <ul className="list-unstyled CTAs">
+    //   <li className="w-100">
+    //     <a
+    //       className="download bg-danger text-light"
+    //       onClick={method}
+    //     >
+    //       Logout
+    //     </a>
+    //   </li>
+    // </ul>
+    <input
+      className="bg-danger btn btn-primary px-4 pb-2"
+      style={{ border: 'none' }}
+      type="submit"
+      value="Logout"
+      onClick={method}
+    />
   );
 };
 export default Logout;

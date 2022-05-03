@@ -45,10 +45,9 @@ const Header = () => {
     <header className="header sticky-top">
       <nav className="navbar navbar-fixed-top navbar-expand-sm navbar-dark bg-dark">
         <div className="container">
-          <Link className="navbar-brand" to="/">
-            {/* <img src="https://cdn5.vectorstock.com/i/1000x1000/68/44/car-logo-with-circle-hand-colorful-logo-vector-22266844.jpg"
-                            height="60px" width="60px" alt="Cab Logo" /> */}
-            <h6 className="text-primary">JETAYU</h6>
+          <img height={50} width={50} src={require("../Home/HomePageImg.png")} />
+          <Link className="" to="/" style={{ textDecoration: 'none' }}>
+            <h6 className="text-light" style={{ fontSize: '25px' }}>JETAYU</h6>
           </Link>
           <button
             className="navbar-toggler"
@@ -76,12 +75,12 @@ const Header = () => {
           ) : (
             <div className="collapse navbar-collapse" id="navbarResponsive">
               <ul className="navbar-nav ml-auto">
-                <li>
-                  <Link className="nav-link" to="/dashboard" onClick={Dash}>
+                <li className="pl-4">
+                  <Link className="nav-link text-light" to="/dashboard" onClick={Dash}>
                     Dashboard
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item ml-4">
                   <Logout logUser={logUser} />
                 </li>
               </ul>

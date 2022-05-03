@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDriverById } from "../../redux/DriverSlice";
-import { updateDriver } from "../../services/DriverService";
-import { setDriverList } from "../../redux/DriverSlice";
-import { viewDriver } from "../../services/DriverService";
+import { getDriverById } from "../../Redux/DriverSlice";
+import { updateDriver } from "../../Services/DriverService";
+import { setDriverList } from "../../Redux/DriverSlice";
+import { viewDriver } from "../../Services/DriverService";
 import { Link } from "react-router-dom";
 import Driver from "../../Model/Driver";
 
@@ -16,7 +16,7 @@ const ViewDriver = (props) => {
 
   useEffect(() => {
 
-    console.log("AGAM: ", props.id.driverId)
+    // console.log("AGAM: ", props.id.driverId)
     viewDriver(props.id.driverId)
       .then((response) => {
         dispatch(getDriverById(response.data));
@@ -68,26 +68,7 @@ const ViewDriver = (props) => {
       <center>
 
         <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
-          {/* <p>Find a Driver</p>
-          <div>
-            <form className="form form-group">
-              <input
-                type="text"
-                className="form-control mb-3 mt-3"
-                id="driverId"
-                value={driverId}
-                placeholder="Enter Driver Id"
-                onChange={handleViewDriver}
-                autoFocus
-              />
-              <input
-                type="submit"
-                className="form-control mb-3 mt-3 btn btn-primary"
-                value="Get Driver"
-                onClick={submitViewDriver}
-              />
-            </form>
-          </div> */}
+
           <div>
             <div className="row">
               <h1 className="text-muted">Update Driver</h1>

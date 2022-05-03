@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Driver from "../../Model/Driver";
 import Cab from "../../Model/Cab";
-import { insertDriver } from "../../services/DriverService";
-import { viewAllDrivers } from "../../services/DriverService";
-import { getAllDrivers } from "../../redux/DriverSlice";
+import { insertDriver } from "../../Services/DriverService";
+import { viewAllDrivers } from "../../Services/DriverService";
+import { getAllDrivers } from "../../Redux/DriverSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAvailableCabs, viewAllCabs } from "../../services/CabService";
+import { fetchAvailableCabs, viewAllCabs } from "../../Services/CabService";
 
 
 
@@ -41,29 +41,34 @@ const InsertDriver = () => {
   };
   const submitAddDriver = (evt) => {
     evt.preventDefault();
-    let driverTemp = {
-      ...addDriver,
-      cab,
-    };
+    if (addDriver.cab.cabId !== "" && addDriver.driverName !== "" && addDriver.licenseNo !== "" && addDriver.rating !== "" && addDriver.status === false) {
+      let driverTemp = {
+        ...addDriver,
+        cab,
+      };
 
-    console.log(driverTemp)
-    insertDriver(driverTemp)
-      .then((response) => {
-        console.log(response.data);
-        alert(`Driver added successfully`);
-      })
-      .catch(() => {
-        alert("Driver could not be added");
+      console.log(driverTemp)
+      insertDriver(driverTemp)
+        .then((response) => {
+          console.log(response.data);
+          alert(`Driver added successfully`);
+        })
+        .catch(() => {
+          alert("Driver could not be added");
+        });
+      setAddDriver({
+        driverName: "",
+        licenseNo: "",
+        rating: ""
       });
-    setAddDriver({
-      driverName: "",
-      licenseNo: "",
-      rating: ""
-    });
-    setCab({
-      cabId: ''
-    })
-    driverTemp = "";
+      setCab({
+        cabId: ''
+      })
+      driverTemp = "";
+    }
+    else {
+      alert("Enter Details")
+    }
   };
 
   return (

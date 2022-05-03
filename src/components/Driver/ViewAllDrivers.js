@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDrivers } from "../../redux/DriverSlice";
+import { getAllDrivers } from "../../Redux/DriverSlice";
 
-import { viewAllDrivers } from "../../services/DriverService";
+import { viewAllDrivers } from "../../Services/DriverService";
 
 const ViewAllDrivers = (props) => {
   const allDriverDataFromStore = useSelector(
@@ -35,7 +35,7 @@ const ViewAllDrivers = (props) => {
           <div className="bg-white shadow shadow-regular mx-3 my-3">
             <div>
               {allDriverDataFromStore.length !== 0 && (
-                <div className="p-1">
+                <div className="p-1 w-auto">
                   <p className="text-dark text-center font-weight-bold lead">
                     List of All Drivers
                   </p>
@@ -59,7 +59,7 @@ const ViewAllDrivers = (props) => {
                         <tr>
                           <td>{e.driverId}</td>
                           <td>{e.driverName}</td>
-                          <td>{e.licenseNo}</td>
+                          <td className="text-truncate">{e.licenseNo}</td>
                           <td>{e.rating}</td>
                           {e.cab && (
                             <>

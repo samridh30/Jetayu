@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Cab from "../../Model/Cab";
 import { useDispatch, useSelector } from "react-redux";
-import { setCabList } from "../../redux/CabSlice";
-import { fetchCabById, updateCab } from "../../services/CabService";
+import { setCabList } from "../../Redux/CabSlice";
+import { fetchCabById, updateCab } from "../../Services/CabService";
 
 const UpdateCab = (props) => {
   // const CurrentCabListStore = useSelector((state) => state.Cab.CabData);

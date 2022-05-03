@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Cab from "../../Model/Cab";
-import { insertCab } from "../../services/CabService";
-import { viewCabsofType } from "../../services/CabService";
+import { insertCab } from "../../Services/CabService";
+import { viewCabsofType } from "../../Services/CabService";
 
 const InsertCab = () => {
   const [addCab, setAddCab] = useState(new Cab());
@@ -18,16 +18,20 @@ const InsertCab = () => {
     evt.preventDefault();
 
     console.log(addCab)
-    insertCab(addCab)
-      .then((response) => {
-        console.log(response.data);
-        alert(`Cab added successfully`);
-      })
-      .catch(() => {
-        alert("Cab could not be added");
-        setAddCab(new Cab());
-
-      });
+    if (addCab.perKmRate !== "" && addCab.carType !== "") {
+      insertCab(addCab)
+        .then((response) => {
+          console.log(response.data);
+          alert(`Cab added successfully`);
+        })
+        .catch(() => {
+          alert("Cab could not be added");
+          setAddCab(new Cab());
+        });
+    }
+    else {
+      alert("Enter Details")
+    }
   }
 
   return (

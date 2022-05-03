@@ -1,14 +1,13 @@
-import { bookCabService } from "../../services/TripService";
+import { bookCabService } from "../../Services/TripService";
 import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
-import { setTripList } from "../../redux/TripSlice";
-import { useDispatch, useSelector } from "react-redux";
-import "../../styles/BookTrip.css";
+import { setTripList } from "../../Redux/TripSlice";
+import { useDispatch} from "react-redux";
+import "../../Styles/BookTrip.css";
 
+/* Component To book A Trip */
 const Booktrip = () => {
-  const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
-
   const [booktrip, setBookTrip] = useState({
     fromLocation: "",
     toLocation: "",
@@ -40,7 +39,6 @@ const Booktrip = () => {
   const errorBooking = () => {
     return (
       <div className="position-absolute w-100 alert alert-success alert-dismissible">
-        {/* <a href="#" className="close" data-dismiss="alert" onClick={() => setError(false)} aria-label="close">&times;</a> */}
         <h5>
           <strong>Info!</strong> Please Enter Valid Details
           <br />
@@ -65,12 +63,9 @@ const Booktrip = () => {
           bookCabService(tripDetails)
             .then((response) => {
               dispatch(setTripList(response.data));
-              // alert("Cab Booked Succesfully");
-              // history.push("/");
               window.location.reload(true);
             })
             .catch(() => {
-              // alert("Invalid Inputs");
               setError(true);
               setBookTrip({
                 fromLocation: "",
@@ -79,11 +74,10 @@ const Booktrip = () => {
               });
             });
         } else {
-          alert("Destination cannot be same as Pickup point")
+          alert("Destination cannot be same as Pickup point");
         }
-      }
-      else {
-        alert("Empty Fields Not Allowed")
+      } else {
+        alert("Empty Fields Not Allowed");
       }
     } else {
       history.push("/login");
@@ -102,7 +96,6 @@ const Booktrip = () => {
               {!error ? (
                 <div className="form-inline">
                   <div className="col col-lg-3">
-                    {/* <label className='card-title'>Pickup</label> */}
                     <input
                       type="text"
                       placeholder="Pickup Location..."
@@ -113,7 +106,6 @@ const Booktrip = () => {
                     />
                   </div>
                   <div className=" col col-lg-3">
-                    {/* <label className='card-title'>Enter Drop Location</label> */}
                     <input
                       type="text"
                       placeholder="Drop Location..."
@@ -126,7 +118,6 @@ const Booktrip = () => {
 
                   <div className="col-lg-3">
                     <div>
-                      {/* <label className='card-title'>Select Cab Type</label> */}
                       <select
                         className="form-select col-md-auto px-2 w-100 "
                         value={booktrip.cabType}
@@ -154,7 +145,6 @@ const Booktrip = () => {
                     />
                   </div>
                 </div>
-
               ) : (
                 errorBooking()
               )}

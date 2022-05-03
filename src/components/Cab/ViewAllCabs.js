@@ -2,11 +2,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
-import { getAllCabs } from "../../redux/CabSlice";
-import '../../styles/Trip.css';
+import { getAllCabs } from "../../Redux/CabSlice";
+import '../../Styles/Trip.css';
 
 
-import { viewAllCabs } from "../../services/CabService";
+import { viewAllCabs } from "../../Services/CabService";
 
 // const ViewAllCabs = () => {
 //   const allCabDataFromStore = useSelector(
@@ -82,14 +82,6 @@ const ViewAllCabs = (props) => {
                             <td>{e.carType}</td>
                             <td>{e.perKmRate}</td>
                             <td>{e.status.toString()}</td>
-                            {(e.cab) &&
-                              <>
-                                <td>{e.cab.cabId}</td>
-                                <td>{e.cab.carType}</td>
-                                <td>{e.cab.perKmRate}</td>
-                                <td>{e.cab.status.toString()}</td>
-                              </>
-                            }
                             <td><button onClick={() => props.dash(e)} className="btn btn-danger py-0">Edit</button></td>
                           </tr>
                         </tbody>
