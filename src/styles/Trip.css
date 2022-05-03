@@ -6,6 +6,12 @@
     overflow-x: hidden;
 }
 
+.scrollit-nav {
+    min-height: 50vh;
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
 table {
     table-layout: fixed;
 }

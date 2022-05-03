@@ -32,14 +32,14 @@ const ViewAllCustomers = () => {
       /> */}
       <div className="container">
         {AllCustomers.length > 1 && (
-          <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3">
-            {/* <label className="text-primary">
-              <h3>Customers </h3>
-            </label> */}
-            <div class="">
-              <table className="table">
+          <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 scrollit">
+            <p className="text-dark text-center font-weight-bold lead">
+              List of All Customers
+            </p>
+            <div class="p-1">
+              <table className="table border border-dark">
                 {/* <table class="table table-light"> */}
-                <thead>
+                <thead className="thead-dark">
                   <tr>
                     <th>customerId</th>
                     <th>userName</th>

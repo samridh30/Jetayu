@@ -36,11 +36,13 @@ const Page404 = () => {
     }
     else {
         return (
-            <div className="container">
-                <h1>Oops!</h1>
+            <div className="container" style={{ marginTop: '175px' }}>
+                <h1 className="display-4">Oops...</h1>
+                <h1 className="display-1">404 Error!</h1>
+
                 <p>The page you are looking for is not found.</p>
-                <p>Redirecting to home in {seconds} seconds. </p>
-                <Link className="btn btn-primary" to="/home" >Let's go home now.</Link>
+                <p>Redirecting to home in <span className="text-warning">{seconds}</span> seconds. </p>
+                <Link className="btn btn-warning w-25" to="/home" >HOME</Link>
             </div>
         );
     }

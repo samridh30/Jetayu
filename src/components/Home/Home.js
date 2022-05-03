@@ -47,7 +47,7 @@ const Home = () => {
 
       }
     }
-    console.log(tmp);
+    // console.log(tmp);
   }, []);
   return (
     <div className="p-3">

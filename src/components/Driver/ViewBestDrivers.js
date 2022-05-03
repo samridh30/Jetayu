@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBestDrivers } from "../../redux/DriverSlice";
 
@@ -8,30 +8,33 @@ const ViewBestDrivers = () => {
   const allDriverDataFromStore = useSelector(
     (state) => state.Driver.DriverList
   );
-  const dispatch = useDispatch();
-  const submitViewBestDrivers = (evt) => {
-    evt.preventDefault();
+
+  const [drive, setDrive] = useState();
+
+  useEffect(() => {
     viewBestDrivers()
       .then((response) => {
+        console.log(response.data);
         dispatch(getBestDrivers(response.data));
       })
       .catch((error) => {
         alert(error);
       });
-  };
+  }, [])
+  const dispatch = useDispatch();
 
   return (
     <div className="container">
-      <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-8">
-        <p className="text-dark">Get Best Drivers</p>
-        <div className="form form-group">
+      <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 scrollit" style={{ minHeight: '90vh', maxHeight: '90vh' }}>
+        {/* <p className="text-dark">Get Best Drivers</p> */}
+        {/* <div className="form form-group">
           <input
             type="button"
             className=" text-dark btn btn-primary form-control mb-3 mt-3"
             value="Get Best Drivers"
             onClick={submitViewBestDrivers}
           />
-        </div>
+        </div> */}
         <div>
           <div>
             {allDriverDataFromStore.length !== 0 && (

@@ -17,12 +17,7 @@ const InsertDriver = () => {
   const [addDriver, setAddDriver] = useState(new Driver());
   const [cab, setCab] = useState(new Cab());
 
-  const [cabArray, setCabArray] = useState();
   const [avail, setAvail] = useState([]);
-
-  const allDriverDataFromStore = useSelector(
-    (state) => state.Driver.DriverList
-  );
 
   useEffect(() => {
     // console.log("Test: ", props.test)
@@ -31,7 +26,7 @@ const InsertDriver = () => {
       setAvail(response.data)
     })
     // const tmp = 
-  }, [])
+  }, [cab])
 
   const handleAddDriver = (e) => {
     setAddDriver({
@@ -59,9 +54,16 @@ const InsertDriver = () => {
       })
       .catch(() => {
         alert("Driver could not be added");
-        setAddDriver(new Driver());
-        driverTemp = "";
       });
+    setAddDriver({
+      driverName: "",
+      licenseNo: "",
+      rating: ""
+    });
+    setCab({
+      cabId: ''
+    })
+    driverTemp = "";
   };
 
   return (
