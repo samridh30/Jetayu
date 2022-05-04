@@ -22,17 +22,24 @@ const UpdateDriver = (props) => {
       [e.target.name]: e.target.value,
     });
   };
+
+
   const submitUpdateDriver = (evt) => {
     evt.preventDefault();
     console.log(driverUpdate);
-    updateDriver(driverUpdate)
-      .then((response) => {
-        dispatch(setDriverList(response.data));
-        alert("Driver Updated");
-      })
-      .catch(() => {
-        alert("Driver cannot be updated ");
-      });
+    if (driverUpdate.driverName !== "" && driverUpdate.licenseNo !== "" && driverUpdate.rating === 5 && driverUpdate.status === false) {
+      updateDriver(driverUpdate)
+        .then((response) => {
+          dispatch(setDriverList(response.data));
+          alert("Driver Updated");
+        })
+        .catch(() => {
+          alert("Driver cannot be updated ");
+        });
+    }
+    else {
+      alert("Enter Proper Details")
+    }
   };
 
   return (
@@ -76,6 +83,7 @@ const UpdateDriver = (props) => {
               className="form-control"
               onChange={handleUpdate}
               value={driverUpdate.rating}
+              disabled
             />
 
             <input

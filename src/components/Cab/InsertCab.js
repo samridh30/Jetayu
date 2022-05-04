@@ -5,7 +5,7 @@ import { viewCabsofType } from "../../Services/CabService";
 
 const InsertCab = () => {
   const [addCab, setAddCab] = useState(new Cab());
-  // const [cab, setCab] = useState(new Cab());
+  // const [cabed, setCabed] = useState(new Cab());
 
   const handleAddCab = (e) => {
     setAddCab({
@@ -17,8 +17,9 @@ const InsertCab = () => {
   const submitAddCab = (evt) => {
     evt.preventDefault();
 
-    console.log(addCab)
-    if (addCab.perKmRate !== "" && addCab.carType !== "") {
+    console.log(addCab.perKmRate, addCab.carType)
+    if (addCab.perKmRate !== undefined && addCab.carType !== undefined) {
+      // alert("OK")
       insertCab(addCab)
         .then((response) => {
           console.log(response.data);
@@ -30,7 +31,7 @@ const InsertCab = () => {
         });
     }
     else {
-      alert("Enter Details")
+      alert("Enter Proper Details")
     }
   }
 

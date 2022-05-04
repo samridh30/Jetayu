@@ -52,15 +52,20 @@ const ViewDriver = (props) => {
     console.log(driverUpdate);
     evt.preventDefault();
     console.log(drive);
-    updateDriver(drive)
-      .then((response) => {
-        dispatch(setDriverList(response.data));
-        alert("Driver Updated");
-      })
-      .catch(() => {
-        alert("Driver cannot be updated ");
-      });
-    props.back()
+    if (drive.driverName !== "" && drive.licenseNo !== "" && drive.rating === 5 && drive.status === false) {
+      updateDriver(drive)
+        .then((response) => {
+          dispatch(setDriverList(response.data));
+          alert("Driver Updated");
+        })
+        .catch(() => {
+          alert("Driver cannot be updated ");
+        });
+      props.back()
+    }
+    else {
+      alert("Enter Proper Details")
+    }
   };
 
   return (
@@ -98,6 +103,7 @@ const ViewDriver = (props) => {
                   className="form-control"
                   onChange={handleUpdate}
                   value={drive.rating}
+                  disabled
                 />
                 <label >Cab Id</label>
                 <input

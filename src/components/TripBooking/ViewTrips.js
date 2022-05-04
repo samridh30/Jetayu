@@ -57,11 +57,14 @@ const ViewTrips = (props) => {
   const [role, setRole] = useState("");
   const [CusId, setCusId] = useState("");
   const [driverId, setDriverId] = useState();
+  const [tripTemp, setTripTemp] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // console.log(CurrentTripListStore.status)
+    if (CurrentTripListStore !== undefined) {
+      setTripTemp(CurrentTripListStore.status)
+    }
     if (JSON.parse(localStorage.getItem("loggedInUser")).role !== null) {
       console.log(JSON.parse(localStorage.getItem("loggedInUser")));
       setRole(JSON.parse(localStorage.getItem("loggedInUser")).role);
@@ -268,28 +271,29 @@ const ViewTrips = (props) => {
                   >
                     Current Trip
                   </a>
-                  <ul className="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                      <a
-                        // type="submit"
-                        // className="form-control mb-3 mt-3 btn btn-primary"
-                        value="Booking details"
-                        onClick={bookingdetails}
-                      >
-                        View
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        // type="submit"
-                        // className="form-control mb-3 mt-3 btn btn-primary"
-                        value="Booking details"
-                        onClick={updateTrip}
-                      >
-                        Update
-                      </a>
-                    </li>
-                    {CurrentTripListStore.status ? (
+                  {tripTemp ? (
+                    <ul className="collapse list-unstyled" id="pageSubmenu">
+                      <li>
+                        <a
+                          // type="submit"
+                          // className="form-control mb-3 mt-3 btn btn-primary"
+                          value="Booking details"
+                          onClick={bookingdetails}
+                        >
+                          View
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          // type="submit"
+                          // className="form-control mb-3 mt-3 btn btn-primary"
+                          value="Booking details"
+                          onClick={updateTrip}
+                        >
+                          Update
+                        </a>
+                      </li>
+
                       <li className="p-3 text-light">
                         <a
                           className="bg-danger text-light CTAs"
@@ -303,10 +307,10 @@ const ViewTrips = (props) => {
                           End
                         </a>
                       </li>
-                    ) : (
-                      <li></li>
-                    )}
-                  </ul>
+                    </ul>
+                  ) : (
+                    <li></li>
+                  )}
                 </li>
                 <center>
                   <hr className="w-75" />
