@@ -22,16 +22,17 @@ const InsertDriver = () => {
   useEffect(() => {
     // console.log("Test: ", props.test)
     fetchAvailableCabs().then((response) => {
-      console.log(typeof (response.data))
+      console.log((response.data))
       setAvail(response.data)
     })
     // const tmp = 
-  }, [cab])
+  }, [addDriver])
 
   const handleAddDriver = (e) => {
     setAddDriver({
       ...addDriver,
       status: false,
+      rating: 5,
       [e.target.name]: e.target.value,
     });
     setCab({
@@ -47,7 +48,6 @@ const InsertDriver = () => {
         ...addDriver,
         cab,
       };
-
       console.log(driverTemp)
       insertDriver(driverTemp)
         .then((response) => {
@@ -105,9 +105,10 @@ const InsertDriver = () => {
               id="rating"
               name="rating"
               className="form-control mb-3 mt-3"
-              value={addDriver.rating}
+              value={5}
               onChange={handleAddDriver}
               placeholder="Enter Rating"
+              disabled
             />
             <select
               className="form-select col-lg-12 px-2 w-100 m-auto mb-2"

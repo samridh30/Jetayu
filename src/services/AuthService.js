@@ -2,10 +2,14 @@ import axios from "axios";
 
 const springBootAppUrl = `http://localhost:8088/`;
 
+// Register
+
 const registerService = (appUser) => {
   console.log(appUser);
   return axios.post(`${springBootAppUrl}Customer/register`, appUser);
 };
+
+// Login
 
 const loginService = (appUser) => {
   console.log(appUser);
@@ -14,9 +18,13 @@ const loginService = (appUser) => {
   return temp;
 };
 
+// Logout
+
 const logoutService = () => {
   return axios.get(`${springBootAppUrl}Customer/logout`);
 };
+
+//view All Customers
 
 const viewCustomer = () => {
   // console.log(appUser);

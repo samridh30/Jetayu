@@ -37,6 +37,7 @@ const UpdateCab = (props) => {
     evt.preventDefault();
     console.log(cabUpdate.carType)
     if (cabUpdate.perKmRate !== "" && cabUpdate.carType !== '') {
+      // alert("OK")
       updateCab(cabUpdate)
         .then((response) => {
           dispatch(setCabList(response.data));

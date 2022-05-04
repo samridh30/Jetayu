@@ -11,7 +11,7 @@ const DisableCustomer = () => {
     );
     if (proceed) {
       /* Calling Backend Service Controller By Axios */
-      deleteCustomerService()
+      deleteCustomerService(JSON.parse(localStorage.getItem('loggedInUser')).customerId)
         .then((response) => {
           console.log(response.data);
           localStorage.removeItem("loggedInUser");
