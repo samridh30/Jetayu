@@ -15,7 +15,7 @@ const render = (component) => rtlRender(
 
 test('Home2', () => {
   render(<Home />)
-  const linkElement = screen.getByText("Travel to your Destination now");
+  const linkElement = screen.getByText("Travel to your Destination Now");
   expect(linkElement).toBeInTheDocument();
 });
 
