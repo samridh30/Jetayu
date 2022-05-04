@@ -19,7 +19,7 @@ const Home = () => {
   const history = useHistory();
 
   const variants = {
-    hidden: { opacity: 0, z: 1000 },
+    hidden: { opacity: 0, z: 1000,  },
     visible: { opacity: 1, z: 0 },
   }
 
