@@ -6,7 +6,6 @@ import RateDriver from '../components/Driver/RateDriver'
 import ViewBestDrivers from '../components/Driver/ViewBestDrivers'
 
 
-
 const render = (component) => rtlRender(
         <Provider store={store}>
                 {component}
@@ -19,6 +18,7 @@ test('Insert Driver 1', () => {
         const linkElement = screen.getByText("Add New Driver");
         expect(linkElement).toBeInTheDocument();
 });
+
 test('Insert Driver 2', () => {
         render(<InsertDriver />)
         const linkElement = screen.getByPlaceholderText("Enter Driver Name");

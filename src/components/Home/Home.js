@@ -51,7 +51,7 @@ const Home = () => {
   }, []);
   return (
     <div className="p-3">
-      <h1 id="jatayu" className="mt-3 display-3 font-weight-lighter">JETAYU</h1>
+      <h1 id="jatayu" className="mt-3 display-2 text-light" style={{ fontWeight: 'normal' }}>JETAYU</h1>
       <motion.div initial="hidden"
         animate="visible"
         variants={variants}
@@ -69,8 +69,8 @@ const Home = () => {
           src={require("./HomePageImg.png")}
           alt="image"
         />
-        <h3 className="font-weight-lighter uppercase">
-          Travel to your Destination now
+        <h3 className="font-weight-lighter uppercase text-light">
+          Travel to your Destination Now
         </h3>
       </motion.div>
       {/* <br /> */}

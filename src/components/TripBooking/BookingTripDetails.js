@@ -9,10 +9,15 @@ const BookingTripDetails = (props) => {
   const CurrentTripListStore = useSelector((state) => state.Trip.TripList);
   const [tmp, setTmp] = useState(CurrentTripListStore);
   const [rate, setRate] = useState([]);
+  const [tripTemp, setTripTemp] = useState(false);
+
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (CurrentTripListStore !== undefined) {
+      setTripTemp(CurrentTripListStore.status)
+    }
     if (JSON.parse(localStorage.getItem("loggedInUser"))) {
       const role = JSON.parse(localStorage.getItem("loggedInUser")).role;
       if (role === "CUSTOMER") {
@@ -34,7 +39,7 @@ const BookingTripDetails = (props) => {
 
   return (
     <div id="bookingdetails" className="w-100">
-      {CurrentTripListStore.status ? (
+      {tripTemp ? (
         <div className="card mt-3 ml-3 mb-10 bg-light col-lg-7 m-auto">
           <div class="card-body text-left roundered">
             <div>

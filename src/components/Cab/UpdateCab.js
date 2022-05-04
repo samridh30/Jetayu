@@ -35,16 +35,21 @@ const UpdateCab = (props) => {
   };
   const submitUpdateCab = (evt) => {
     evt.preventDefault();
-    console.log(cabUpdate)
-    updateCab(cabUpdate)
-      .then((response) => {
-        dispatch(setCabList(response.data));
-        alert("Cab Updated");
-      })
-      .catch(() => {
-        alert("Cab cannot be updated ");
-      })
-    props.back()
+    console.log(cabUpdate.carType)
+    if (cabUpdate.perKmRate !== "" && cabUpdate.carType !== '') {
+      updateCab(cabUpdate)
+        .then((response) => {
+          dispatch(setCabList(response.data));
+          alert("Cab Updated");
+        })
+        .catch(() => {
+          alert("Cab cannot be updated ");
+        })
+      props.back()
+    }
+    else {
+      alert("Enter Proper Details")
+    }
   };
   return (
     <div className="container m-auto col-sm-6">

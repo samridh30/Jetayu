@@ -41,7 +41,8 @@ const InsertDriver = () => {
   };
   const submitAddDriver = (evt) => {
     evt.preventDefault();
-    if (addDriver.cab.cabId !== "" && addDriver.driverName !== "" && addDriver.licenseNo !== "" && addDriver.rating !== "" && addDriver.status === false) {
+
+    if (cab.cabId !== "" && addDriver.driverName !== "" && addDriver.licenseNo !== "" && addDriver.rating === 5 && addDriver.status === false) {
       let driverTemp = {
         ...addDriver,
         cab,
